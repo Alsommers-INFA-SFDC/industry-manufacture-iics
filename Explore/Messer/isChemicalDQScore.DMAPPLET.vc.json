@@ -1,0 +1,199 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "documentType" : "DMAPPLET",
+    "name" : "isChemicalDQScore",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "RuleSpecification -> Output",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Input -> RuleSpecification",
+        "groupLink" : "DefaultGroup -> Input group:"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2025-05-20T15:50:03.868Z",
+        "name" : "Input",
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "fields" : [
+          {
+            "name" : "ChemicalIndicator",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 25,
+            "scale" : 0
+          },
+          {
+            "name" : "RequiredField1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 25,
+            "scale" : 0
+          },
+          {
+            "name" : "requiredField2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 25,
+            "scale" : 0
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-05-20T15:50:03.872Z",
+        "name" : "Output",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "fieldMappingMode" : "MANUAL"
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-05-20T15:51:49.833Z",
+        "name" : "RuleSpecification",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@70wIIKDaMzZfCSFBabE1a7",
+        "ruleId" : "@70wIIKDaMzZfCSFBabE1a7",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "ChemicalIndicator",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "chemIndicator"
+                  }
+                },
+                {
+                  "name" : "RequiredField1",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "requiredField1"
+                  }
+                },
+                {
+                  "name" : "requiredField2",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "requiredField2"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "chemIndicator",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            },
+            {
+              "name" : "requiredField1",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            },
+            {
+              "name" : "requiredField2",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "isChemicalDQScore",
+              "platformType" : {
+                "name" : "integer"
+              },
+              "precision" : 10,
+              "scale" : 0
+            },
+            {
+              "name" : "RuleSet1",
+              "platformType" : {
+                "name" : "integer"
+              },
+              "precision" : 10,
+              "scale" : 0
+            },
+            {
+              "name" : "RuleSet2",
+              "platformType" : {
+                "name" : "integer"
+              },
+              "precision" : 10,
+              "scale" : 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-06-23 06:44:29 PDT"
+}

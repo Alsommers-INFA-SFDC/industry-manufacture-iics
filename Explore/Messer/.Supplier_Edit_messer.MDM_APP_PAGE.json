@@ -1,0 +1,233 @@
+{
+  "objectInfo" : {
+    "id" : "8fHACsVWOySg4iVKpJvLYP",
+    "name" : "Supplier_Edit_messer",
+    "type" : "MDM_APP_PAGE",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "c360" : {
+          "version" : "202604.01"
+        },
+        "p360" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202604.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202604.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED",
+      "referenceDataAssets" : [ {
+        "name" : "Category Type",
+        "path" : "REG/Messer/Category Type",
+        "internalId" : "category_type",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Category Type",
+          "internalId" : "ent_category_type"
+        }
+      }, {
+        "name" : "Supply Mode",
+        "path" : "REG/Default/Supply Mode",
+        "internalId" : "supply_mode",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Supply Mode",
+          "internalId" : "ent_supply_mode"
+        }
+      }, {
+        "name" : "infaS360esg_ClassificationLevel4Label",
+        "path" : "REG/Supplier360/Retail Extension/infaS360esg_ClassificationLevel4Label",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise infaS360esg_ClassificationLevel4Label"
+        }
+      }, {
+        "name" : "Gas Product Particle Form Grade",
+        "path" : "REG/Default/Gas Product Particle Form Grade",
+        "internalId" : "gas_product_particle_form_grade",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Gas Product Particle Form Grade",
+          "internalId" : "ent_gas_product_particle_form_grade"
+        }
+      }, {
+        "name" : "Gas Product Particle Form",
+        "path" : "REG/Default/Gas Product Particle Form",
+        "internalId" : "gas_product_particle_form2",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Gas Product Particle Form",
+          "internalId" : "ent_gas_product_particle_form2"
+        }
+      }, {
+        "name" : "Gas Product",
+        "path" : "REG/Default/Gas Product",
+        "internalId" : "gas_product",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Gas Product",
+          "internalId" : "ent_gas_product"
+        }
+      }, {
+        "name" : "IndicatorType",
+        "path" : "REG/Reference360/IndicatorType",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise IndicatorType"
+        }
+      }, {
+        "name" : "SpecialityType",
+        "path" : "REG/Reference360/SpecialityType",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise SpecialityType"
+        }
+      } ]
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "supplier_edit_messer"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2026-06-23T13:44:42.757Z",
+  "objectRefs" : [ {
+    "id" : "4BkAumqukMYb4XQIjRC7Yt",
+    "name" : "Distributor",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "c360" : {
+          "version" : "202604.01"
+        },
+        "p360" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202604.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202604.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED",
+      "referenceDataAssets" : [ {
+        "name" : "Category Type",
+        "path" : "REG/Messer/Category Type",
+        "internalId" : "category_type",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Category Type",
+          "internalId" : "ent_category_type"
+        }
+      }, {
+        "name" : "Supply Mode",
+        "path" : "REG/Default/Supply Mode",
+        "internalId" : "supply_mode",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Supply Mode",
+          "internalId" : "ent_supply_mode"
+        }
+      }, {
+        "name" : "infaS360esg_ClassificationLevel4Label",
+        "path" : "REG/Supplier360/Retail Extension/infaS360esg_ClassificationLevel4Label",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise infaS360esg_ClassificationLevel4Label"
+        }
+      }, {
+        "name" : "Gas Product Particle Form Grade",
+        "path" : "REG/Default/Gas Product Particle Form Grade",
+        "internalId" : "gas_product_particle_form_grade",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Gas Product Particle Form Grade",
+          "internalId" : "ent_gas_product_particle_form_grade"
+        }
+      }, {
+        "name" : "Gas Product Particle Form",
+        "path" : "REG/Default/Gas Product Particle Form",
+        "internalId" : "gas_product_particle_form2",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Gas Product Particle Form",
+          "internalId" : "ent_gas_product_particle_form2"
+        }
+      }, {
+        "name" : "Gas Product",
+        "path" : "REG/Default/Gas Product",
+        "internalId" : "gas_product",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise Gas Product",
+          "internalId" : "ent_gas_product"
+        }
+      }, {
+        "name" : "IndicatorType",
+        "path" : "REG/Reference360/IndicatorType",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise IndicatorType"
+        }
+      }, {
+        "name" : "SpecialityType",
+        "path" : "REG/Reference360/SpecialityType",
+        "alternativeCodeLists" : [ ],
+        "defaultCodeList" : {
+          "name" : "Enterprise SpecialityType"
+        }
+      } ]
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.supplier"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Supplier business entity\nVendor - Entegris\nDistributor- AgCo",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

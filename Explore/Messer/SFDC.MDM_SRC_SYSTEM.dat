@@ -1,0 +1,1 @@
+{"order":["sfdc"],"exportedMetadataObjects":{"sfdc":{"metadataType":"sourceSystem","payload":{"eClass":"http://informatica.com/mdm/v2/Core#//SourceSystem","guid":"sfdc","ownerRole":"","frsID":"08SeTEukVYEkax0q4WUuIL","name":"SFDC","description":"","label":{"eClass":"http://informatica.com/mdm/v2/Core#//LocalizedText","en":"SFDC"}}}},"rootGuid":"sfdc"}

@@ -1,0 +1,1 @@
+{"order":["sapcategory"],"exportedMetadataObjects":{"sapcategory":{"metadataType":"sourceSystem","payload":{"eClass":"http://informatica.com/mdm/v2/Core#//SourceSystem","guid":"sapcategory","ownerRole":"","frsID":"1mTIXjUYsbRbvzoolmZycf","name":"SAP","description":"","label":{"eClass":"http://informatica.com/mdm/v2/Core#//LocalizedText","en":"SAP"}}}},"rootGuid":"sapcategory"}

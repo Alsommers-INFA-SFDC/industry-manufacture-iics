@@ -1,0 +1,1 @@
+{"order":["crm_us"],"exportedMetadataObjects":{"crm_us":{"metadataType":"sourceSystem","payload":{"eClass":"http://informatica.com/mdm/v2/Core#//SourceSystem","guid":"crm_us","ownerRole":"","frsID":"a5GXa2lqnHedHjbP7LMvgE","name":"CRM US","description":"","label":{"eClass":"http://informatica.com/mdm/v2/Core#//LocalizedText","en":"CRM US"}}}},"rootGuid":"crm_us"}

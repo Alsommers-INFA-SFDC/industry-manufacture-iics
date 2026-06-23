@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "5Bh9Dybg9JSf3NX8ewPAqs",
+    "name" : "tf_in_messer_Customer",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "IUXieHufWC64Ky2-gt-968108-2025-04-09T13:58:33.554Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T13:44:42.751Z",
+  "objectRefs" : [ {
+    "id" : "7Iq51LStjgqgeLAJu3Snm6",
+    "name" : "mt_messer_Customer",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010WU10Z000000000002"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "ingress Customer file and parent companies",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Messer"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

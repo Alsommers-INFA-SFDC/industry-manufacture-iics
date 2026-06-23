@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "4kyQYv4UykQf18jJLbc2Eo",
+    "name" : "tf_SFDC_ProductData",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5uxTtlI20hELlBW-gt-1066233-2025-04-11T18:45:41.907Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T13:44:42.753Z",
+  "objectRefs" : [ {
+    "id" : "35eKBH8QIOohfJVhE0bd2b",
+    "name" : "mt_SFDC_productData",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010WU10Z000000000005"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Messer"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

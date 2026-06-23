@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "ao5lKOj4EBqbrKnctzPkyl",
+    "name" : "isChemicalDQScore",
+    "type" : "DMAPPLET",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010WU140000000000002"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "INVALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2026-06-23T13:44:42.767Z",
+  "objectRefs" : [ {
+    "id" : "70wIIKDaMzZfCSFBabE1a7",
+    "name" : "rs_DQScore_IfChemical",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "70wIIKDaMzZfCSFBabE1a7"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Entegris"
+  } ],
+  "readableFileExtension" : "json",
+  "readableFilePresent" : true
+}

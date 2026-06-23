@@ -1,0 +1,2580 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_SFDC_productData",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Filter -> Expression"
+      },
+      {
+        "link" : "Source -> Filter"
+      },
+      {
+        "link" : "Normalizer -> Target"
+      },
+      {
+        "link" : "Expression -> Normalizer"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2025-04-11T17:40:49.204Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "Material"
+            },
+            "name" : "Material",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Description"
+            },
+            "name" : "Description",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Gas_Product"
+            },
+            "name" : "Gas_Product",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Particle_Form"
+            },
+            "name" : "Particle_Form",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Internal_Code"
+            },
+            "name" : "Internal_Code",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Separation_Type"
+            },
+            "name" : "Separation_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Product_Grade"
+            },
+            "name" : "Product_Grade",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Format"
+            },
+            "name" : "Format",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "GradeID"
+            },
+            "name" : "GradeID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Symbol"
+            },
+            "name" : "Symbol",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dis_Method"
+            },
+            "name" : "Dis_Method",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Saftey_Sheet_Descriptoin"
+            },
+            "name" : "Saftey_Sheet_Descriptoin",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Hazard_Statement"
+            },
+            "name" : "Hazard_Statement",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Volume__"
+            },
+            "name" : "Volume__",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CAS_No_"
+            },
+            "name" : "CAS_No_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Synonyms"
+            },
+            "name" : "Synonyms",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@0pULEMxwWwFfMePqwUNYce",
+          "connectionName" : "AWS S3",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "dataFormat" : {
+            "formatId" : "Flat",
+            "validateHSchema" : "false",
+            "attributes" : [
+              {
+                "name" : "delimiter",
+                "value" : ","
+              },
+              {
+                "name" : "escapeChar",
+                "value" : "\\"
+              },
+              {
+                "name" : "qualifier",
+                "value" : "\""
+              },
+              {
+                "name" : "qualifierMode",
+                "value" : "MINIMAL"
+              },
+              {
+                "name" : "disableEscapeChar",
+                "value" : "true"
+              },
+              {
+                "name" : "codePage",
+                "value" : "UTF-8"
+              },
+              {
+                "name" : "headerLineNumber",
+                "value" : "1"
+              },
+              {
+                "name" : "firstDataRow",
+                "value" : "2"
+              },
+              {
+                "name" : "targetHeader",
+                "value" : "With Header"
+              },
+              {
+                "name" : "importColumnFromFirstLine",
+                "value" : "true"
+              },
+              {
+                "name" : "generateHeader",
+                "value" : "true"
+              },
+              {
+                "name" : "fixedWidthMode",
+                "value" : "false"
+              },
+              {
+                "name" : "maxRowsToPreview",
+                "value" : "0"
+              }
+            ]
+          },
+          "object" : {
+            "name" : "sandbox-tech-sales/asommers%2F/ProductDataLoad.csv",
+            "label" : "sandbox-tech-sales/asommers%2F/ProductDataLoad.csv",
+            "objectName" : "ProductDataLoad.csv",
+            "objectType" : "amazons3",
+            "path" : "sandbox-tech-sales/asommers%2F/ProductDataLoad.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "Material",
+                "fieldType" : "PARSER",
+                "label" : "Material",
+                "nativeName" : "Material",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Description",
+                "fieldType" : "PARSER",
+                "label" : "Description",
+                "nativeName" : "Description",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Gas_Product",
+                "fieldType" : "PARSER",
+                "label" : "Gas Product",
+                "nativeName" : "Gas Product",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Particle_Form",
+                "fieldType" : "PARSER",
+                "label" : "Particle Form",
+                "nativeName" : "Particle Form",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Internal_Code",
+                "fieldType" : "PARSER",
+                "label" : "Internal Code",
+                "nativeName" : "Internal Code",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Separation_Type",
+                "fieldType" : "PARSER",
+                "label" : "Separation Type",
+                "nativeName" : "Separation Type",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Product_Grade",
+                "fieldType" : "PARSER",
+                "label" : "Product Grade",
+                "nativeName" : "Product Grade",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Format",
+                "fieldType" : "PARSER",
+                "label" : "Format",
+                "nativeName" : "Format",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "GradeID",
+                "fieldType" : "PARSER",
+                "label" : "GradeID",
+                "nativeName" : "GradeID",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Symbol",
+                "fieldType" : "PARSER",
+                "label" : "Symbol",
+                "nativeName" : "Symbol",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Dis_Method",
+                "fieldType" : "PARSER",
+                "label" : "Dis Method",
+                "nativeName" : "Dis Method",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Saftey_Sheet_Descriptoin",
+                "fieldType" : "PARSER",
+                "label" : "Saftey Sheet Descriptoin",
+                "nativeName" : "Saftey Sheet Descriptoin",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Hazard_Statement",
+                "fieldType" : "PARSER",
+                "label" : "Hazard Statement",
+                "nativeName" : "Hazard Statement",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Volume__",
+                "fieldType" : "PARSER",
+                "label" : "Volume %",
+                "nativeName" : "Volume %",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "CAS_No_",
+                "fieldType" : "PARSER",
+                "label" : "CAS No.",
+                "nativeName" : "CAS No.",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Synonyms",
+                "fieldType" : "PARSER",
+                "label" : "Synonyms",
+                "nativeName" : "Synonyms",
+                "nativeType" : "flat_string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "ProductDataLoad.csv"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-04-11T17:40:49.208Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId"
+            },
+            "name" : "businessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "creationDate"
+            },
+            "name" : "creationDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdateDate"
+            },
+            "name" : "lastUpdateDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "updatedBy"
+            },
+            "name" : "updatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "originalBusinessId"
+            },
+            "name" : "originalBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "mergedBusinessId"
+            },
+            "name" : "mergedBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 30000,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "validationStatus"
+            },
+            "name" : "validationStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "populationName"
+            },
+            "name" : "populationName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "notReadyForMatch"
+            },
+            "name" : "notReadyForMatch",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "matchMergeState"
+            },
+            "name" : "matchMergeState",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "states_validation"
+            },
+            "name" : "states_validation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_identifier"
+            },
+            "name" : "Material_identifier",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_gtin"
+            },
+            "name" : "Material_gtin",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 14,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_status"
+            },
+            "name" : "Material_status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_brand"
+            },
+            "name" : "Material_brand",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_subBrand"
+            },
+            "name" : "Material_subBrand",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_availability"
+            },
+            "name" : "Material_availability",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_countryOfOrigin"
+            },
+            "name" : "Material_countryOfOrigin",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_availabilityDate"
+            },
+            "name" : "Material_availabilityDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_expirationDate"
+            },
+            "name" : "Material_expirationDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_manufacturer"
+            },
+            "name" : "Material_manufacturer",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_manufacturerGLN"
+            },
+            "name" : "Material_manufacturerGLN",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 13,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_manufacturerProductNumber"
+            },
+            "name" : "Material_manufacturerProductNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_X_gas_product_type"
+            },
+            "name" : "Material_X_gas_product_type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_X_particle_form_type"
+            },
+            "name" : "Material_X_particle_form_type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_X_product_grade"
+            },
+            "name" : "Material_X_product_grade",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_X_category"
+            },
+            "name" : "Material_X_category",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_X_title"
+            },
+            "name" : "Material_X_title",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material_X_product_purity_spec_description"
+            },
+            "name" : "Material_X_product_purity_spec_description",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Material__cm_sourceLastUpdateDate"
+            },
+            "name" : "Material__cm_sourceLastUpdateDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@6qvjBZecscBhSbqg0ohWgZ",
+          "connectionName" : "B360 Connector FEB",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Product 360/Business Entities/Material/p360.item",
+            "label" : "Home/Product 360/Business Entities/Material/p360.item",
+            "objectName" : "p360.item",
+            "objectType" : "flatmdmentity",
+            "path" : "Home/Product 360/Business Entities/Material/p360.item",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourcePKey"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId",
+                "nativeName" : "businessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_businessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourceSystem"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "creationDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "creationDate",
+                "nativeName" : "creationDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_creationDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdateDate",
+                "nativeName" : "lastUpdateDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_lastUpdateDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_state"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_createdBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "updatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "updatedBy",
+                "nativeName" : "updatedBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_updatedBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "originalBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "originalBusinessId",
+                "nativeName" : "originalBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_originalBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "mergedBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "mergedBusinessId",
+                "nativeName" : "mergedBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 30000,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_mergedBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "validationStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "validationStatus",
+                "nativeName" : "validationStatus",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_validationStatus"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "populationName",
+                "fieldType" : "CONNECTOR",
+                "label" : "populationName",
+                "nativeName" : "populationName",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_populationName"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "notReadyForMatch",
+                "fieldType" : "CONNECTOR",
+                "label" : "notReadyForMatch",
+                "nativeName" : "notReadyForMatch",
+                "nativeType" : "boolean",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_notReadyForMatch"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "matchMergeState",
+                "fieldType" : "CONNECTOR",
+                "label" : "matchMergeState",
+                "nativeName" : "matchMergeState",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_matchMergeState"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "states_validation",
+                "fieldType" : "CONNECTOR",
+                "label" : "states.validation",
+                "nativeName" : "states.validation",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "validation"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "states"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_identifier",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.identifier",
+                "nativeName" : "Material.identifier",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "identifier"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_gtin",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.gtin",
+                "nativeName" : "Material.gtin",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 14,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "gtin"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.status",
+                "nativeName" : "Material.status",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "status"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_brand",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.brand",
+                "nativeName" : "Material.brand",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "brand"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_subBrand",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.subBrand",
+                "nativeName" : "Material.subBrand",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "subBrand"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_availability",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.availability",
+                "nativeName" : "Material.availability",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "availability"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_countryOfOrigin",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.countryOfOrigin",
+                "nativeName" : "Material.countryOfOrigin",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "countryOfOrigin"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_availabilityDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.availabilityDate",
+                "nativeName" : "Material.availabilityDate",
+                "nativeType" : "date",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "availabilityDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_expirationDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.expirationDate",
+                "nativeName" : "Material.expirationDate",
+                "nativeType" : "date",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "expirationDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_manufacturer",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.manufacturer",
+                "nativeName" : "Material.manufacturer",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "manufacturer"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_manufacturerGLN",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.manufacturerGLN",
+                "nativeName" : "Material.manufacturerGLN",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 13,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "manufacturerGLN"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_manufacturerProductNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.manufacturerProductNumber",
+                "nativeName" : "Material.manufacturerProductNumber",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "manufacturerProductNumber"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_X_gas_product_type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.X_gas_product_type",
+                "nativeName" : "Material.X_gas_product_type",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "X_gas_product_type"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_X_particle_form_type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.X_particle_form_type",
+                "nativeName" : "Material.X_particle_form_type",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "X_particle_form_type"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_X_product_grade",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.X_product_grade",
+                "nativeName" : "Material.X_product_grade",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "X_product_grade"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_X_category",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.X_category",
+                "nativeName" : "Material.X_category",
+                "nativeType" : "entityreferencefield",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "X_category"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_X_title",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.X_title",
+                "nativeName" : "Material.X_title",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "X_title"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material_X_product_purity_spec_description",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material.X_product_purity_spec_description",
+                "nativeName" : "Material.X_product_purity_spec_description",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "X_product_purity_spec_description"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              },
+              {
+                "name" : "Material__cm_sourceLastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "Material._cm.sourceLastUpdateDate",
+                "nativeName" : "Material._cm.sourceLastUpdateDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "sourceLastUpdateDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Material.Material._cm"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "p360.item"
+                  }
+                ]
+              }
+            ],
+            "objectAttributes" : [
+              {
+                "name" : "allowMany",
+                "value" : "false"
+              },
+              {
+                "name" : "recordType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "dataType",
+                "value" : "Object"
+              },
+              {
+                "name" : "solutionName",
+                "value" : "P360"
+              },
+              {
+                "name" : "storageType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "guid",
+                "value" : "p360.item"
+              },
+              {
+                "name" : "metaFields",
+                "value" : "{}"
+              },
+              {
+                "name" : "storage",
+                "value" : "ent"
+              },
+              {
+                "name" : "fepGuid",
+                "value" : "p360.item"
+              },
+              {
+                "name" : "sharded",
+                "value" : "true"
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "manualMappings" : {
+          "mappingList" : [
+            {
+              "fromFieldName" : "Product__C",
+              "toField" : {
+                "name" : "Material_X_title"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "Product_Purity_Spec__C",
+              "toField" : {
+                "name" : "Material_X_product_purity_spec_description"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "GCID_pk",
+              "toField" : {
+                "name" : "sourcePKey"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "pk",
+              "toField" : {
+                "name" : "Material_manufacturerProductNumber"
+              },
+              "fromFieldNames" : null
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-04-11T18:11:06.894Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "PK_sfdc1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 25,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'SFDC1'||Gas_Product||Format||Particle_Form||Product_Grade"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "pk_sfdc2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'SFDC2'||Gas_Product||Format||Particle_Form||Product_Grade"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "sfdc1_Product__C",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "IIF(Format != null, Gas_Product, Format||' '||Gas_Product)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "sfdc2_Product_C",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1050,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "IIF(Format != null, Gas_Product, Format||' '||Gas_Product)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "sfdc1_ProductPurity__C",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "Internal_Code||'-'||Product_Grade||' '||Gas_Product||'('||GradeID||Internal_Code||')'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "sfdc2_ProductPurity__C",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "Internal_Code||'-'||Product_Grade"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "out_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'Active'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-04-11T18:20:30.064Z",
+        "name" : "Filter",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "filterConditions" : [
+          {
+            "fieldName" : "Material",
+            "operator" : "!="
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-04-11T18:34:29.055Z",
+        "name" : "Normalizer",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createGKField" : "true",
+        "fieldMappingMode" : "MANUAL",
+        "fieldsMode" : "NOT_PARAMETERIZED",
+        "inputFields" : [
+          {
+            "name" : "pk_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 1,
+            "referenceField" : {
+              "name" : "pk"
+            }
+          },
+          {
+            "name" : "pk_2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 2,
+            "referenceField" : {
+              "name" : "pk"
+            }
+          },
+          {
+            "name" : "Product__C_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 1,
+            "referenceField" : {
+              "name" : "Product__C"
+            }
+          },
+          {
+            "name" : "Product__C_2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 2,
+            "referenceField" : {
+              "name" : "Product__C"
+            }
+          },
+          {
+            "name" : "Product_Purity_Spec__C_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 1,
+            "referenceField" : {
+              "name" : "Product_Purity_Spec__C"
+            }
+          },
+          {
+            "name" : "Product_Purity_Spec__C_2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 2,
+            "referenceField" : {
+              "name" : "Product_Purity_Spec__C"
+            }
+          }
+        ],
+        "outputFields" : [
+          {
+            "name" : "pk",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 0,
+            "referenceField" : {
+              "name" : "pk"
+            }
+          },
+          {
+            "name" : "Product__C",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 0,
+            "referenceField" : {
+              "name" : "Product__C"
+            }
+          },
+          {
+            "name" : "Product_Purity_Spec__C",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "occurrence" : 0,
+            "referenceField" : {
+              "name" : "Product_Purity_Spec__C"
+            }
+          },
+          {
+            "name" : "GCID_pk",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "occurrence" : 0,
+            "referenceField" : {
+              "name" : "pk"
+            }
+          },
+          {
+            "name" : "GCID_Product__C",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "occurrence" : 0,
+            "referenceField" : {
+              "name" : "Product__C"
+            }
+          },
+          {
+            "name" : "GCID_Product_Purity_Spec__C",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "occurrence" : 0,
+            "referenceField" : {
+              "name" : "Product_Purity_Spec__C"
+            }
+          },
+          {
+            "name" : "GK_pk",
+            "platformType" : {
+              "name" : "bigint"
+            },
+            "precision" : 19,
+            "scale" : 0,
+            "occurrence" : 0,
+            "referenceField" : {
+              "name" : "pk"
+            }
+          }
+        ],
+        "manualMappings" : {
+          "mappingList" : [
+            {
+              "fromFieldName" : "PK_sfdc1",
+              "toField" : {
+                "name" : "pk_1"
+              }
+            },
+            {
+              "fromFieldName" : "pk_sfdc2",
+              "toField" : {
+                "name" : "pk_2"
+              }
+            },
+            {
+              "fromFieldName" : "sfdc1_Product__C",
+              "toField" : {
+                "name" : "Product__C_1"
+              }
+            },
+            {
+              "fromFieldName" : "sfdc2_Product_C",
+              "toField" : {
+                "name" : "Product__C_2"
+              }
+            },
+            {
+              "fromFieldName" : "sfdc1_ProductPurity__C",
+              "toField" : {
+                "name" : "Product_Purity_Spec__C_1"
+              }
+            },
+            {
+              "fromFieldName" : "sfdc2_ProductPurity__C",
+              "toField" : {
+                "name" : "Product_Purity_Spec__C_2"
+              }
+            }
+          ]
+        },
+        "normalizerFields" : {
+          "fieldList" : [
+            {
+              "name" : "pk",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0,
+              "occurs" : 2
+            },
+            {
+              "name" : "Product__C",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0,
+              "occurs" : 2
+            },
+            {
+              "name" : "Product_Purity_Spec__C",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0,
+              "occurs" : 2
+            }
+          ]
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 25,
+        "retentionPolicy" : "ON_SUCCESS_OR_WARNING",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-06-23 06:44:30 PDT"
+}

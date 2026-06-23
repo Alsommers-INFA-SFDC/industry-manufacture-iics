@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "a6YQcXNVBgPkIFOZI8I5WZ",
+    "name" : "tf_SAP_productData",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "H0N0Qqi7EkWoKeE-gt-1063590-2025-04-11T16:51:48.538Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T13:44:42.766Z",
+  "objectRefs" : [ {
+    "id" : "4SfzxtMrQc1eS38V7gLVOL",
+    "name" : "mt_SAP_productData",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010WU10Z000000000004"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Messer"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
