@@ -1,0 +1,39 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>3bcnfXjISUXL86z-gt-280160-2025-04-11T15:31:32.883Z::po.xml</types1:EntryId>
+      <types1:Name>MapSystem</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that defines the system record for auto-translation</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2025-04-11T15:31:33Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="MapSystem"
+                        isByCopy="true"
+                        name="MapSystem">
+            <description>Process object that defines the system record for auto-translation</description>
+            <tags/>
+            <detail>
+               <field label="groupId"
+                      name="groupId"
+                      nullable="false"
+                      required="true"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>6s3DVRYFKdqkUcyPKfYfWo</types1:GUID>
+      <types1:DisplayName>MapSystem</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T13:55:12.059Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

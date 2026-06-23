@@ -1,0 +1,92 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>f1J2mi0UuDppppp-gt-281096-2025-04-11T15:31:33.092Z::po.xml</types1:EntryId>
+      <types1:Name>MapInputAddress</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that defines the input description fields for auto-translation</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2025-04-11T15:31:33Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="MapInputAddress"
+                        isByCopy="true"
+                        name="MapInputAddress">
+            <description>Process object that defines the input description fields for auto-translation</description>
+            <tags/>
+            <detail>
+               <field label="language"
+                      name="country"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="text1"
+                      name="addressLine1"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="text2"
+                      name="city"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="text3"
+                      name="postalCode"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="sys"
+                      name="sys"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:MapSystem</option>
+                     <option name="guid">6s3DVRYFKdqkUcyPKfYfWo</option>
+                  </options>
+               </field>
+               <field label="latitude"
+                      name="latitude"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="longitude"
+                      name="longitude"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="addressType"
+                      name="addressType"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>6nJ1twkWZlRkNXxMkg66wS</types1:GUID>
+      <types1:DisplayName>MapInputAddress</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T13:55:12.189Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

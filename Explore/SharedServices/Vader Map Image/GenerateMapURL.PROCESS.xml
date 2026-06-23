@@ -1,0 +1,193 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>WPZ8DfYLnzYLnzY-gt-280190-2025-04-11T15:31:33.785Z::pd.xml</types1:EntryId>
+      <types1:Name>GenerateMapURL</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Process that translates the business entity</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2025-04-11T15:31:34Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="hAPAmTQQxaJbY3wUcNTLEn"
+                  displayName="GenerateMapURL"
+                  name="GenerateMapURL"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Process that translates the business entity</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="request" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:MapInputPerRecord</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0PLD8ZLnvvgdFKBjgKd42D</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="processResponse" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:MapOutputPerRecord</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8M2RhSwWGPgilUKrZ2WucA</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_currentAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:MapInputAddress</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6nJ1twkWZlRkNXxMkg66wS</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_default_address_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Mailing</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_engine" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">google</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_zoom" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">14</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes>Created by Federico Alonso Bernard. Field Engineer. Informatica</notes>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload inputWholePayload="true" outputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="o81868afc-365c-4e42-9929-0bee06cca462">
+               <start id="fddc2eb86-4626-409d-8321-cf26272d25f3">
+                  <link id="zf706a7bf-9a47-401a-858a-c28e3efd9e2c"
+                        targetId="a140NGS9QV9Usi72a9ffnEqd-Assignmentdba61e88-b293-4b0d-be10-0fb9aa42efc9"/>
+               </start>
+               <assignment id="a140NGS9QV9Usi72a9ffnEqd-Assignmentdba61e88-b293-4b0d-be10-0fb9aa42efc9">
+                  <title>Assignment to tmp_currentAddress, docId etc.</title>
+                  <operation source="formula" to="temp.tmp_currentAddress">
+                     <expression language="XQuery">if (exists($input.request[1]/payload[1]/address[addressType/text()=$temp.tmp_default_address_type]/addressLine1/text())) then
+$input.request[1]/payload[1]/address[addressType/text()=$temp.tmp_default_address_type][1]
+else
+$input.request[1]/payload[1]/address[1] </expression>
+                  </operation>
+                  <operation source="field" to="output.processResponse[1]/docId">input.request[1]/docId</operation>
+                  <operation source="field" to="output.processResponse[1]/payload[1]/sys">input.request[1]/payload[1]/sys</operation>
+                  <operation source="formula" to="output.processResponse[1]/payload[1]/map_url">
+                     <expression language="XQuery">let $a:=$temp.tmp_currentAddress  return
+'https://usw1-cai.dmp-us.informaticacloud.com/active-bpel/public/rt/2FQuQ8srdoLcFFPjPodDWd/ss_img_geoapify_fulladdress?addressLine1=' || $a/addressLine1/text() || '&amp;amp;city=' || $a/city/text() || '&amp;amp;postalCode=' || $a/postalCode/text() || '&amp;amp;country=' || $a/country/text() || '&amp;amp;engine=' || $temp.tmp_engine || '&amp;amp;zoom=' || $temp.tmp_zoom </expression>
+                  </operation>
+                  <link id="m92t3ocp"
+                        targetId="a140NGS9QV9Usi72a9ffnEqd-end-mab0523ba-f489-491c-b7d1-f8e567d21468"/>
+               </assignment>
+               <end id="a140NGS9QV9Usi72a9ffnEqd-end-mab0523ba-f489-491c-b7d1-f8e567d21468">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>1fd77c8a-344a-47c9-91f5-a265ae5eb1cd</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>Alex.Manufacture</ns1:CreatedBy>
+               <ns1:CreationDate>2025-04-11T15:31:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Alex.Manufacture</ns1:ModifiedBy>
+               <ns1:ModificationDate>2025-04-11T15:31:34Z</ns1:ModificationDate>
+               <ns1:Data format="xml">&lt;root&gt;
+  &lt;request&gt;
+  &lt;docId&gt;p360.item-67b4636bfda28f76dc3a62db&lt;/docId&gt;  
+   &lt;payload&gt;
+    &lt;descriptions&gt;
+     &lt;text1&gt;This is an english text&lt;/text1&gt;    
+     &lt;language&gt;English&lt;/language&gt;    
+     &lt;sys&gt;
+      &lt;groupId&gt;9c4a3824-3bfb-335c-9320-a7d916ca488b&lt;/groupId&gt;     &lt;/sys&gt;
+    &lt;/descriptions&gt;
+   
+    &lt;descriptions&gt;
+     &lt;text1&gt;Esto es un texto en español&lt;/text1&gt;    
+     &lt;language&gt;Spanish&lt;/language&gt;    
+     &lt;sys&gt;
+      &lt;groupId&gt;a58b0e5b-2f3e-3dcf-9d79-d290465210c5&lt;/groupId&gt;     &lt;/sys&gt;
+    &lt;/descriptions&gt;
+   
+    &lt;sys&gt;
+     &lt;groupId&gt;40584661-4f03-38d5-8953-e3c201bc989d&lt;/groupId&gt;    &lt;/sys&gt;
+   &lt;/payload&gt;
+  &lt;/request&gt;
+&lt;/root&gt;
+</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>eab30413-c6ba-45d5-8f3e-9ae20683ae91</ns1:Id>
+               <ns1:Name>testAddress</ns1:Name>
+               <ns1:CreatedBy>Alex.Manufacture</ns1:CreatedBy>
+               <ns1:CreationDate>2025-04-11T15:31:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Alex.Manufacture</ns1:ModifiedBy>
+               <ns1:ModificationDate>2025-04-11T15:31:34Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "request": [
+	 	 {
+	 	 	 "payload": {
+	 	 	 	 "sys": {
+	 	 	 	 	 "groupId": ""
+	 	 	 	 },
+	 	 	 	 "address": {
+	 	 	 	 	 "country": "",
+	 	 	 	 	 "addressLine1": "",
+	 	 	 	 	 "city": "",
+	 	 	 	 	 "postalCode": "",
+	 	 	 	 	 "sys": {
+	 	 	 	 	 	 "groupId": ""
+	 	 	 	 	 },
+	 	 	 	 	 "latitude": "",
+	 	 	 	 	 "longitude": "",
+	 	 	 	 	 "addressType": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "docId": ""
+	 	 }
+	 ]
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>hAPAmTQQxaJbY3wUcNTLEn</types1:GUID>
+      <types1:DisplayName>GenerateMapURL</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T13:55:12.358Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

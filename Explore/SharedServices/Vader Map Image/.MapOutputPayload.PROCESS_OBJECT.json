@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "7BLgYd9y6kDeavm3tEN8AD",
+    "name" : "MapOutputPayload",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "i0seGbciZBpDUQb-gt-281106-2025-04-11T15:31:33.141Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that defines the output payload for auto-translation",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T13:55:12.761Z",
+  "objectRefs" : [ {
+    "id" : "6s3DVRYFKdqkUcyPKfYfWo",
+    "name" : "MapSystem",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3bcnfXjISUXL86z-gt-280160-2025-04-11T15:31:32.883Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that defines the system record for auto-translation",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/SharedServices/Vader Map Image"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

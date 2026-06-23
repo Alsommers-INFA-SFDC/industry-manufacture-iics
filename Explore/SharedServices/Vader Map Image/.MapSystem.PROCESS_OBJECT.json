@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "6s3DVRYFKdqkUcyPKfYfWo",
+    "name" : "MapSystem",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3bcnfXjISUXL86z-gt-280160-2025-04-11T15:31:32.883Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that defines the system record for auto-translation",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T13:55:12.762Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
