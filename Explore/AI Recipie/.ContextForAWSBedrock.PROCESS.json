@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "8n8XJ3EDouTguZfooQ0igO",
+    "name" : "ContextForAWSBedrock",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "LEwporzYLnzYLnz-gt-120546-2026-06-23T16:13:28.604Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that retrieves the context for Amazon Bedrock based on the context type of the query",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T16:18:56.445Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

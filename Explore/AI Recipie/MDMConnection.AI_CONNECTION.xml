@@ -1,0 +1,46 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>SKwCNOHVOJ2oTVM-gt-120626-2026-06-23T16:13:29.71Z::conn.xml</types1:EntryId>
+      <types1:Name>MDMConnection</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>App connection that retrieves data from MDM APIs</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:30Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     GUID="4drsl65Bm5AkuewzHRbiCq"
+                     displayName="MDMConnection"
+                     label="MDMConnection"
+                     name="MDMConnection">
+            <description>App connection that retrieves data from MDM APIs</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false"
+                          name="MDM_360_URL"
+                          value="https://usw1-mdm.dmp-us.informaticacloud.com"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/MDM_Connector/MDM_Connector_svcDef.xml"
+                               guid="amrFUzlf52PkMUSsh4CjkB"
+                               name="MDM_Connector"
+                               supportsConnectionTest="false"
+                               uuid="be91c66b-c111-4b28-9f06-171b9ee23aff">
+               <description>Service connector that retrieves data from MDM APIs</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>4drsl65Bm5AkuewzHRbiCq</types1:GUID>
+      <types1:DisplayName>MDMConnection</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.951Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

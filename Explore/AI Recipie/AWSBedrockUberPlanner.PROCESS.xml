@@ -1,0 +1,283 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>93PYhJmojDXJqEh-gt-120830-2026-06-23T16:13:31.974Z::pd.xml</types1:EntryId>
+      <types1:Name>AWSBedrockUberPlanner</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess with an agent that analyzes the prompt and orchestrates the workflow by dispatching the query to the corresponding agent</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:32Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="l9NRwVlpGc6kAEJ3SxyT4K"
+                  displayName="AWSBedrockUberPlanner"
+                  name="AWSBedrockUberPlanner"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess with an agent that analyzes the prompt and orchestrates the workflow by dispatching the query to the corresponding agent</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="prompt" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="isSummarize"
+                          required="false"
+                          type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="conversationHistory"
+                          required="false"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="AttributePO"
+                          required="false"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AttributePO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">ageFRpDXrs7jYjq5eM9uSV</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="UberPlanner" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:UberPlannerPO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4TRcpGdLMqmfIvDCAPwk03</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="CurrentPlanner" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PlannerPO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6JcWLJFeiurh8iHMfyPHAJ</option>
+                  </options>
+               </field>
+               <field description="" name="TempPlannerSteps" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:UberPlannerPO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4TRcpGdLMqmfIvDCAPwk03</option>
+                  </options>
+               </field>
+               <field description="" name="planningStepsCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Title" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="j1795d782-26ff-4179-94c7-a5b00bb9b046">
+               <start id="uf83f47fb-8104-4389-bb89-e8879121e027">
+                  <link id="h133d82d5-127a-4588-a875-969814561b06"
+                        targetId="a13wj15dUtAAEeH8wzKfm0kZ-m1ijwxxy"/>
+               </start>
+               <subflow id="a13wj15dUtAAEeH8wzKfm0kZ-m1ijwxxy">
+                  <title>ContextForAWSBedrock</title>
+                  <subflowGUID>8n8XJ3EDouTguZfooQ0igO</subflowGUID>
+                  <subflowPath>ContextForAWSBedrock</subflowPath>
+                  <appliesTo/>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="contextType" source="constant" updatable="true">Planner</parameter>
+                  </input>
+                  <outputDef>
+                     <field description="" name="context" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="f11a96fdc-bd07-4ca1-82b6-80bcfb688962"
+                        targetId="a13wj15dUtAAEeH8wzKfm0kZ-m1ijwxx5"/>
+               </subflow>
+               <service id="a13wj15dUtAAEeH8wzKfm0kZ-m1ijwxx5">
+                  <title>Converse</title>
+                  <serviceName>BedrockCn:Converse</serviceName>
+                  <serviceGUID>1fugVvd73v7f1frIrXmTO4</serviceGUID>
+                  <serviceInput>
+                     <parameter name="modelId" source="constant">us.anthropic.claude-3-5-sonnet-20240620-v1:0</parameter>
+                     <parameter name="requestBody" source="formula">
+                        <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+	&lt;anthropic_version&gt;bedrock-2023-05-31&lt;/anthropic_version&gt;
+	&lt;max_tokens m:type="xs:int"&gt;50&lt;/max_tokens&gt;
+	&lt;messages m:isArray="true"&gt;
+		&lt;role&gt;user&lt;/role&gt;
+		&lt;content m:isArray="true"&gt;
+			&lt;type&gt;text&lt;/type&gt;
+			&lt;text&gt;{$input.prompt }. Here is the conversation history.{util:toJSON($input.conversationHistory )}&lt;/text&gt;
+		&lt;/content&gt;
+		&lt;content m:isArray="true"&gt;
+			&lt;document&gt;
+				&lt;format&gt;txt&lt;/format&gt;
+				&lt;name&gt;planning&lt;/name&gt;
+				&lt;source&gt;
+					&lt;bytes&gt;{$output.context }&lt;/bytes&gt;
+				&lt;/source&gt;
+			&lt;/document&gt;
+		&lt;/content&gt;
+	&lt;/messages&gt;
+&lt;/root&gt;</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="fa827b7ce-95c7-4478-9c0a-50f67b41e39b"
+                        targetId="a13wj15dUtAAEeH8wzKfm0kZ-m2b1lo8a"/>
+               </service>
+               <assignment id="a13wj15dUtAAEeH8wzKfm0kZ-m2b1lo8a">
+                  <title>Assignment to TempPlannerSteps, reasoning etc.</title>
+                  <operation source="formula" to="temp.TempPlannerSteps">
+                     <expression language="XQuery"> &lt;UberPlannerPO&gt;{util:parseJSON($output.response//content/text/text() )}&lt;/UberPlannerPO&gt;</expression>
+                  </operation>
+                  <operation source="field" to="output.UberPlanner[1]/reasoning">temp.TempPlannerSteps[1]/reasoning</operation>
+                  <operation source="formula" to="temp.planningStepsCount">
+                     <expression language="XQuery">list:count($temp.TempPlannerSteps[1]/Planner )</expression>
+                  </operation>
+                  <operation source="field" to="output.UberPlanner[1]/UserQuestion">input.prompt</operation>
+                  <operation source="formula" to="temp.Title">
+                     <expression language="XQuery">let $title := 'Bedrock Uber Planning Agent for '||$input.prompt||' -Number of steps-  '||$temp.planningStepsCount 
+return ipd:setProcessTitle($title)</expression>
+                  </operation>
+                  <link id="l435a8749-3f1e-4dff-ac5d-210a8a13a9da"
+                        targetId="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvli"/>
+               </assignment>
+               <assignment id="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvli">
+                  <title>Assignment to CurrentPlanner</title>
+                  <operation source="formula" to="temp.CurrentPlanner">
+                     <expression language="XQuery">list:head($temp.TempPlannerSteps[1]/Planner  )</expression>
+                  </operation>
+                  <link id="i1a67d463-1a16-4f0a-bb50-364259ea232b"
+                        targetId="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvdy"/>
+               </assignment>
+               <container id="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvdy" type="exclusive">
+                  <title>CurrentPlanner</title>
+                  <flow id="seb2bf169-551c-437c-8ae4-61d5d643480b">
+                     <assignment id="a13wj15dUtAAEeH8wzKfm0kZ-m2co4h3k">
+                        <title>Assignment to attribute</title>
+                        <operation source="field" to="temp.CurrentPlanner[1]/attribute">output.UberPlanner[1]/Attribute</operation>
+                        <link id="o7fd61d67-60f6-44b6-9a54-a31cac467c4b"
+                              targetId="a13wj15dUtAAEeH8wzKfm0kZ-Subprocessa16db678-cfff-4e5c-8f4d-0798fb573f4a"/>
+                     </assignment>
+                     <assignment id="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvjo">
+                        <title>Assignment to Planner, Planner etc.</title>
+                        <operation source="formula" to="temp.TempPlannerSteps[1]/Planner">
+                           <expression language="XQuery">list:tail($temp.TempPlannerSteps[1]/Planner )</expression>
+                        </operation>
+                        <operation source="formula" to="output.UberPlanner[1]/Planner">
+                           <function name="list:append">
+                              <arg name="dest_field">{$output.UberPlanner[1]/Planner}</arg>
+                              <arg name="new_field">{$output.PlannerOut}</arg>
+                           </function>
+                        </operation>
+                        <operation source="field" to="output.UberPlanner[1]/Attribute">output.PlannerOut[1]/attribute</operation>
+                        <link id="o6cb7021a-192f-49eb-907b-b0ac511109bc"
+                              targetId="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvkv"/>
+                     </assignment>
+                     <subflow id="a13wj15dUtAAEeH8wzKfm0kZ-Subprocessa16db678-cfff-4e5c-8f4d-0798fb573f4a">
+                        <title>AWSBedrockAgentDispatcher</title>
+                        <subflowGUID>6Ln91ECCf8gbEDsd1oJswz</subflowGUID>
+                        <subflowPath>AWSBedrockAgentDispatcher</subflowPath>
+                        <appliesTo/>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="Planner" source="field" updatable="true">temp.CurrentPlanner</parameter>
+                        </input>
+                        <outputDef>
+                           <field description="" name="PlannerOut" type="reference">
+                              <options>
+                                 <option name="required">false</option>
+                                 <option name="referenceTo">$po:PlannerPO</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">6JcWLJFeiurh8iHMfyPHAJ</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="s78fd489b-2a1b-4d0b-bfd3-abe8d674564c"
+                              targetId="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvjo"/>
+                     </subflow>
+                     <jumpTo id="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvkv">
+                        <link id="v7ea4bfe3-b140-4d02-b39a-da5d4d703dbe"
+                              targetId="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvli"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="paa02ad00-87c3-4258-bb83-ecca96d84412">
+                     <end id="a13wj15dUtAAEeH8wzKfm0kZ-m2b3uvt4">
+                        <title>End</title>
+                     </end>
+                  </flow>
+                  <link id="i65b06704-1e44-45a2-8ba2-4ce1e214ce83"
+                        targetId="seb2bf169-551c-437c-8ae4-61d5d643480b"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.CurrentPlanner}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="u776ed896-fe12-4ce3-94f2-f29ac6c1b757"
+                        targetId="paa02ad00-87c3-4258-bb83-ecca96d84412"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.CurrentPlanner}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>l9NRwVlpGc6kAEJ3SxyT4K</types1:GUID>
+      <types1:DisplayName>AWSBedrockUberPlanner</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.193Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

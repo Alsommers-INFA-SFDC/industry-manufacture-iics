@@ -1,0 +1,240 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>v5RgpDqotxGomUh-gt-120786-2026-06-23T16:13:31.345Z::pd.xml</types1:EntryId>
+      <types1:Name>Create_Variant_from_Product_Style</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:31Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="8H6aVzfyZeglKC96VhNb8e"
+                  displayName="Create Variant from Product Style"
+                  name="Create_Variant_from_Product_Style"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_businessId"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_BEType" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="o_payload" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="o_all_colors" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_genericColor" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_colorCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_sizeOptions" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_all_color" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_currColor" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_newVariantPayload" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="f5d3f7b2e-3164-4096-80cc-6221ecd2e0c7">
+               <start id="w3b8ea1ee-9421-4878-abb4-82c8ec78136f">
+                  <link id="t16449d03-79b4-4e41-b3a5-b381118035c0"
+                        targetId="Servicedb21c477-65e3-4c62-94e4-55a0771a261c"/>
+               </start>
+               <service id="Servicedb21c477-65e3-4c62-94e4-55a0771a261c">
+                  <title>Login</title>
+                  <serviceName>AppConnection-MDMSaaS:Login</serviceName>
+                  <serviceGUID>eWUy90b0asaltKpKyWYgMw</serviceGUID>
+                  <serviceInput/>
+                  <link id="f80d20746-3215-4774-a1fc-f18b3bc9072a"
+                        targetId="Service073135af-6704-41be-aafb-cb364b8c64c8"/>
+               </service>
+               <service id="Service073135af-6704-41be-aafb-cb364b8c64c8">
+                  <title>Get BE record</title>
+                  <serviceName>AppConnection-MDMSaaS:Get BE record</serviceName>
+                  <serviceGUID>eWUy90b0asaltKpKyWYgMw</serviceGUID>
+                  <serviceInput>
+                     <parameter name="sessionId" source="field">output.sessionId</parameter>
+                     <parameter name="beName" source="constant">infa360rtl_product</parameter>
+                     <parameter name="businessId" source="field">input.in_businessId</parameter>
+                  </serviceInput>
+                  <link id="v710cf96b-406e-45d5-a3a6-0967dedee09d"
+                        targetId="Assignment3bf24d93-2809-44b8-9946-641688d3d880"/>
+               </service>
+               <assignment id="Assignment3bf24d93-2809-44b8-9946-641688d3d880">
+                  <title>Assignment to o_payload</title>
+                  <operation source="field" to="output.o_payload">output.beRecord</operation>
+                  <link id="xb357613f-d671-4042-8179-7cc35ede1ae0"
+                        targetId="Assignment2fe5608a-b98b-45a5-a593-349e318ff4db"/>
+               </assignment>
+               <assignment id="Assignment2fe5608a-b98b-45a5-a593-349e318ff4db">
+                  <title>Assignment to o_all_colors</title>
+                  <operation source="formula" to="output.o_all_colors">
+                     <expression language="XQuery">$output.o_payload/variant_colors</expression>
+                  </operation>
+                  <link id="r1c80125b-8d7e-4447-aba6-54199dd7223c"
+                        targetId="Assignment1e58aa65-edec-4aa2-b30d-2faad214886a"/>
+               </assignment>
+               <assignment id="Assignment1e58aa65-edec-4aa2-b30d-2faad214886a">
+                  <title>Assignment to tmp_currColor, tmp_all_color</title>
+                  <operation source="formula" to="temp.tmp_currColor">
+                     <expression language="XQuery">  list:head( $temp.tmp_all_color )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_all_color">
+                     <expression language="XQuery">  list:tail( $temp.tmp_all_color )</expression>
+                  </operation>
+                  <link id="f05de7541-537f-43aa-8bba-5369c52cfbe6"
+                        targetId="Decision700f427e-f3fd-40e1-91fb-e043a9c1b9c8"/>
+               </assignment>
+               <container id="Decision700f427e-f3fd-40e1-91fb-e043a9c1b9c8" type="exclusive">
+                  <title>tmp_currColor</title>
+                  <flow id="v506b0fcb-4735-4e40-aece-3039f8cf4ee8">
+                     <assignment id="Assignmentaff7dc65-7a57-454c-a82b-82bcc4e3eb3d">
+                        <title>Assignment to tmp_newVariantPayload</title>
+                        <operation source="formula" to="temp.tmp_newVariantPayload">
+                           <expression language="XQuery">'{ 
+  "parent_pid": "' || $output.customer_facing_product_information_description || '",
+    "parent_product": { 
+    "_businessId": "' || $input.in_businessId || '" 
+  },
+  "ua_color": { 
+    "Code": "' || $output.collection || '", 
+    "Name": " '|| $output.collection || '"
+  }
+}'
+</expression>
+                        </operation>
+                        <link id="m69ee5252-5e91-4d2f-82f8-c47969f063a4"
+                              targetId="Jumpb153160b-f133-4f22-bf76-4d63610daf29"/>
+                     </assignment>
+                     <jumpTo id="Jumpb153160b-f133-4f22-bf76-4d63610daf29">
+                        <link id="v9ad22dca-2803-4460-a8d5-a2fd48390c48"
+                              targetId="Assignment1e58aa65-edec-4aa2-b30d-2faad214886a"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="z19cd824e-129f-4524-8d0f-6636e88fdc1e">
+                     <link id="be5e72525-bc5c-4595-8ada-a9a959bee2d6"
+                           targetId="Decision700f427e-f3fd-40e1-91fb-e043a9c1b9c8"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="p4e9bcbb7-b928-4569-a1d9-684b545e7fc1"
+                        targetId="v506b0fcb-4735-4e40-aece-3039f8cf4ee8"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_currColor}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="h795a228f-14ca-4f33-bb0d-c642f4ba48cc"
+                        targetId="z19cd824e-129f-4524-8d0f-6636e88fdc1e"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_currColor}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="d5b950b32-1b5a-40eb-ab57-daef31ba4818"
+                        targetId="end-af46ccbe6-7dd8-4cea-b3e2-b9f42d72501e"/>
+               </container>
+               <end id="end-af46ccbe6-7dd8-4cea-b3e2-b9f42d72501e">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>c98a0946-cf2a-4128-bb7d-4b568f237d88</ns1:Id>
+               <ns1:Name>variant</ns1:Name>
+               <ns1:CreatedBy>Alex.Manufacture</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-23T16:13:31Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Alex.Manufacture</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-23T16:13:31Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "in_businessId": "MDM0000000300X",
+    "in_BEType": "infa360rtl_product"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>8H6aVzfyZeglKC96VhNb8e</types1:GUID>
+      <types1:DisplayName>Create Variant from Product Style</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.706Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

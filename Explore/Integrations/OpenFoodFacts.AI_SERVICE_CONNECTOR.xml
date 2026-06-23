@@ -1,0 +1,2931 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>gdyOoMdtlI20hEL-gt-120576-2026-06-23T16:13:29.103Z::svc.xml</types1:EntryId>
+      <types1:Name>OpenFoodFacts</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:29Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="OpenFoodFacts"
+                            label=""
+                            name="OpenFoodFacts"
+                            uuid="1df91673-b245-4f46-95ad-2a56e0ccf113">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetProductData"
+                       maxRedirects="100"
+                       name="GetProductData"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="upc"
+                                nogen="true"
+                                required="false"
+                                testWith="850251004001"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://world.openfoodfacts.org/api/v0/product/{$upc}"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="image_url"
+                            property="image_url"
+                            type="string"/>
+                     <field description=""
+                            name="nutriments"
+                            property="nutriments"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                        </options>
+                     </field>
+                     <field description=""
+                            name="packagings"
+                            property="packagings"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                        </options>
+                     </field>
+                     <field description=""
+                            name="states"
+                            property="states"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                        </options>
+                     </field>
+                     <field description=""
+                            name="ingredients_text"
+                            property="ingredients_text"
+                            type="string"/>
+                     <field description=""
+                            name="fdc_category"
+                            property="fdc_category"
+                            type="string"/>
+                     <field description=""
+                            name="interface_version_created"
+                            property="interface_version_created"
+                            type="string"/>
+                     <field description=""
+                            name="allergens"
+                            property="allergens"
+                            type="string"/>
+                     <field description=""
+                            name="serving_size_imported"
+                            property="serving_size_imported"
+                            type="string"/>
+                     <field description="" name="brands" property="brands" type="string"/>
+                     <field description=""
+                            name="product_name"
+                            property="product_name"
+                            type="string"/>
+                     <field description=""
+                            name="carbohydrates"
+                            property="carbohydrates"
+                            type="string"/>
+                     <field description="" name="response" type="string" xmlElement=""/>
+                     <field description=""
+                            name="allergens_from_ingredients"
+                            property="allergens_from_ingredients"
+                            type="string"/>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="product"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">product</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="code" nullable="true" required="false" type="double"/>
+                     <field name="status_verbose"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="status" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="product">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="vitamins_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="allergens_from_ingredients"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_original_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="allergens_lc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="product_quantity_unit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="added_countries_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutriments"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">nutriments</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="image_packaging_thumb_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packaging_shapes_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="codes_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nutrient_levels"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">nutrient_levels</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="additives_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="brands_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="image_ingredients_thumb_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="last_image_dates_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nucleotides_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="popularity_key"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ingredients_n_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:int</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="countries" nullable="true" required="false" type="string"/>
+                     <field name="labels" nullable="true" required="false" type="string"/>
+                     <field name="image_front_small_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_from_or_that_may_be_from_palm_oil_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="nutrition_grade_fr"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="cities_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="data_quality_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nova_groups_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_text_en"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="checkers_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="pnns_groups_1_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="languages_codes"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">languages_codes</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="states_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="schema_version"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="additives_original_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packaging_recycling_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">ingredients</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="origins" nullable="true" required="false" type="string"/>
+                     <field name="brands" nullable="true" required="false" type="string"/>
+                     <field name="labels_lc" nullable="true" required="false" type="string"/>
+                     <field name="languages"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">languages</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ingredients_text_with_allergens"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="manufacturing_places"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_with_specified_percent_sum"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="categories_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="categories_old"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packaging_lc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="editors_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="origins_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutriscore_grade"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutrition_grades"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="origin_en" nullable="true" required="false" type="string"/>
+                     <field name="nutriscore_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="correctors_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="removed_countries_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="emb_codes_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="debug_param_sorted_langs"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="image_front_thumb_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nova_groups_markers"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">nova_groups_markers</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="completeness"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="expiration_date"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="image_nutrition_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packagings"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">packagings</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="food_groups"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nova_group" nullable="true" required="false" type="int"/>
+                     <field name="nutrition_data_prepared"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutriscore_score"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="languages_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="rev" nullable="true" required="false" type="int"/>
+                     <field name="ecoscore_grade"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="allergens_from_user"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_from_palm_oil_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="traces_lc" nullable="true" required="false" type="string"/>
+                     <field name="ingredients_non_nutritive_sweeteners_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="labels_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="no_nutrition_data"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packaging_text"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="generic_name_en"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutrition_score_warning_no_fiber"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="origin" nullable="true" required="false" type="string"/>
+                     <field name="ingredients_with_specified_percent_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="unknown_nutrients_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutriscore_score_opposite"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="last_edit_dates_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="states" nullable="true" required="false" type="string"/>
+                     <field name="data_quality_bugs_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="image_ingredients_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_sweeteners_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="other_nutritional_substances_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_lc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nova_groups" nullable="true" required="false" type="int"/>
+                     <field name="pnns_groups_2_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="image_nutrition_thumb_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_without_ciqual_codes"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="data_quality_info_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="last_modified_t"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="packaging" nullable="true" required="false" type="string"/>
+                     <field name="image_thumb_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="allergens" nullable="true" required="false" type="string"/>
+                     <field name="ingredients_analysis_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="product_type"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="data_sources_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nutrition_score_warning_fruits_vegetables_legumes_estimate_from_ingredients"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="image_packaging_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="max_imgid" nullable="true" required="false" type="int"/>
+                     <field name="ingredients_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="allergens_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="packagings_n" nullable="true" required="false" type="int"/>
+                     <field name="stores_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ecoscore_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutrition_data"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packaging_text_en"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="languages_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="unique_scans_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ingredients_without_ecobalyse_ids"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="id" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:double</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="amino_acids_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="image_small_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="images" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">images</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="packaging_old"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="teams" nullable="true" required="false" type="string"/>
+                     <field name="image_url" nullable="true" required="false" type="string"/>
+                     <field name="image_ingredients_small_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packaging_materials_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="entry_dates_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="purchase_places"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutriscore_version"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="last_updated_t"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="traces_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="image_nutrition_small_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packaging_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_text_with_allergens_en"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="categories_lc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="manufacturing_places_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="main_countries_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="categories_properties_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="allergens_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="teams_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="product_quantity"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="sortkey" nullable="true" required="false" type="int"/>
+                     <field name="traces_from_ingredients"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutrition_data_prepared_per"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packagings_materials"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">packagings_materials</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nutriscore_2023_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="origins_lc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="labels_old"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutrient_levels_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="categories"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="interface_version_created"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_with_unspecified_percent_sum"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="creator" nullable="true" required="false" type="string"/>
+                     <field name="ingredients_without_ecobalyse_ids_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="nutrition_score_warning_fruits_vegetables_legumes_estimate_from_ingredients_value"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ecoscore_data"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ecoscore_data</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="purchase_places_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="stores" nullable="true" required="false" type="string"/>
+                     <field name="nutrition_score_warning_fruits_vegetables_nuts_estimate_from_ingredients_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="traces_from_user"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="countries_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="data_sources"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nova_group_debug"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_text"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="created_t" nullable="true" required="false" type="int"/>
+                     <field name="lc" nullable="true" required="false" type="string"/>
+                     <field name="image_packaging_small_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="compared_to_category"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="origins_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="selected_images"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">selected_images</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="data_quality_errors_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="complete" nullable="true" required="false" type="int"/>
+                     <field name="pnns_groups_1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="pnns_groups_2"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="labels_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="food_groups_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="data_quality_warnings_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="packaging_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutrition_score_debug"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="known_ingredients_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="update_key"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_without_ciqual_codes_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="keywords"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nutriscore"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">nutriscore</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="product_name_en"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_analysis"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ingredients_analysis</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="categories_properties"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">categories_properties</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="informers_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="emb_codes" nullable="true" required="false" type="string"/>
+                     <field name="generic_name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="last_editor"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="traces" nullable="true" required="false" type="string"/>
+                     <field name="ingredients_that_may_be_from_palm_oil_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="traces_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="product_name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="minerals_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="packaging_old_before_taxonomization"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="photographers_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="countries_lc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="states_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="interface_version_modified"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_percent_analysis"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="code" nullable="true" required="false" type="double"/>
+                     <field name="ingredients_from_palm_oil_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="misc_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ecoscore_score"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="link" nullable="true" required="false" type="string"/>
+                     <field name="nutriments_estimated"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">nutriments_estimated</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ingredients_with_unspecified_percent_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="additives_n" nullable="true" required="false" type="int"/>
+                     <field name="countries_beforescanbot"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="categories_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="unknown_ingredients_n"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="nutrition_score_warning_fruits_vegetables_nuts_estimate_from_ingredients"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="nutrition_data_per"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ingredients_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="lang" nullable="true" required="false" type="string"/>
+                     <field name="image_front_url"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="countries_hierarchy"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="scans_n" nullable="true" required="false" type="int"/>
+                     <field name="quantity" nullable="true" required="false" type="string"/>
+                     <field name="last_modified_by"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="popularity_tags"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ingredients_that_may_be_from_palm_oil_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutrition_grades_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutriscore_data"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">nutriscore_data</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="last_image_t" nullable="true" required="false" type="int"/>
+                     <field name="nutrition_score_beverage"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="nutriscore_2021_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="weighers_tags"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="nutriments">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="fat_100g" nullable="true" required="false" type="double"/>
+                     <field name="proteins_unit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="energy_unit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="carbohydrates_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="proteins_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="saturated-fat_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="saturated-fat"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="salt_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="energy_100g" nullable="true" required="false" type="int"/>
+                     <field name="proteins_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="proteins" nullable="true" required="false" type="double"/>
+                     <field name="energy-kcal_value"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="fat" nullable="true" required="false" type="double"/>
+                     <field name="salt_unit" nullable="true" required="false" type="string"/>
+                     <field name="sodium_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="saturated-fat_unit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="sugars_unit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="nutrition-score-fr"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="energy" nullable="true" required="false" type="int"/>
+                     <field name="sodium_unit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="carbohydrates"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="energy-kcal_value_computed"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="fruits-vegetables-legumes-estimate-from-ingredients_100g"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="fruits-vegetables-nuts-estimate-from-ingredients_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="salt" nullable="true" required="false" type="double"/>
+                     <field name="sugars" nullable="true" required="false" type="double"/>
+                     <field name="fruits-vegetables-legumes-estimate-from-ingredients_serving"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="sugars_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="sugars_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="fruits-vegetables-nuts-estimate-from-ingredients_serving"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="nova-group_serving"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="nutrition-score-fr_100g"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="sodium_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="energy-kcal_unit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="salt_100g" nullable="true" required="false" type="double"/>
+                     <field name="saturated-fat_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="sodium" nullable="true" required="false" type="double"/>
+                     <field name="fat_unit" nullable="true" required="false" type="string"/>
+                     <field name="nova-group" nullable="true" required="false" type="int"/>
+                     <field name="energy_value" nullable="true" required="false" type="int"/>
+                     <field name="fat_value" nullable="true" required="false" type="double"/>
+                     <field name="nova-group_100g"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="carbohydrates_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="energy-kcal_100g"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="carbohydrates_unit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="energy-kcal" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="nutrient_levels">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="salt" nullable="true" required="false" type="string"/>
+                     <field name="sugars" nullable="true" required="false" type="string"/>
+                     <field name="fat" nullable="true" required="false" type="string"/>
+                     <field name="saturated-fat"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="languages_codes">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="en" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="ingredients">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="ecobalyse_code"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="percent_max" nullable="true" required="false" type="int"/>
+                     <field name="percent_min"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vegetarian"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="percent_estimate"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vegan" nullable="true" required="false" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="text" nullable="true" required="false" type="string"/>
+                     <field name="is_in_taxonomy"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ciqual_proxy_food_code"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="from_palm_oil"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ciqual_food_code"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="languages">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="enenglish" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="nova_groups_markers">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="emptyName"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">emptyName</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="emptyName">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="score" nullable="true" required="false" type="int"/>
+                     <field name="data" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">data</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nutriscore_applicable"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="grade" nullable="true" required="false" type="string"/>
+                     <field name="category_available"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="nutriscore_computed"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="nutrients_available"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="packagings">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="environmental_score_material_score"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="shape" nullable="true" required="false" type="string"/>
+                     <field name="environmental_score_shape_ratio"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="material" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="images">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="emptyName"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">emptyName</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="packaging_en"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">packaging_en</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ingredients_en"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ingredients_en</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="front_en"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">front_en</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="nutrition_en"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">nutrition_en</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="sizes">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="emptyName"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">emptyName</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="full" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">full</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="full">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="w" nullable="true" required="false" type="int"/>
+                     <field name="h" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="packaging_en">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="rev" nullable="true" required="false" type="int"/>
+                     <field name="imgid" nullable="true" required="false" type="int"/>
+                     <field name="sizes" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">sizes</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="ingredients_en">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="rev" nullable="true" required="false" type="int"/>
+                     <field name="imgid" nullable="true" required="false" type="int"/>
+                     <field name="sizes" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">sizes</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="front_en">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="rev" nullable="true" required="false" type="int"/>
+                     <field name="imgid" nullable="true" required="false" type="int"/>
+                     <field name="sizes" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">sizes</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="nutrition_en">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="rev" nullable="true" required="false" type="int"/>
+                     <field name="imgid" nullable="true" required="false" type="int"/>
+                     <field name="sizes" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">sizes</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="packagings_materials">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="all" nullable="true" required="false" type="string"/>
+                     <field name="englass" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="ecoscore_data">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="score" nullable="true" required="false" type="int"/>
+                     <field name="adjustments"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">adjustments</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="scores" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">scores</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="grade" nullable="true" required="false" type="string"/>
+                     <field name="missing"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">missing</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="grades" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">grades</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="agribalyse"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">agribalyse</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="missing_data_warning"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="status" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="adjustments">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="origins_of_ingredients"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">origins_of_ingredients</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="packaging"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">packaging</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="threatened_species"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">threatened_species</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="production_system"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">production_system</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="origins_of_ingredients">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="epi_score" nullable="true" required="false" type="int"/>
+                     <field name="origins_from_origins_field"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="transportation_scores"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">transportation_scores</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="transportation_values"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">transportation_values</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="aggregated_origins"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">aggregated_origins</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="transportation_value"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="values" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">values</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="warning" nullable="true" required="false" type="string"/>
+                     <field name="epi_value" nullable="true" required="false" type="int"/>
+                     <field name="origins_from_categories"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="value" nullable="true" required="false" type="int"/>
+                     <field name="transportation_score"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="transportation_scores">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="de" nullable="true" required="false" type="int"/>
+                     <field name="ps" nullable="true" required="false" type="int"/>
+                     <field name="pt" nullable="true" required="false" type="int"/>
+                     <field name="dk" nullable="true" required="false" type="int"/>
+                     <field name="lt" nullable="true" required="false" type="int"/>
+                     <field name="lu" nullable="true" required="false" type="int"/>
+                     <field name="hr" nullable="true" required="false" type="int"/>
+                     <field name="lv" nullable="true" required="false" type="int"/>
+                     <field name="ua" nullable="true" required="false" type="int"/>
+                     <field name="hu" nullable="true" required="false" type="int"/>
+                     <field name="ly" nullable="true" required="false" type="int"/>
+                     <field name="ma" nullable="true" required="false" type="int"/>
+                     <field name="dz" nullable="true" required="false" type="int"/>
+                     <field name="mc" nullable="true" required="false" type="int"/>
+                     <field name="uk" nullable="true" required="false" type="int"/>
+                     <field name="md" nullable="true" required="false" type="int"/>
+                     <field name="me" nullable="true" required="false" type="int"/>
+                     <field name="ie" nullable="true" required="false" type="int"/>
+                     <field name="mk" nullable="true" required="false" type="int"/>
+                     <field name="us" nullable="true" required="false" type="int"/>
+                     <field name="ee" nullable="true" required="false" type="int"/>
+                     <field name="eg" nullable="true" required="false" type="int"/>
+                     <field name="ad" nullable="true" required="false" type="int"/>
+                     <field name="il" nullable="true" required="false" type="int"/>
+                     <field name="im" nullable="true" required="false" type="int"/>
+                     <field name="mt" nullable="true" required="false" type="int"/>
+                     <field name="is" nullable="true" required="false" type="boolean"/>
+                     <field name="al" nullable="true" required="false" type="int"/>
+                     <field name="it" nullable="true" required="false" type="int"/>
+                     <field name="va" nullable="true" required="false" type="int"/>
+                     <field name="es" nullable="true" required="false" type="int"/>
+                     <field name="at" nullable="true" required="false" type="int"/>
+                     <field name="ax" nullable="true" required="false" type="int"/>
+                     <field name="je" nullable="true" required="false" type="int"/>
+                     <field name="ro" nullable="true" required="false" type="int"/>
+                     <field name="nl" nullable="true" required="false" type="int"/>
+                     <field name="ba" nullable="true" required="false" type="int"/>
+                     <field name="no" nullable="true" required="false" type="int"/>
+                     <field name="rs" nullable="true" required="false" type="int"/>
+                     <field name="be" nullable="true" required="false" type="int"/>
+                     <field name="fi" nullable="true" required="false" type="int"/>
+                     <field name="bg" nullable="true" required="false" type="int"/>
+                     <field name="fo" nullable="true" required="false" type="int"/>
+                     <field name="fr" nullable="true" required="false" type="int"/>
+                     <field name="se" nullable="true" required="false" type="int"/>
+                     <field name="world" nullable="true" required="false" type="int"/>
+                     <field name="si" nullable="true" required="false" type="int"/>
+                     <field name="sj" nullable="true" required="false" type="int"/>
+                     <field name="sk" nullable="true" required="false" type="int"/>
+                     <field name="sm" nullable="true" required="false" type="int"/>
+                     <field name="gg" nullable="true" required="false" type="int"/>
+                     <field name="gi" nullable="true" required="false" type="int"/>
+                     <field name="ch" nullable="true" required="false" type="int"/>
+                     <field name="sy" nullable="true" required="false" type="int"/>
+                     <field name="gr" nullable="true" required="false" type="int"/>
+                     <field name="xk" nullable="true" required="false" type="int"/>
+                     <field name="cy" nullable="true" required="false" type="int"/>
+                     <field name="lb" nullable="true" required="false" type="int"/>
+                     <field name="cz" nullable="true" required="false" type="int"/>
+                     <field name="tn" nullable="true" required="false" type="int"/>
+                     <field name="pl" nullable="true" required="false" type="int"/>
+                     <field name="li" nullable="true" required="false" type="int"/>
+                     <field name="tr" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="transportation_values">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="de" nullable="true" required="false" type="int"/>
+                     <field name="ps" nullable="true" required="false" type="int"/>
+                     <field name="pt" nullable="true" required="false" type="int"/>
+                     <field name="dk" nullable="true" required="false" type="int"/>
+                     <field name="lt" nullable="true" required="false" type="int"/>
+                     <field name="lu" nullable="true" required="false" type="int"/>
+                     <field name="hr" nullable="true" required="false" type="int"/>
+                     <field name="lv" nullable="true" required="false" type="int"/>
+                     <field name="ua" nullable="true" required="false" type="int"/>
+                     <field name="hu" nullable="true" required="false" type="int"/>
+                     <field name="ly" nullable="true" required="false" type="int"/>
+                     <field name="ma" nullable="true" required="false" type="int"/>
+                     <field name="dz" nullable="true" required="false" type="int"/>
+                     <field name="mc" nullable="true" required="false" type="int"/>
+                     <field name="uk" nullable="true" required="false" type="int"/>
+                     <field name="md" nullable="true" required="false" type="int"/>
+                     <field name="me" nullable="true" required="false" type="int"/>
+                     <field name="ie" nullable="true" required="false" type="int"/>
+                     <field name="mk" nullable="true" required="false" type="int"/>
+                     <field name="us" nullable="true" required="false" type="int"/>
+                     <field name="ee" nullable="true" required="false" type="int"/>
+                     <field name="eg" nullable="true" required="false" type="int"/>
+                     <field name="ad" nullable="true" required="false" type="int"/>
+                     <field name="il" nullable="true" required="false" type="int"/>
+                     <field name="im" nullable="true" required="false" type="int"/>
+                     <field name="mt" nullable="true" required="false" type="int"/>
+                     <field name="is" nullable="true" required="false" type="boolean"/>
+                     <field name="al" nullable="true" required="false" type="int"/>
+                     <field name="it" nullable="true" required="false" type="int"/>
+                     <field name="va" nullable="true" required="false" type="int"/>
+                     <field name="es" nullable="true" required="false" type="int"/>
+                     <field name="at" nullable="true" required="false" type="int"/>
+                     <field name="ax" nullable="true" required="false" type="int"/>
+                     <field name="je" nullable="true" required="false" type="int"/>
+                     <field name="ro" nullable="true" required="false" type="int"/>
+                     <field name="nl" nullable="true" required="false" type="int"/>
+                     <field name="ba" nullable="true" required="false" type="int"/>
+                     <field name="no" nullable="true" required="false" type="int"/>
+                     <field name="rs" nullable="true" required="false" type="int"/>
+                     <field name="be" nullable="true" required="false" type="int"/>
+                     <field name="fi" nullable="true" required="false" type="int"/>
+                     <field name="bg" nullable="true" required="false" type="int"/>
+                     <field name="fo" nullable="true" required="false" type="int"/>
+                     <field name="fr" nullable="true" required="false" type="int"/>
+                     <field name="se" nullable="true" required="false" type="int"/>
+                     <field name="world" nullable="true" required="false" type="int"/>
+                     <field name="si" nullable="true" required="false" type="int"/>
+                     <field name="sj" nullable="true" required="false" type="int"/>
+                     <field name="sk" nullable="true" required="false" type="int"/>
+                     <field name="sm" nullable="true" required="false" type="int"/>
+                     <field name="gg" nullable="true" required="false" type="int"/>
+                     <field name="gi" nullable="true" required="false" type="int"/>
+                     <field name="ch" nullable="true" required="false" type="int"/>
+                     <field name="sy" nullable="true" required="false" type="int"/>
+                     <field name="gr" nullable="true" required="false" type="int"/>
+                     <field name="xk" nullable="true" required="false" type="int"/>
+                     <field name="cy" nullable="true" required="false" type="int"/>
+                     <field name="lb" nullable="true" required="false" type="int"/>
+                     <field name="cz" nullable="true" required="false" type="int"/>
+                     <field name="tn" nullable="true" required="false" type="int"/>
+                     <field name="pl" nullable="true" required="false" type="int"/>
+                     <field name="li" nullable="true" required="false" type="int"/>
+                     <field name="tr" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="aggregated_origins">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="epi_score" nullable="true" required="false" type="int"/>
+                     <field name="origin" nullable="true" required="false" type="string"/>
+                     <field name="percent" nullable="true" required="false" type="int"/>
+                     <field name="transportation_score"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="values">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="de" nullable="true" required="false" type="int"/>
+                     <field name="ps" nullable="true" required="false" type="int"/>
+                     <field name="pt" nullable="true" required="false" type="int"/>
+                     <field name="dk" nullable="true" required="false" type="int"/>
+                     <field name="lt" nullable="true" required="false" type="int"/>
+                     <field name="lu" nullable="true" required="false" type="int"/>
+                     <field name="hr" nullable="true" required="false" type="int"/>
+                     <field name="lv" nullable="true" required="false" type="int"/>
+                     <field name="ua" nullable="true" required="false" type="int"/>
+                     <field name="hu" nullable="true" required="false" type="int"/>
+                     <field name="ly" nullable="true" required="false" type="int"/>
+                     <field name="ma" nullable="true" required="false" type="int"/>
+                     <field name="dz" nullable="true" required="false" type="int"/>
+                     <field name="mc" nullable="true" required="false" type="int"/>
+                     <field name="uk" nullable="true" required="false" type="int"/>
+                     <field name="md" nullable="true" required="false" type="int"/>
+                     <field name="me" nullable="true" required="false" type="int"/>
+                     <field name="ie" nullable="true" required="false" type="int"/>
+                     <field name="mk" nullable="true" required="false" type="int"/>
+                     <field name="us" nullable="true" required="false" type="int"/>
+                     <field name="ee" nullable="true" required="false" type="int"/>
+                     <field name="eg" nullable="true" required="false" type="int"/>
+                     <field name="ad" nullable="true" required="false" type="int"/>
+                     <field name="il" nullable="true" required="false" type="int"/>
+                     <field name="im" nullable="true" required="false" type="int"/>
+                     <field name="mt" nullable="true" required="false" type="int"/>
+                     <field name="is" nullable="true" required="false" type="boolean"/>
+                     <field name="al" nullable="true" required="false" type="int"/>
+                     <field name="it" nullable="true" required="false" type="int"/>
+                     <field name="va" nullable="true" required="false" type="int"/>
+                     <field name="es" nullable="true" required="false" type="int"/>
+                     <field name="at" nullable="true" required="false" type="int"/>
+                     <field name="ax" nullable="true" required="false" type="int"/>
+                     <field name="je" nullable="true" required="false" type="int"/>
+                     <field name="ro" nullable="true" required="false" type="int"/>
+                     <field name="nl" nullable="true" required="false" type="int"/>
+                     <field name="ba" nullable="true" required="false" type="int"/>
+                     <field name="no" nullable="true" required="false" type="int"/>
+                     <field name="rs" nullable="true" required="false" type="int"/>
+                     <field name="be" nullable="true" required="false" type="int"/>
+                     <field name="fi" nullable="true" required="false" type="int"/>
+                     <field name="bg" nullable="true" required="false" type="int"/>
+                     <field name="fo" nullable="true" required="false" type="int"/>
+                     <field name="fr" nullable="true" required="false" type="int"/>
+                     <field name="se" nullable="true" required="false" type="int"/>
+                     <field name="world" nullable="true" required="false" type="int"/>
+                     <field name="si" nullable="true" required="false" type="int"/>
+                     <field name="sj" nullable="true" required="false" type="int"/>
+                     <field name="sk" nullable="true" required="false" type="int"/>
+                     <field name="sm" nullable="true" required="false" type="int"/>
+                     <field name="gg" nullable="true" required="false" type="int"/>
+                     <field name="gi" nullable="true" required="false" type="int"/>
+                     <field name="ch" nullable="true" required="false" type="int"/>
+                     <field name="sy" nullable="true" required="false" type="int"/>
+                     <field name="gr" nullable="true" required="false" type="int"/>
+                     <field name="xk" nullable="true" required="false" type="int"/>
+                     <field name="cy" nullable="true" required="false" type="int"/>
+                     <field name="lb" nullable="true" required="false" type="int"/>
+                     <field name="cz" nullable="true" required="false" type="int"/>
+                     <field name="tn" nullable="true" required="false" type="int"/>
+                     <field name="pl" nullable="true" required="false" type="int"/>
+                     <field name="li" nullable="true" required="false" type="int"/>
+                     <field name="tr" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="packaging">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="packagings"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">packagings</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="score" nullable="true" required="false" type="int"/>
+                     <field name="non_recyclable_and_non_biodegradable_materials"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="warning" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="threatened_species">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="ingredient"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="value" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="production_system">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="warning" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="int"/>
+                     <field name="labels" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="scores">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="de" nullable="true" required="false" type="int"/>
+                     <field name="ps" nullable="true" required="false" type="int"/>
+                     <field name="pt" nullable="true" required="false" type="int"/>
+                     <field name="dk" nullable="true" required="false" type="int"/>
+                     <field name="lt" nullable="true" required="false" type="int"/>
+                     <field name="lu" nullable="true" required="false" type="int"/>
+                     <field name="hr" nullable="true" required="false" type="int"/>
+                     <field name="lv" nullable="true" required="false" type="int"/>
+                     <field name="ua" nullable="true" required="false" type="int"/>
+                     <field name="hu" nullable="true" required="false" type="int"/>
+                     <field name="ly" nullable="true" required="false" type="int"/>
+                     <field name="ma" nullable="true" required="false" type="int"/>
+                     <field name="dz" nullable="true" required="false" type="int"/>
+                     <field name="mc" nullable="true" required="false" type="int"/>
+                     <field name="uk" nullable="true" required="false" type="int"/>
+                     <field name="md" nullable="true" required="false" type="int"/>
+                     <field name="me" nullable="true" required="false" type="int"/>
+                     <field name="ie" nullable="true" required="false" type="int"/>
+                     <field name="mk" nullable="true" required="false" type="int"/>
+                     <field name="us" nullable="true" required="false" type="int"/>
+                     <field name="ee" nullable="true" required="false" type="int"/>
+                     <field name="eg" nullable="true" required="false" type="int"/>
+                     <field name="ad" nullable="true" required="false" type="int"/>
+                     <field name="il" nullable="true" required="false" type="int"/>
+                     <field name="im" nullable="true" required="false" type="int"/>
+                     <field name="mt" nullable="true" required="false" type="int"/>
+                     <field name="is" nullable="true" required="false" type="boolean"/>
+                     <field name="al" nullable="true" required="false" type="int"/>
+                     <field name="it" nullable="true" required="false" type="int"/>
+                     <field name="va" nullable="true" required="false" type="int"/>
+                     <field name="es" nullable="true" required="false" type="int"/>
+                     <field name="at" nullable="true" required="false" type="int"/>
+                     <field name="ax" nullable="true" required="false" type="int"/>
+                     <field name="je" nullable="true" required="false" type="int"/>
+                     <field name="ro" nullable="true" required="false" type="int"/>
+                     <field name="nl" nullable="true" required="false" type="int"/>
+                     <field name="ba" nullable="true" required="false" type="int"/>
+                     <field name="no" nullable="true" required="false" type="int"/>
+                     <field name="rs" nullable="true" required="false" type="int"/>
+                     <field name="be" nullable="true" required="false" type="int"/>
+                     <field name="fi" nullable="true" required="false" type="int"/>
+                     <field name="bg" nullable="true" required="false" type="int"/>
+                     <field name="fo" nullable="true" required="false" type="int"/>
+                     <field name="fr" nullable="true" required="false" type="int"/>
+                     <field name="se" nullable="true" required="false" type="int"/>
+                     <field name="world" nullable="true" required="false" type="int"/>
+                     <field name="si" nullable="true" required="false" type="int"/>
+                     <field name="sj" nullable="true" required="false" type="int"/>
+                     <field name="sk" nullable="true" required="false" type="int"/>
+                     <field name="sm" nullable="true" required="false" type="int"/>
+                     <field name="gg" nullable="true" required="false" type="int"/>
+                     <field name="gi" nullable="true" required="false" type="int"/>
+                     <field name="ch" nullable="true" required="false" type="int"/>
+                     <field name="sy" nullable="true" required="false" type="int"/>
+                     <field name="gr" nullable="true" required="false" type="int"/>
+                     <field name="xk" nullable="true" required="false" type="int"/>
+                     <field name="cy" nullable="true" required="false" type="int"/>
+                     <field name="lb" nullable="true" required="false" type="int"/>
+                     <field name="cz" nullable="true" required="false" type="int"/>
+                     <field name="tn" nullable="true" required="false" type="int"/>
+                     <field name="pl" nullable="true" required="false" type="int"/>
+                     <field name="li" nullable="true" required="false" type="int"/>
+                     <field name="tr" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="missing">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="packagings" nullable="true" required="false" type="int"/>
+                     <field name="origins" nullable="true" required="false" type="int"/>
+                     <field name="labels" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="grades">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="de" nullable="true" required="false" type="string"/>
+                     <field name="ps" nullable="true" required="false" type="string"/>
+                     <field name="pt" nullable="true" required="false" type="string"/>
+                     <field name="dk" nullable="true" required="false" type="string"/>
+                     <field name="lt" nullable="true" required="false" type="string"/>
+                     <field name="lu" nullable="true" required="false" type="string"/>
+                     <field name="hr" nullable="true" required="false" type="string"/>
+                     <field name="lv" nullable="true" required="false" type="string"/>
+                     <field name="ua" nullable="true" required="false" type="string"/>
+                     <field name="hu" nullable="true" required="false" type="string"/>
+                     <field name="ly" nullable="true" required="false" type="string"/>
+                     <field name="ma" nullable="true" required="false" type="string"/>
+                     <field name="dz" nullable="true" required="false" type="string"/>
+                     <field name="mc" nullable="true" required="false" type="string"/>
+                     <field name="uk" nullable="true" required="false" type="string"/>
+                     <field name="md" nullable="true" required="false" type="string"/>
+                     <field name="me" nullable="true" required="false" type="string"/>
+                     <field name="ie" nullable="true" required="false" type="string"/>
+                     <field name="mk" nullable="true" required="false" type="string"/>
+                     <field name="us" nullable="true" required="false" type="string"/>
+                     <field name="ee" nullable="true" required="false" type="string"/>
+                     <field name="eg" nullable="true" required="false" type="string"/>
+                     <field name="ad" nullable="true" required="false" type="string"/>
+                     <field name="il" nullable="true" required="false" type="string"/>
+                     <field name="im" nullable="true" required="false" type="string"/>
+                     <field name="mt" nullable="true" required="false" type="string"/>
+                     <field name="is" nullable="true" required="false" type="boolean"/>
+                     <field name="al" nullable="true" required="false" type="string"/>
+                     <field name="it" nullable="true" required="false" type="string"/>
+                     <field name="va" nullable="true" required="false" type="string"/>
+                     <field name="es" nullable="true" required="false" type="string"/>
+                     <field name="at" nullable="true" required="false" type="string"/>
+                     <field name="ax" nullable="true" required="false" type="string"/>
+                     <field name="je" nullable="true" required="false" type="string"/>
+                     <field name="ro" nullable="true" required="false" type="string"/>
+                     <field name="nl" nullable="true" required="false" type="string"/>
+                     <field name="ba" nullable="true" required="false" type="string"/>
+                     <field name="no" nullable="true" required="false" type="string"/>
+                     <field name="rs" nullable="true" required="false" type="string"/>
+                     <field name="be" nullable="true" required="false" type="string"/>
+                     <field name="fi" nullable="true" required="false" type="string"/>
+                     <field name="bg" nullable="true" required="false" type="string"/>
+                     <field name="fo" nullable="true" required="false" type="string"/>
+                     <field name="fr" nullable="true" required="false" type="string"/>
+                     <field name="se" nullable="true" required="false" type="string"/>
+                     <field name="world" nullable="true" required="false" type="string"/>
+                     <field name="si" nullable="true" required="false" type="string"/>
+                     <field name="sj" nullable="true" required="false" type="string"/>
+                     <field name="sk" nullable="true" required="false" type="string"/>
+                     <field name="sm" nullable="true" required="false" type="string"/>
+                     <field name="gg" nullable="true" required="false" type="string"/>
+                     <field name="gi" nullable="true" required="false" type="string"/>
+                     <field name="ch" nullable="true" required="false" type="string"/>
+                     <field name="sy" nullable="true" required="false" type="string"/>
+                     <field name="gr" nullable="true" required="false" type="string"/>
+                     <field name="xk" nullable="true" required="false" type="string"/>
+                     <field name="cy" nullable="true" required="false" type="string"/>
+                     <field name="lb" nullable="true" required="false" type="string"/>
+                     <field name="cz" nullable="true" required="false" type="string"/>
+                     <field name="tn" nullable="true" required="false" type="string"/>
+                     <field name="pl" nullable="true" required="false" type="string"/>
+                     <field name="li" nullable="true" required="false" type="string"/>
+                     <field name="tr" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="agribalyse">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="name_fr" nullable="true" required="false" type="string"/>
+                     <field name="co2_processing"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="code" nullable="true" required="false" type="int"/>
+                     <field name="ef_total" nullable="true" required="false" type="double"/>
+                     <field name="dqr" nullable="true" required="false" type="double"/>
+                     <field name="agribalyse_food_code"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="co2_packaging"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="is_beverage"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="version" nullable="true" required="false" type="string"/>
+                     <field name="ef_consumption"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="co2_total" nullable="true" required="false" type="double"/>
+                     <field name="ef_processing"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="co2_agriculture"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ef_agriculture"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="score" nullable="true" required="false" type="int"/>
+                     <field name="ef_distribution"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="co2_consumption"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ef_transportation"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="co2_distribution"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ef_packaging"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="co2_transportation"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="name_en" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="selected_images">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="nutrition"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">nutrition</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ingredients"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ingredients</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="packaging"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">packaging</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="front" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">front</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="nutrition">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="small" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">small</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="thumb" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">thumb</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="display"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">display</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="small">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="en" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="thumb">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="en" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="display">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="en" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="front">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="small" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">small</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="thumb" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">thumb</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="display"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">display</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="nutriscore">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="emptyName"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">emptyName</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="data">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="fiber_points" nullable="true" required="false" type="int"/>
+                     <field name="sugars_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="proteins_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="fiber_value" nullable="true" required="false" type="int"/>
+                     <field name="positive_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="is_cheese"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="saturated_fat_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="fruits_vegetables_nuts_colza_walnut_olive_oils_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="saturated_fat_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="proteins" nullable="true" required="false" type="double"/>
+                     <field name="sodium_value" nullable="true" required="false" type="int"/>
+                     <field name="is_water" nullable="true" required="false" type="boolean"/>
+                     <field name="energy" nullable="true" required="false" type="int"/>
+                     <field name="fiber" nullable="true" required="false" type="int"/>
+                     <field name="negative_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="sugars" nullable="true" required="false" type="double"/>
+                     <field name="proteins_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="fruits_vegetables_nuts_colza_walnut_olive_oils_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="sugars_value"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="is_fat" nullable="true" required="false" type="boolean"/>
+                     <field name="is_beverage"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="saturated_fat"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="fruits_vegetables_nuts_colza_walnut_olive_oils"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="sodium" nullable="true" required="false" type="int"/>
+                     <field name="energy_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="sodium_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="energy_value" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="components">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="negative"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">negative</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="positive"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">positive</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="negative">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="points_max" nullable="true" required="false" type="int"/>
+                     <field name="unit" nullable="true" required="false" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="int"/>
+                     <field name="points" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="positive">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="points_max" nullable="true" required="false" type="int"/>
+                     <field name="unit" nullable="true" required="false" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="int"/>
+                     <field name="points" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="ingredients_analysis">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="envegan-status-unknown"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="envegetarian-status-unknown"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="enpalm-oil"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ennon-vegan"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="categories_properties">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="agribalyse_food_codeen"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="agribalyse_proxy_food_codeen"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ciqual_food_codeen"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="nutriments_estimated">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="potassium_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-b12_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="polyols_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="beta-carotene_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="fat_100g" nullable="true" required="false" type="double"/>
+                     <field name="lactose_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="pantothenic-acid_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-b2_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="iodine_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="carbohydrates_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="sucrose_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="galactose_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="phylloquinone_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="magnesium_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="manganese_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="copper_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="energy_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="energy-kj_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="phosphorus_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="proteins_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="starch_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="fructose_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-b6_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="calcium_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-c_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-b9_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="iron_100g" nullable="true" required="false" type="double"/>
+                     <field name="selenium_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="sugars_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-a_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-d_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="cholesterol_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="sodium_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="salt_100g" nullable="true" required="false" type="double"/>
+                     <field name="saturated-fat_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="alcohol_100g" nullable="true" required="false" type="int"/>
+                     <field name="glucose_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-e_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="maltose_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-pp_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="zinc_100g" nullable="true" required="false" type="double"/>
+                     <field name="water_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="vitamin-b1_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="energy-kcal_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="fiber_100g"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="nutriscore_data">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="components"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">components</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="negative_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="count_proteins_reason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="positive_points"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="is_beverage"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="is_cheese"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="score" nullable="true" required="false" type="int"/>
+                     <field name="is_red_meat_product"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="grade" nullable="true" required="false" type="string"/>
+                     <field name="negative_points_max"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="positive_nutrients"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$type:string</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="positive_points_max"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="count_proteins"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="is_water" nullable="true" required="false" type="boolean"/>
+                     <field name="is_fat_oil_nuts_seeds"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>9aun15eB6wLk01pvQElpAK</types1:GUID>
+      <types1:DisplayName>OpenFoodFacts</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.775Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,182 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>LEwporzYLnzYLnz-gt-120546-2026-06-23T16:13:28.604Z::pd.xml</types1:EntryId>
+      <types1:Name>ContextForAWSBedrock</types1:Name>
+      <types1:ParentFlowIds>93PYhJmojDXJqEh-gt-120830-2026-06-23T16:13:31.974Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that retrieves the context for Amazon Bedrock based on the context type of the query</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:29Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="8n8XJ3EDouTguZfooQ0igO"
+                  displayName="ContextForAWSBedrock"
+                  name="ContextForAWSBedrock"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that retrieves the context for Amazon Bedrock based on the context type of the query</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="contextType"
+                          required="false"
+                          type="picklist">
+                  <options>
+                     <option name="required">true</option>
+                     <option name="values">[{"label":"Planner","value":"Planner"},{"label":"Selector","value":"Selector"},{"label":"Executor","value":"Executor"},{"label":"Summarizer","value":"Summarizer"}]</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="context" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Title" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="n10918c0b-90ec-4031-b18d-d16643250616">
+               <start id="kafce35e6-74a4-4f80-b767-c48a624f0aec">
+                  <link id="p6ef99f2d-3adf-4129-be6e-5fe0d5948686"
+                        targetId="a12QDydV8X70KhQ8wvt3mi8Q-m1i6jrym"/>
+               </start>
+               <assignment id="a12QDydV8X70KhQ8wvt3mi8Q-m1i6jrym">
+                  <title>Assignment to Title</title>
+                  <operation source="formula" to="temp.Title">
+                     <expression language="XQuery">let $title :='Getting Bedrock Context for '||$input.contextType 
+return ipd:setProcessTitle($title)</expression>
+                  </operation>
+                  <link id="pb9506174-4b3c-4407-be4b-bf72081bace1"
+                        targetId="a12QDydV8X70KhQ8wvt3mi8Q-Decisionbbf0b683-7a87-4fd2-943a-c0ea8d18fe81"/>
+               </assignment>
+               <container id="a12QDydV8X70KhQ8wvt3mi8Q-Decisionbbf0b683-7a87-4fd2-943a-c0ea8d18fe81"
+                          type="exclusive">
+                  <title>contextType</title>
+                  <flow id="e1c41f11f-0848-4204-8cee-1924dc8717f3">
+                     <assignment id="a12QDydV8X70KhQ8wvt3mi8Q-Assignment89ed17b1-d22b-486f-baa8-6314a928b591">
+                        <title>Assignment to context</title>
+                        <operation source="formula" to="output.context">
+                           <expression language="XQuery">'WW91IGFyZSBhIHBsYW5uaW5nIGFnZW50IGFzIHBhcnQgb2Ygc3VwcGx5IGNoYWluIGNvcGlsb3Qgc3lzdGVtIGluIGEgY29tcHV0ZXIgaGFyZHdhcmUgY29tcGFueSBmb3IgZGF0YSBjZW50ZXIsIGRlc2lnbmVkIHRvIGNyZWF0ZSBhIHN0ZXAtYnktc3RlcCBwbGFuIGZvciBhbnN3ZXJpbmcgdXNlciBxdWVyaWVzIHNwZWNpZmllZCBhYm91dCBvcmRlciBkZXRhaWxzLCBwcm9kdWN0IGRldGFpbHMgaW5jbHVkaW5nIHVuaXQgcHJpY2UsIHN1cHBsaWVyIGRldGFpbHMsIHN1cHBsaWVyIGxlYWQgdGltZSBkZXRhaWxzIGFsb25nIHdpdGggdHJhbnNwb3J0YXRpb24gcmlzay4gWW91ciB0YXNrIGlzIHRvIGFuYWx5emUgdGhlIHVzZXIncyBpbnB1dCwgZGV0ZXJtaW5lIHRoZSBuZWNlc3Nhcnkgc3RlcHMgdG8gYW5zd2VyIHRoZWlyIHF1ZXN0aW9uLCBhbmQgaWRlbnRpZnkgd2hpY2ggZGF0YSBmcm9tIHRoZSBhdmFpbGFibGUgc3lzdGVtcyBpcyByZXF1aXJlZCBmb3IgZWFjaCBzdGVwLgoKSGVyZSBpcyB0aGUgbGlzdCBvZiBhdmFpbGFibGUgc3lzdGVtcyBhbG9uZyB3aXRoIHRoZSBpbmZvcm1hdGlvbiBjb250YWluZWQgaW4gZWFjaCBzeXN0ZW06Cgo8c3lzdGVtcz4KICAgPHNhbGVzZm9yY2U+IFNhbGVzZm9yY2UgY29udGFpbnMgb3JkZXIgaW5mb3JtYXRpb24gZm9yIGNvbXB1dGVyIGhhcmR3YXJlIGluIHRoZSBzY2hlbWEgb2YgdGhlIHNhbGVzZm9yY2Ugb3JkZXIgb2JqZWN0IHdpdGggYWxsIHN0YW5kYXJkIGZpZWxkcyB3aXRob3V0IHRoZSBvcmRlciBsaW5lIGl0ZW1zLiBPcmRlcnMgd2hlcmUgc3RhdHVzIGlzIGRyYWZ0IG1lYW5zIHRoYXQgdGhlIG9yZGVycyBhcmUgcGVuZGluZyByZXZpZXcuIFRoZSBvcmRlciBkZXRhaWxzIGluY2x1ZGUgb3JkZXIgaWQsIHByb2R1Y3Qgb3JkZXJlZCwgcXVhbnRpdHkgb3JkZXIsIG9yZGVyIHN0YXR1cywgY3VzdG9tZXIgYWNjb3VudCBuYW1lLCBkYXRlIHRoZSBvcmRlciB3YXMgY3JlYXRlZC48L3NhbGVzZm9yY2U+CiAgIDxtZG0+IEluZm9ybWF0aWNhIE1ETSBjb250YWlucyBpbmZvcm1hdGlvbiBvbiBwcm9kdWN0cyBpbmNsdWRpbmcgdW5pdCBwcmljZSwgdGhlIGRpZmZlcmVudCBjb21wb25lbnRzIG9yIHBhcnQgZm9yIGVhY2ggcHJvZHVjdCwgYW5kIHRoZSBzdXBwbGllciBkZXRhaWxzIGZvciBlYWNoIGNvbXBvbmVudCBvciBwYXJ0LjwvbWRtPgogICA8Y2RnYz4gSW5mb3JtYXRpY2EgQ2xvdWQgRGF0YSBHb3Zlcm5hbmNlIFN5c3RlbSBjb250YWlucyBtZXRhZGF0YSBpbmZvcm1hdGlvbiBhYm91dCBjdXN0b20gZGF0YSBtb2RlbHMsIGZvciBleGFtcGxlIHN1cHBsaWVyIGFuYWx5c2lzIGRhdGFzZXQuIFRoZSBtZXRhZGF0YSBpbmNsdWRlcyBvYmplY3QgbmFtZSwgbGFzdCBtb2RpZmllZCBkYXRlLCBjb2x1bW4gbmFtZXMgYWxvbmcgd2l0aCBkZXNjcmlwdGlvbiwgYWdncmVnYXRlIGRhdGEgcXVhbGl0eS4gPC9jZGdjPgogICA8b3JjbD4gT3JhY2xlIGRhdGFiYXNlIGNvbnRhaW5pbmcgZGV0YWlscyBvZiBzdXBwbGllciBhbmFseXNpcyB3aXRoIHJlZ2FyZHMgdG8gZGVsaXZlcnkgdGltZXMgZm9yIGVhY2ggY29tcG9uZW50IGJhc2VkIG9uIHRoZSBhaXJwb3J0IG9mIGRlbGl2ZXJ5LiBUaGUgbWV0YWRhdGEgZm9yIHRoZSBjdXN0b20gb2JqZWN0IG1vZGVsIGlzIGluIDxjZGdjPjwvY2RnYz4gc3lzdGVtIGFuZCBhbHdheXMgbmVlZHMgdG8gYmUgcmV0cmlldmVkIGJlZm9yZSByZXRyaWV2aW5nIHRoZSBkYXRhIGZyb20gdGhlIGRhdGFiYXNlLiBFdmVuIGlmIHRoZSBtZXRhZGF0YSBpbmZvcm1hdGlvbiBpcyBwcmVzZW50IGluIGNvbnZlcnNhdGlvbiBoaXN0b3J5LCB0aGUgbWV0YWRhdGEgbmVlZHMgdG8gYmUgcmV0cmlldmVkIGZyb20gPGNkZ2M+IHN5c3RlbSBiZWZvcmUgcXVlcnlpbmcgdGhlIGRhdGFiYXNlLiBUaGUgbWV0YWRhdGEgaW5jbHVkZSB0aGUgb2JqZWN0IG5hbWUsIGxhc3QgbW9kaWZpZWQgZGF0ZSwgY29sdW1uIG5hbWVzLCBhZ2dyZWdhdGUgZGF0YSBxdWFsaXR5LiBUaGlzIGNvbHVtbiBuYW1lICBpbiB0aGUgbWV0YWRhdGEgaXMgbmVlZGVkIHRvIGV4ZWN1dGUgYW55IFNRTCBxdWVyeSBmb3IgcmV0cmlldmluZyB0aGUgZGF0YSBmcm9tIHRoZSBkYXRhYmFzZS4gPC9vcmNsPgogICA8dHJyPiBUcmFuc3BvcnRhdGlvbiBSaXNrIFJlcG9ydCBjb250YWlucyBhaXJwb3J0IGNvZGVzIGFsb25nIHdpdGggY3VycmVudCByaXNrIHByb2ZpbGUgKGxvdywgbWVkaXVtIGFuZCBoaWdoKSBhbmQgY3VycmVudCByaXNrIHNpdHVhdGlvbiBmb3IgdGhlIGNvbXBvbmVudHMgdG8gYmUgZGVsaXZlcmVkIGJ5IHRoZSBzdXBwbGllciB1c2luZyB0aGUgYWlycG9ydCBmb3IgZGVsaXZlcnkgZnJvbSBzdXBwbGllciBwZXJmb3JtYW5jZSBhbmFseXNpcy4gU28gc3VwcGxpZXIgcGVyZm9ybWFuY2UgYW5hbHlzaXMgaW5mb3JtYXRpb24gaXMgbmVlZGVkIGJlZm9yZSByZXRyaWV2aW5nIHRoZSBkYXRhIGZyb20gdGhlIHRyYW5zcG9ydGF0aW9uIHJpc2sgcmVwb3J0LiA8L3Rycj4KPC9zeXN0ZW1zPgoKSGVyZSB0aGUgY29udmVyc2F0aW9uIGhpc3RvcnkgZnJvbSBhbGwgcHJldmlvdXMgY29udmVyc2F0aW9uIGluIHRoaXMgc2Vzc2lvbiBhbmQgd2lsbCBoYXZlIHZhbHVhYmxlIGluZm9ybWF0aW9uIHRoYXQgbmVlZHMgdG8gZXh0cmFjdGVkOgoKSGVyZSBpcyB0aGUgbGlzdCBvZiB2YWxpZGF0aW9uIGNyaXRlcmlhIHRvIGJlIHVzZWQgZm9yICAKCjxwcm9tcHRfdmFsaWRhdGlvbj4KICAgIDxjcml0ZXJpYV8xPlVzZXIgcHJvbXB0IHNob3VsZCBiZSBzcGVjaWZpYyB0byB0aGUgc3VwcGx5IGNoYWluIGFuZCBwcm9kdWN0aW9uIHNjZW5hcmlvLjxjcml0ZXJpYV8xPgogICAgPGNyaXRlcmlhXzI+VXNlciBwcm9tcHQgc2hvdWxkIG5vdCBiZSBicm9hZCBhbmQgZ2VuZXJpYyBhbmQgc2hvdWxkIG5vdCBoYXZlIHVzZSBvZiBzdXBlcmxhdGl2ZSB0ZXJtcyBsaWtlIGJlc3Qgb3JkZXIsIGhpZ2hlc3QgcHJpY2UsIGxvd2VzdCBwcmljZSAsIHNpZ25pZmljYW50LCB3b3JzdCBsYXB0b3AsIGNoZWFwZXIgbGFwdG9wPGNyaXRlcmlhXzI+CiAgICA8Y3JpdGVyaWFfMz4gU2FtcGxlIGxpc3Qgb2YgYWxsb3dlZCBxdWVzdGlvbnMgCiAgICAgICAgMS4gR2l2ZSBvcmRlciBkZXRhaWxzIAogICAgICAgIDIuIEdldCBvcmRlciBkZXRhaWxzIGZvciBvcmRlciBwZW5kaW5nIHJldmlldwogICAgICAgIDMuIFdhbnQgdG8gc2VlIG9yZGVyIGRldGFpbHMgZm9yIGFsbCBvcmRlcnMKICAgICAgICA0LiBTaG93IHByb2R1Y3QgZGV0YWlscwogICAgICAgIDUuIFdoYXQgYXJlIHRoZSBkZXRhaWxzIGZvciBwcm9kdWN0IHdpdGggR1BVID8KICAgICAgICA2LiBTaG93IG1lIHN1cHBsaWVyIGRldGFpbHMgZm9yIHByb2R1Y3QgCiAgICAgICAgNy4gRG8geW91IGhhdmUgc3VwcGxpZXIgZGV0YWlscyBmb3IgdGhlIGNvbXBvbmVudCA/CiAgICAgICAgOC4gV2hvIGFyZSB0aGUgc3VwcGxpZXIgZm9yIHRoZSBkaWZmZXJlbnQgY29tcG9uZW50IGZvciB0aGUgcHJvZHVjdCA/CiAgICAgICAgOS4gV2hhdCBpcyBpZCBmb3IgcHJvZHVjdCAsIHN1cHBsaWVyLCBvciBjb21wb25lbnQgd2l0aCBuYW1lPwogICAgICAgIDEwLiBXaGF0IGlzIHRoZSBzdXBwbGllciBsZWFkIHRpbWUgZm9yIHRoZSBzdXBwbGllciA/CiAgICAgICAgMTEuIFNob3cgbWUgYWx0ZXJuYXRlIHN1cHBsaWVyIGZvciB0aGUgY29tcG9uZW50IGFsb25nIHdpdGggbGVhZCB0aW1lcwogICAgICAgIDEyLiBTaG93IHRoZSBsb3cgcmlzayBvcHRpb24gZm9yIGRlbGl2ZXJ5IG9yIHRyYW5zcG9ydGF0aW9uCiAgICAgICAgMTMuIFdoYXQgaXMgdGhlIGRlbGl2ZXJ5IHJpc2sgZm9yIGFpcnBvcnQgPwogICAgICAgIDE0LiBTaG93IG1lIG9yZGVycyB0aGF0IG5lZWQgYSByZXZpZXcgYW5kIHNob3cgbWUgcHJvZHVjdCBkZXRhaWxzCiAgICAgICAgMTUuIEdpdmUgbWUgb3JkZXJzIHRoYXQgbmVlZCBhIHJldmlldyBhbmQgcHJvZHVjdCBkZXRhaWxzIGZvciB0aGUgb3JkZXIKICAgICAgICAxNi4gU2hvdyBtZSByaXNrIGZyb20gcGVuZGluZyBvcmRlcnMgYW5kIGl0cyBzdXBwbGllcnM/CiAgICA8L2NyaXRlcmlhXzM+IAo8L3Byb21wdF92YWxpZGF0aW9uPgoKRW5zdXJlIHRoYXQgdGhlIHByZXJlcXVpc2l0ZXMgYXJlIG1ldCBiZWZvcmUgYW5zd2VyaW5nIHRoZSBxdWVzdGlvbjoKCjxwcmVyZXF1aXNpdGVzPgogICAgPHByZXJlcXVpc2l0ZV8xPiBGb3Igb3JkZXIsIGlmIG5vdGhpbmcgaXMgZmV0Y2ggYWxsIHRoZSByZWNvcmRzLjwvcHJlcmVxdWlzaXRlXzE+CiAgICA8cHJlcmVxdWlzaXRlXzI+IEZvciBwcm9kdWN0LCBwbGVhc2UgZW5zdXJlIHRoYXQgcHJvZHVjdCBpZGVudGl0eSBvciBwcm9kdWN0IG5hbWUgaXMgYXZhaWxhYmxlLjwvcHJlcmVxdWlzaXRlXzI+CiAgICA8cHJlcmVxdWlzaXRlXzM+IEZvciBjb21wb25lbnRzIG9yIHBhcnQgZGV0YWlscywgcGxlYXNlIGVuc3VyZSBvbmUgb2YgdGhlIGZvbGxvd2luZyBpbmZvcm1hdGlvbiBwcm9kdWN0IGlkZW50aXR5IG9yIHByb2R1Y3QgbmFtZSwgY29tcG9uZW50IGlkZW50aXR5IG9yIGNvbXBvbmVudCBuYW1lIGlzIGF2YWlsYWJsZS48L3ByZXJlcXVpc2l0ZV8zPgogICAgPHByZXJlcXVpc2l0ZV80PiBGb3Igc3VwcGxpZXIgZGV0YWlscywgcGxlYXNlIGVuc3VyZSB0aGF0IG9uZSBvZiB0aGUgZm9sbG93aW5nIGluZm9ybWF0aW9uIHByb2R1Y3QgaWRlbnRpdHksIHByb2R1Y3QgbmFtZSwgY29tcG9uZW50IGlkZW50aXR5LCBjb21wb25lbnQgbmFtZSwgc3VwcGxpZXIgaWQgb3Igc3VwcGxpZXIgbmFtZSBpcyBhdmFpbGFibGUuPC9wcmVyZXF1aXNpdGVfND4KICAgIDxwcmVyZXF1aXNpdGVfNT4gRm9yIHN1cHBsaWVyIGxlYWQgdGltZSBkZXRhaWxzLCBwbGVhc2UgZW5zdXJlIHRoYXQgY29tcG9uZW50IGlkZW50aXR5LCBjb21wb25lbnQgbmFtZSwgc3VwcGxpZXIgaWQgb3Igc3VwcGxpZXIgbmFtZSBpcyBhdmFpbGFibGUuPC9wcmVyZXF1aXNpdGVfNT4KICAgIDxwcmVyZXF1aXNpdGVfNj4gRm9yIHRyYW5zcG9ydGF0aW9uIG9yIGRlbGl2ZXJ5IHJpc2ssIHBsZWFzZSBlbnN1cmUgdGhhdCBjb21wb25lbnQgaWRlbnRpdHksIGNvbXBvbmVudCBuYW1lLCBzdXBwbGllciBpZCwgc3VwcGxpZXIgbmFtZSBvciBhaXJwb3J0IGNvZGUgaXMgYXZhaWxhYmxlLjwvcHJlcmVxdWlzaXRlXzY+CjwvcHJlcmVxdWlzaXRlcz4KCjxwbGFubmVyX29wdGltaXphdGlvbl9wYXRoPgogICAgPG9wdGltYWxfcGF0aF8xPiBJZiBib3RoIHByb2R1Y3QgYW5kIHN1cHBsaWVyIGRldGFpbHMgYXJlIHJlcXVlc3RlZCwgcmVkdWNlIHRoZSBudW1iZXIgb2Ygc3RlcHMgaW4gdGhlIHBsYW5uZXIgYXMgYm90aCB0aGUgcHJvZHVjdCBhbmQgc3VwcGxpZXIgaW5mb3JtYXRpb24gY2FuIGJlIHF1ZXJpZWQgaW4gYSBzaW5nbGUgc3RlcC48L29wdGltYWxfcGF0aF8xPgogICAgPG9wdGltYWxfcGF0aF8yPiBCeSBkZWZhdWx0LCB0aGUgcGxhbm5lciBzaG91bGQgcmV0cmlldmUgdGhlIG1ldGFkYXRhIGZvciB0aGUgbW9zdCByZWNlbnRseSBtb2RpZmllZCBvYmplY3QgZnJvbSB0aGUgPGNkZ2M+IHN5c3RlbSwgdGhlbiB1c2UgdGhpcyBzdXBwbGllciBpbmZvcm1hdGlvbiB0byBnZXQgdGhlIGxlYWQgdGltZXMgZnJvbSB0aGUgPG9yY2w+IHN5c3RlbS4gT25seSBpZiB0aGUgcmVxdWVzdCBzcGVjaWZpZXMgYWdncmVnYXRlIGRhdGEgcXVhbGl0eSwgZmlyc3QgcmV0cmlldmUgdGhlIG1ldGFkYXRhIGZvciB0aGUgb2JqZWN0IHdpdGggdGhlIGhpZ2hlc3QgZGF0YSBxdWFsaXR5IGZyb20gdGhlIDxjZGdjPiBzeXN0ZW0sIHRoZW4gdXNlIHRoaXMgc3VwcGxpZXIgaW5mb3JtYXRpb24gdG8gZmV0Y2ggbGVhZCB0aW1lcyBmcm9tIHRoZSA8b3JjbD4gc3lzdGVtPC9vcHRpbWFsX3BhdGhfMj4KICAgICA8b3B0aW1hbF9wYXRoXzM+SGVyZSBhcmUgdGhlIGd1aWRlbGluZXMgZm9yIGdlbmVyYXRpbmcgZmlsdGVyIGNvbmRpdGlvbnMgZm9yIHRoZSA8b3JjbD4gc3lzdGVtLiAxLiBJZiB0aGUgZmlsdGVyIGNvbmRpdGlvbiByZXF1aXJlcyBvcmRlciBkZXRhaWxzLCBtdXN0IGFkZCBhIHN0ZXBzIHRvIDxjYWlfX3BsYW5fc2NoYW1lPiB0byBvYnRhaW4gaXQgZnJvbSA8c2FsZXNmb3JjZT4uIDIuIElmIHRoZSBmaWx0ZXIgY29uZGl0aW9uIHJlcXVpcmVzIHByb2R1Y3QgZGV0YWlscywgY29tcG9uZW50IGRldGFpbHMsIG9yIHN1cHBsaWVyIGRldGFpbHMsIG11c3QgYWRkIGEgc3RlcHMgdG8gPGNhaV9vdXRwdXRfcGxhbm5lcj4gdG8gb2J0YWluIHByb2R1Y3QgZGV0YWlscywgY29tcG9uZW50IGRldGFpbHMsIG9yIHN1cHBsaWVyIGRldGFpbHMgZnJvbSA8bWRtPi4gMy4gQWx3YXlzIGFkZCBhIHN0ZXAgdG8gPGNhaV9wbGFuX3NjaGVhbT4gdG8gcmV0cmlldmUgY29sdW1uIG5hbWVzLCB0YWJsZSBuYW1lcyBuZWNlc3NhcnkgaW5mb3JtYXRpb24gZnJvbSA8Y2RnYz4uICA0LiBFbnN1cmUgdGhlIGZpbHRlciBjb25kaXRpb24gb25seSBpbmNsdWRlcyBjb21wb25lbnRfaWQsIGNvbXBvbmVudF9uYW1lLCBzdXBwbGllcl9pZCwgYW5kIHN1cHBsaWVyX25hbWUuIE5vIG90aGVyIGNvbHVtbnMgYXJlIGFsbG93ZWQuIDUuIFRoZSBmaWx0ZXIgY29uZGl0aW9uIG11c3Qgbm90IGNvbnRhaW4gYW55IFNRTCBKT0lOIHN0YXRlbWVudHMgb3Igc3VicXVlcmllcy4gSXQgc2hvdWxkIG9ubHkgY29udGFpbiAgU1FMIFdIRVJFIGNsYXVzZSBjb25kaXRpb25zLiBJdCBzaG91bGQgbm90IGNvbnRhaW4gYW55IFNRTCBTRUxFQ1Qgc3RhdGVtZW50IG9yIHF1ZXJpZXMuIDYuIEF2b2lkIGNyZWF0aW5nIG9yIHJlZmVyZW5jaW5nIGFueSBkYXRhYmFzZSB0YWJsZXMgb3IgY29sdW1ucyBvdXRzaWRlIG9mIG1ldGFkYXRhIGluZm9ybWF0aW9uIGluIHRoZSA8Y2RnYz4gc3lzdGVtLjwvb3B0aW1hbF9wYXRoXzM+CiAgICA8b3B0aW1hbF9wYXRoXzQ+VGhlIHRhYmxlIG5hbWUgZm9yIDxvcmNsPiBjYW4gYmUgaW5mZXJyZWQgZnJvbSB0aGUgb2JqZWN0IG5hbWUgaW4gdGhlIDxjZGdjPiBtZXRhZGF0YS4gSWYgcHJlc2VudCwgeW91IGNhbiBleHRyYWN0IHRoZSBvYmplY3QgbmFtZSBmcm9tIHRoZSBjb252ZXJzYXRpb25faGlzdG9yeSBpbiA8Y2RnYz4gbWV0YWRhdGEuIEFMV0FZUyBJTkNMVURFIFRIRSBTVEVQIFRPIEdFVCBNRVRBREFUQSBJTkZPUk1BVElPTiBGUk9NICA8Y2RnYz4gQkVGT1JFIFFVRVJZSU5HIFRIRSA8b3JjbD4gU1lTVEVNIEVWRU4gSUYgQUxMIFRIRSBJTkZPUk1BVElPTiBJUyBQUkVTRU5UIElOIFRIRSBDT05WRVJTQVRJT05fSElTVE9SWS48L29wdGltYWxfcGF0aF80Pgo8L3BsYW5uZXJfb3B0aW1pemF0aW9uX3BhdGg+CgpQcmVzZW50IHRoZSBvdXRwdXQganNvbiBhZGhlcmluZyB0aGUgZm9sbG93aW5nICBzY2hlbWE6Cgo8Y2FpX3BsYW5fc2NoZW1hPgogICAgewogICAgICAgICIkc2NoZW1hIjogImh0dHA6Ly9qc29uLXNjaGVtYS5vcmcvZHJhZnQtMDcvc2NoZW1hIyIsCiAgICAgICAgInR5cGUiOiAib2JqZWN0IiwKICAgICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAgICAgInJlYXNvbmluZyJ7CiAgICAgICAgICAgICAgICAidHlwZSI6ICJzdHJpbmciCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJhaXNhc2siOiB7CiAgICAgICAgICAgICAgICAidHlwZSI6ICJzdHJpbmciCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJlcnJvciJ7CiAgICAgICAgICAgICAgICAidHlwZSI6ICJzdHJpbmciCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJQbGFubmVyIjogewogICAgICAgICAgICAgICAgInR5cGUiOiAiYXJyYXkiLAogICAgICAgICAgICAgICAgIml0ZW1zIjogewogICAgICAgICAgICAgICAgICAgICJ0eXBlIjogIm9iamVjdCIsCiAgICAgICAgICAgICAgICAgICAgInByb3BlcnRpZXMiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICJhcHAiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJzdHJpbmciCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZW51bSI6IFsic2FsZXNmb3JjZSIsICJtZG0iLCAiY2RnYyIsICJvcmNsIiwgInRyciJdCiAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICJhY3Rpb24iOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJzdHJpbmciCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZW51bSI6IFsicXVlcnkiICwgIndyaXRlIl0KICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgIm9iamVjdDogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAic3RyaW5nIgogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiZmlsdGVyIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAic3RyaW5nIgogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAicHJvbXB0X3NlbGVjdG9yIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAic3RyaW5nIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAicmVxdWlyZWQiOiBbImFwcCIsICJhY3Rpb24iLCAib2JqZWN0IiwgInByb21wdF9zZWxlY3RvciJdCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CjwvY2FpX3BsYW5fc2NoZW1hPgoKVG8gY29tcGxldGUgdGhpcyB0YXNrLCBmb2xsb3cgdGhlc2Ugc3RlcHM6CgoxLiBBbmFseXplIHRoZSBhdmFpbGFibGUgc3lzdGVtcy4KMi4gVmFsaWRhdGUgdGhlIHVzZXIgcHJvbXB0IGJhc2VkIG9uIGNyaXRlcmlhIHNwZWNpZmllZCBpbiA8cHJvbXB0X3ZhbGlkYXRpb24+PC9wcm9tcHRfdmFsaWRhdGlvbj4uIElmIHRoZSB1c2VyIHByb21wdCBpcyB2ZXJ5IGJyb2FkIGRvIG5vdCBwcm9jZWVkLiBUaGUgdXNlciBpbnB1dCBtdXN0IGhhdmUgaW5mb3JtYXRpb24gdGhhdCBzeXN0ZW1zIGNhbiBwcm92aWRlcy4gQWRkIGEgcXVlc3Rpb24gaW4gJ2FpYXNrJyBmaWVsZCBvZiB0aGUgPGNhaV9wbGFuX3NjaGVtYT48L2NhaV9wbGFuX3NjaGVtYT4gc2Vla2luZyBmb3Igc3BlY2lmaWMgaW5mb3JtYXRpb24gYW5kIGJlIHBvbGl0ZS4KMy4gRXh0cmFjdCBrZXkgaW5mb3JtYXRpb24gZnJvbSBjb252ZXJzYXRpb24gaGlzdG9yeSBzcGVjaWZpZWQgaW4gdGhlIEpTT04gZWxlbWVudCBjb252ZXJzYXRpb25faGlzdG9yeS4KNC4gUmVjb25zdHJ1Y3QgdGhlIHVzZXIgcHJvbXB0IGJhc2VkIG9uIHRoZSBleHRyYWN0ZWQgaW5mb3JtYXRpb24gZXNwZWNpYWxseSBmcm9tICJhaWFzayIgYW5kICJVc2VyIFF1ZXN0aW9uIiBpbiB0aGUgcHJldmlvdXMgY29udmVyc2F0aW9uIGZyb20gY29udmVyc2F0aW9uX2hpc3RvcnkuCjUuIEVuc3VyZSB0aGF0IHRoZSBjb25kaXRpb24gd2l0aGluIDxwcmVyZXF1aXNpdGVzPjwvcHJlcmVxdWlzaXRlcz4gYXJlIG1ldCBvciB0aGUgb25lIG9mIHRoZSBwcmV2aW91cyBzdGVwcyB3aWxsIHByb3ZpZGUgdGhlIG5lY2Vzc2FyeSBpbmZvcm1hdGlvbiBhcyBkZWZpbmVkIGluIHRoZSA8cHJlcmVxdWlzaXRlcz48L3ByZXJlcXVpc2l0ZXM+LiBJZiB0aGUgY29uZGl0aW9ucyBhcmUgbm90IG1ldCBkbyBub3QgcHJvY2VlZCBhbmQgYWRkIG9ubHkgdGhlIGluZm9ybWF0aW9uIG5lZWRlZCBhcyBhIHF1ZXN0aW9uIHdpdGhpbiAnYWlhc2snIGZpZWxkIG9mIHRoZSA8Y2FpX3BsYW5fc2NoZW1hPjwvY2FpX3BsYW5fc2NoZW1hPi4gYW5kIGJlIHBvbGl0ZS4KNi4gSWRlbnRpZnkgd2hpY2ggc3lzdGVtKHMpIGNvbnRhaW4gdGhlIHJlcXVpcmVkIGRhdGEKNy4gIENyZWF0ZSBhIHN0ZXAtYnktc3RlcCBwbGFuIG9ubHkgdG8gcmV0cmlldmUgdGhlIGFzc29jaWF0ZWQgbWV0YWRhdGEsIGlmIG1lbnRpb25lZCBpbiB0aGUgPHN5c3RlbXM+PC9zeXN0ZW1zPiwgYW5kIHRoZSBpbmZvcm1hdGlvbiBmcm9tIGVhY2ggc3lzdGVtLiBXaGlsZSBjcmVhdGluZyB0aGUgc3RlcHMgcGxlYXNlIGVuc3VyZSB0aGF0IHRoZSA8cGxhbm5lcl9vcHRpbWl6YXRpb25fcGF0aD48L3BsYW5uZXJfb3B0aW1pemF0aW9uX3BhdGg+IGlzIGZvbGxvd2VkLgo4LiBQcm92aWRlIHlvdXIgZmluYWwgb3V0cHV0IGluIHRoZSBKU09OIGZvcm1hdCBhcyBzcGVjaWZpYyB3aXRoaW4gPGNhaV9wbGFuX3NjaGVtYT48L2NhaV9wbGFuX3NjaGVtYT4KCkVuc3VyZSB0aGF0IHlvdXIgcGxhbiBpcyBjb21wcmVoZW5zaXZlLCBsb2dpY2FsLCBhbmQgZGlyZWN0bHkgYWRkcmVzc2VzIHRoZSB1c2VyJ3MgaW5wdXQuIEVhY2ggc3RlcCBzaG91bGQgYmUgY2xlYXIgYW5kIGFjdGlvbmFibGUsIHdpdGggYSBzcGVjaWZpYyBkZXNjcmlwdGlvbiBvZiB0aGUgcmVxdWlyZWQgZGF0YSBhbmQgdGhlIHN5c3RlbSBpdCBjb21lcyBmcm9tLiBFeHBsYWluIHRoZSByZWFzb25pbmcgc3RlcC1ieS1zdGVwIHdpdGhpbiB0aGUgJ1JlYXNvbmluZycgZmllbGQgb2YgPGNhaV9wbGFuX3NjaGVtYT48L2NhaV9wbGFuX3NjaGVtYT4gYXMgb25lIHBhcmFncmFwaC4gVGhlIG91dHB1dCBzaG91bGQgb25seSBjb250YWluIHRoZSBKU09OIGFkaGVyaW5nIHRvIHRoZSBzY2hlbWEgaW4gPGNhaV9wbGFuX3NjaGVtYT48L2NhaV9wbGFuX3NjaGVtYT4u'</expression>
+                        </operation>
+                     </assignment>
+                     <link id="m9c1460cf-2bad-4cc9-8868-0f3f0a642571"
+                           targetId="a12QDydV8X70KhQ8wvt3mi8Q-Decisionbbf0b683-7a87-4fd2-943a-c0ea8d18fe81"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="k4db6fe23-8f56-4aa6-9fb7-9f2a080c0e29">
+                     <assignment id="a12QDydV8X70KhQ8wvt3mi8Q-Assignment8cf31f61-f8bf-4885-8944-0a21c61045e3">
+                        <title>Assignment to context</title>
+                        <operation source="formula" to="output.context">
+                           <expression language="XQuery">'WW91IGFyZSBhbiBBSSBhc3Npc3RhbnQgdGhhdCBoZWxwcyBjcmVhdGUgdGhlIHNhbXBsZSBwYXlsb2FkcyB0byBiZSBzZW50IHRvIGFwcGxpY2F0aW9ucyBiYXNlZCBvbiBwcm9tcHRzLiBGb3IgZXhhbXBsZSwgaWYgYXBwbGljYXRpb24gaXMgU2FsZXNmb3JjZSwgeW91IHJldHVybiB0aGUgU09RTCBxdWVyaWVzIGZvciB0aGUgU2FsZXNmb3JjZSBSRVNUIEFQSS4NCg0KLS1FeGFtcGxlIFF1ZXJpZXM6IA0KVG8gY2hlY2sgZm9yIG9yZGVycyBpbiByZXZpZXcgaW4gU2FsZXNmb3JjZSwgcnVuIHRoZSBmb2xsb3dpbmcgU09RTCBRdWVyeSANClNFTEVDVCBGSUVMRFMoU1RBTkRBUkQpIEZST00gT3JkZXIgV0hFUkUgU3RhdHVzID0gJ0RyYWZ0Jw0KDQotLUd1aWRlbGluZXMNCkRPIE5PVCBTUEVDSUZZIElORElWSURVQUwgRklFTERTIElOIFRIRSBTT1FMIFFVRVJZIC4gVXNlIFNFTEVDVCBGSUVMRFMoU1RBTkRBUkQpIHRvIHJldHVybiBhbGwgc3RhbmRhcmQgZmllbGRzIC4gRE8gTk9UIElOQ0xVREUgQ0hJTEQgT0JKRUNUUyBPUiBSRUxBVElPTlNISVBTIFRPIE9USEVSIE9CSkVDVFMgV0hFTiBHRU5FUkFUSU5HIFRIRSBTT1FMIFFVRVJZLiBPTkxZIFJFVFVSTiBKU09OIERBVEEgLiBETyBOT1QgSU5DTFVERSBBRERJVElPTkFMIFRFWFQgT1VUU0lERSBPRiBKU09OIERBVEENCg0KLS0tLQ0KT3V0cHV0IEZvcm1hdCA6IE9OTFkgUkVUVVJOIHRoZSBKU09OIGRhdGEuIERPIE5PVCBSRVRVUk4gQUNDT01QQU5ZSU5HIFRFWFQgV0lUSCBUSEUgSlNPTiBDT05URU5ULg0Ke3sNCiAgICAicGF5bG9hZCI6ICJTRUxFQ1QgRklFTERTKFNUQU5EQVJEKSBGUk9NIE9yZGVyIFdIRVJFIFN0YXR1cyA9ICdEcmFmdCciDQp9fQ0KDQo='</expression>
+                        </operation>
+                     </assignment>
+                     <link id="q28354706-6513-4a0d-bf76-18c5f342074b"
+                           targetId="a12QDydV8X70KhQ8wvt3mi8Q-Decisionbbf0b683-7a87-4fd2-943a-c0ea8d18fe81"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="o73e09761-43de-4699-90df-185b2bff7523">
+                     <link id="bdb8052ba-6e9a-404b-90c4-a6b482d2e483"
+                           targetId="a12QDydV8X70KhQ8wvt3mi8Q-Decisionbbf0b683-7a87-4fd2-943a-c0ea8d18fe81"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="s85020ea7-5976-4cff-926c-84e32bbe334e">
+                     <assignment id="a12QDydV8X70KhQ8wvt3mi8Q-m2pk0rtr">
+                        <title>Assignment to context</title>
+                        <operation source="formula" to="output.context">
+                           <expression language="XQuery">'WW91IGFyZSBhIHN1bW1hcml6YXRpb24gYWdlbnQgZm9yIGEgY29tcHV0ZXIgaGFyZHdhcmUgY29tcGFueSdzIHN1cHBseSBjaGFpbiBjb3BpbG90IHN5c3RlbS4gWW91ciB0YXNrIGlzIHRvIGFuYWx5emUgZGF0YSBmcm9tIHZhcmlvdXMgc3lzdGVtcyBhbmQgY3JlYXRlIGEgZGV0YWlsZWQgc3VtbWFyeSByZXNwb25kaW5nIHRvIHVzZXIgcXVlcmllcyBhYm91dCBvcmRlciBkZXRhaWxzLCBwcm9kdWN0IGRldGFpbHMsIHN1cHBsaWVyIGRldGFpbHMsIHN1cHBsaWVyIGxlYWQgdGltZXMsIGFuZCB0cmFuc3BvcnRhdGlvbiByaXNrcy4KCjxlbnRfaW5mb3JtYXRpb25fc2NoZW1hPgp7CiAgICBVYmVyUGxhbm5lclBPIDogewogICAgICAgICJ0eXBlIjogIm9iamVjdCIsCiAgICAgICAgcHJvcGVydGllcyA6IHsKICAgICAgICAgICAgInR5cGUiOiAib2JqZWN0IiwKICAgICAgICAgICAgInByb3BlcnRpZXMiOiB7CiAgICAgICAgICAgICAgICAiUGxhbm5lciI6IHsKICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJhcnJheSIsCiAgICAgICAgICAgICAgICAgICAgIml0ZW1zIjogewogICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJvYmplY3QiLAogICAgICAgICAgICAgICAgICAgICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJhcHAiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAic3RyaW5nIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZGVzY3JpcHRpb24iOiAiVGhlIG5hbWUgb2YgdGhlIGFwcGxpY2F0aW9uIHRvIGluZm9ybWF0aW9uIGlzIHJldHJpZXZlZCBmcm9tLiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZmlsdGVyIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0eXBlIjogWwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic3RyaW5nIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIm51bGwiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZGVzY3JpcHRpb24iOiAiT3B0aW9uYWwgZmlsdGVyIHdoYXQgd2FzIGFwcGxpZWQgdG8gcmV0cmlldmUgdGhlIGRhdGEuIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJhY3Rpb24iOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAic3RyaW5nIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZGVzY3JpcHRpb24iOiAiVGhlIGFjdGlvbiBwZXJmb3JtZWQsIHRvIHJldHJpZXZlIHRoZSBkYXRhLiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAib2JqZWN0IjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0eXBlIjogInN0cmluZyIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImRlc2NyaXB0aW9uIjogIlRoZSBvYmplY3QgdGhhdCB3YXMgcXVlcmllZCB3aXRoaW4gdGhlIGFwcGxpY2F0aW9uLiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAicHJvbXB0X3NlbGVjdG9yIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0eXBlIjogInN0cmluZyIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImRlc2NyaXB0aW9uIjogInByb21wdCB0aGF0IHdhcyB1c2VkIHRvIGdlbmVyYXRlZCB0aGUgcXVlcnkuIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzZWxlY3RvciI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJzdHJpbmciLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJkZXNjcmlwdGlvbiI6ICJUaGUgYWN0dWFsIHF1ZXJ5IHVzZWQgZm9yIGRhdGEgcmV0cmlldmFsLiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhlY3V0b3JfcmVzcG9uc2UiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAic3RyaW5nIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZGVzY3JpcHRpb24iOiAiVGhlIHJlc3BvbnNlIHJldHVybmVkIGFmdGVyIGV4ZWN1dGluZyB0aGUgcXVlcnkuIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJhdHRyaWJ1dGUiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAib2JqZWN0IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIlByb2R1Y3RfSWQiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJzdHJpbmciLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImRlc2NyaXB0aW9uIjogIlRoZSBwcm9kdWN0IGlkZW50aWZpZXIgZXh0cmFjdGVkIGZyb20gdGhlIHJlc3BvbnNlLiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgInJlcXVpcmVkIjogWwogICAgICAgICAgICAgICAgICAgICAgICAgICAgImFwcCIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZmlsdGVyIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJhY3Rpb24iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIm9iamVjdCIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAicHJvbXB0X3NlbGVjdG9yIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzZWxlY3RvciIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhlY3V0b3JfcmVzcG9uc2UiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImF0dHJpYnV0ZSIKICAgICAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAicmVhc29uaW5nIjogewogICAgICAgICAgICAgICAgICAgICJ0eXBlIjogInN0cmluZyIsCiAgICAgICAgICAgICAgICAgICAgImRlc2NyaXB0aW9uIjogIkV4cGxhbmF0aW9uIG9mIHRoZSByZWFzb25pbmcgYmVoaW5kIHRoZSB1c2VyJ3MgcXVlcnkuIgogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICJBdHRyaWJ1dGUiOiB7CiAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAib2JqZWN0IiwKICAgICAgICAgICAgICAgICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgIlByb2R1Y3RfSWQiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJzdHJpbmciLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImRlc2NyaXB0aW9uIjogIlRoZSBwcm9kdWN0IGlkZW50aWZpZXIgZXh0cmFjdGVkIGZyb20gcmVhc29uaW5nLiIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAiVXNlclF1ZXN0aW9uIjogewogICAgICAgICAgICAgICAgICAgICJ0eXBlIjogInN0cmluZyIsCiAgICAgICAgICAgICAgICAgICAgImRlc2NyaXB0aW9uIjogIlRoZSB1c2VyJ3MgcXVlc3Rpb24gdGhhdCBpbml0aWF0ZWQgdGhlIHF1ZXJ5LiIKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJyZXF1aXJlZCI6IFsKICAgICAgICAgICAgICAgICJQbGFubmVyIiwKICAgICAgICAgICAgICAgICJyZWFzb25pbmciLAogICAgICAgICAgICAgICAgIkF0dHJpYnV0ZSIsCiAgICAgICAgICAgIF0KICAgICAgICB9LAogICAgfQp9CjwvZW50X2luZm9ybWF0aW9uX3NjaGVtYT4KCkd1aWRlbGluZXM6CjEuIFVzZSB0aGUgcHJvdmlkZWQgc2NoZW1hcyBhbmQgaW5mb3JtYXRpb24gZGV0YWlscyB0byB1bmRlcnN0YW5kIGFuZCBwYXJzZSB0aGUgZGF0YS4KMi4gQW5zd2VyIG9ubHkgd2hhdCdzIGFza2VkIGluIHRoZSB1c2VyIHF1ZXJ5LCB1c2luZyBvbmx5IGluZm9ybWF0aW9uIGZyb20gdGhlIGVudGVycHJpc2VfaW5mb3JtYXRpb24gSlNPTi4KMy4gRm9sbG93IHRoZSBzdW1tYXJpemF0aW9uIGd1aWRlbGluZXMgZm9yIHNwZWNpZmljIHF1ZXJ5IHR5cGVzLgo0LiBPdXRwdXQgc2hvdWxkIGJlIGEgSlNPTi4KCktleSBwb2ludHM6Ci0gUGFyc2UgJ2V4ZWN1dG9yX3Jlc3BvbnNlJyBhbmQgJ3JlYXNvbmluZycgZmllbGRzIHVzaW5nIHRoZSBpbmZvcm1hdGlvbiBkZXRhaWxzIHByb3ZpZGVkLgotIE9ubHkgaW5jbHVkZSBpbmZvcm1hdGlvbiBzcGVjaWZpZWQgaW4gdGhlIGVudGVycHJpc2VfaW5mb3JtYXRpb24gSlNPTi4KLSBTdHJpY3RseSBhZGhlcmUgdG8gdGhlIHVzZXIncyBxdWVzdGlvbiBpbiAiVXNlclF1ZXN0aW9uIi4KLSBGb2xsb3cgdGhlIHN1bW1hcml6YXRpb24gZ3VpZGVsaW5lcyBmb3IgZGlmZmVyZW50IHR5cGVzIG9mIHF1ZXJpZXMuCgpXaGVuIHlvdSdyZSByZWFkeSB0byBwcm9jZWVkLCBwbGVhc2UgcHJvdmlkZSB0aGUgSlNPTiBlbGVtZW50IGNvbnRhaW5pbmcgdGhlIGVudGVycHJpc2VfaW5mb3JtYXRpb24sIGFuZCBJJ2xsIGdlbmVyYXRlIHRoZSBzdW1tYXJpemVkIHJlc3BvbnNlIGFjY29yZGluZyB0byB0aGVzZSBpbnN0cnVjdGlvbnMu'</expression>
+                        </operation>
+                     </assignment>
+                     <link id="u4a31649d-cc9b-4666-be28-b293cfe372e8"
+                           targetId="a12QDydV8X70KhQ8wvt3mi8Q-Decisionbbf0b683-7a87-4fd2-943a-c0ea8d18fe81"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="fc7a029f1-7259-4092-be32-aa225a47dad4">
+                     <link id="o2bc5ddc9-cdc5-4e10-8b6e-d23e42c2d14c"
+                           targetId="a12QDydV8X70KhQ8wvt3mi8Q-Decisionbbf0b683-7a87-4fd2-943a-c0ea8d18fe81"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="pc4d7acea-c332-4b0e-bdfd-24c7cfff591c"
+                        targetId="e1c41f11f-0848-4204-8cee-1924dc8717f3"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.contextType}</arg>
+                           <arg name="right">Planner</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="p7a5eb09b-9bf6-46fa-b271-4291b7b23301"
+                        targetId="k4db6fe23-8f56-4aa6-9fb7-9f2a080c0e29"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.contextType}</arg>
+                           <arg name="right">Selector</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="e97247def-875f-4ee7-a19f-a0d003b3b620"
+                        targetId="o73e09761-43de-4699-90df-185b2bff7523"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.contextType}</arg>
+                           <arg name="right">Executor</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="f62ebc24f-273d-4815-bb57-ef24ead5836a"
+                        targetId="s85020ea7-5976-4cff-926c-84e32bbe334e"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.contextType}</arg>
+                           <arg name="right">Summarizer</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="w4682c5a2-a3b5-4547-8d64-1c74b4f27de8"
+                        targetId="fc7a029f1-7259-4092-be32-aa225a47dad4"
+                        type="containerLink"/>
+                  <link id="o69ed186d-427f-4844-b19d-eb25634fbd04"
+                        targetId="a12QDydV8X70KhQ8wvt3mi8Q-end-p80865fd2-a9b3-4037-9cb2-a0df81a4079e"/>
+               </container>
+               <end id="a12QDydV8X70KhQ8wvt3mi8Q-end-p80865fd2-a9b3-4037-9cb2-a0df81a4079e">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>8n8XJ3EDouTguZfooQ0igO</types1:GUID>
+      <types1:DisplayName>ContextForAWSBedrock</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.748Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

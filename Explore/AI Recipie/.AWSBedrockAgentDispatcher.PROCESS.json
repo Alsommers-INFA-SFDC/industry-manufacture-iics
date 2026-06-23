@@ -1,0 +1,67 @@
+{
+  "objectInfo" : {
+    "id" : "6Ln91ECCf8gbEDsd1oJswz",
+    "name" : "AWSBedrockAgentDispatcher",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "nUqThtpyqaa-gt-120668-2026-06-23T16:13:30.218Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that calls the sub-agents based on the query prompt and dispatches the workflow to the right agent at run time",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T16:18:56.443Z",
+  "objectRefs" : [ {
+    "id" : "6PVJ5jUowPBec4GzHzlfq4",
+    "name" : "AgentDispatcherCn",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Ijr1FyuRZXDyvs7-gt-120596-2026-06-23T16:13:29.549Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Agent Dispatcher connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  }, {
+    "id" : "6JcWLJFeiurh8iHMfyPHAJ",
+    "name" : "PlannerPO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "K7vNljLYqBGZkL0-gt-119504-2026-06-23T16:13:29.591Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that is generated from [plannerType complex type] located in the [PlannerStepsPO.xsd] source XML schema.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

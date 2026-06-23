@@ -1,0 +1,69 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>IYmWR7hsAVR3aaa-gt-120730-2026-06-23T16:13:30.555Z::po.xml</types1:EntryId>
+      <types1:Name>UberPlannerPO</types1:Name>
+      <types1:ParentFlowIds>93PYhJmojDXJqEh-gt-120830-2026-06-23T16:13:31.974Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that contains custom attributes for the Uber Planner</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:31Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="UberPlannerPO"
+                        isByCopy="true"
+                        name="UberPlannerPO">
+            <description>Process object that contains custom attributes for the Uber Planner</description>
+            <tags/>
+            <detail>
+               <field label="Planner"
+                      name="Planner"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:PlannerPO</option>
+                     <option name="guid">6JcWLJFeiurh8iHMfyPHAJ</option>
+                  </options>
+               </field>
+               <field label="reasoning"
+                      name="reasoning"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Attribute"
+                      name="Attribute"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:AttributePO</option>
+                     <option name="guid">ageFRpDXrs7jYjq5eM9uSV</option>
+                  </options>
+               </field>
+               <field label="UserQuestion"
+                      name="UserQuestion"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>4TRcpGdLMqmfIvDCAPwk03</types1:GUID>
+      <types1:DisplayName>UberPlannerPO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.092Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,52 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>3r6CFquUHukfRLd-gt-120820-2026-06-23T16:13:31.879Z::po.xml</types1:EntryId>
+      <types1:Name>OutputPerRecord-1</types1:Name>
+      <types1:ParentFlowIds>sK4PvbcjIw8jIw8-gt-119534-2026-06-23T16:13:32.293Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:32Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="OutputPerRecord"
+                        isByCopy="true"
+                        name="OutputPerRecord-1">
+            <description/>
+            <tags/>
+            <detail>
+               <field label="docId"
+                      name="docId"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="payload"
+                      name="payload"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:OutPutPayload</option>
+                     <option name="guid">hD40AlKJqCcb8uny7neSaS</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>adFdPLPxDkVfOuO0bLDoGt</types1:GUID>
+      <types1:DisplayName>OutputPerRecord</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.209Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

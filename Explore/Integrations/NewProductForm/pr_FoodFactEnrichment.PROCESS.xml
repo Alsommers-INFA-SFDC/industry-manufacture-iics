@@ -1,0 +1,89 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wQuoJ49ARJi4tci-gt-119546-2026-06-23T16:13:32.356Z::pd.xml</types1:EntryId>
+      <types1:Name>pr_FoodFactEnrichment</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:32Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="4qJbeYrjRfjeP3w3QWyJGD"
+                  displayName="pr_FoodFactEnrichment"
+                  name="pr_FoodFactEnrichment"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="request" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="payload" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:OutputPerRecord</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cHmVNjx6meajQRWZOfTHCV</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload inputWholePayload="true" outputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="baa540f5f-e88b-42c1-9487-84c6c65e0e19">
+               <start id="t6c0a42c4-5a24-4484-9192-1f61c3192007">
+                  <link id="bd10db0d4-6b92-47e6-8bc1-da6d5664f3b2"
+                        targetId="end-x83411d64-7830-43b4-96a2-07cfe0234879"/>
+               </start>
+               <end id="end-x83411d64-7830-43b4-96a2-07cfe0234879">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>ae60f3da-fffe-4444-908a-f8be9244bee3</ns1:Id>
+               <ns1:Name>upc</ns1:Name>
+               <ns1:CreatedBy>Alex.Manufacture</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-23T16:13:32Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Alex.Manufacture</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-23T16:13:32Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "businessID": "MDM0000000GPUO"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>4qJbeYrjRfjeP3w3QWyJGD</types1:GUID>
+      <types1:DisplayName>pr_FoodFactEnrichment</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.264Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

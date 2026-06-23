@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "ageFRpDXrs7jYjq5eM9uSV",
+    "name" : "AttributePO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "H8n55ErhNzUzeA8-gt-120532-2026-06-23T16:13:28.538Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that contains custom attributes for the planner",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T16:18:56.449Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

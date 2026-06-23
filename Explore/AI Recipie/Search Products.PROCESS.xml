@@ -1,0 +1,731 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>sK4PvbcjIw8jIw8-gt-120682-2026-06-23T16:13:30.293Z::pd.xml</types1:EntryId>
+      <types1:Name>Search_Products</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Process that uses all required inputs to search for and retrieve a list of matching product records within Informatica Product 360</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:30Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="1Zfq8eJ85keg34WW1NjH0K"
+                  displayName="Search Products"
+                  name="Search_Products"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Process that uses all required inputs to search for and retrieve a list of matching product records within Informatica Product 360</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="Identifier of the product"
+                          name="Product_Identifier"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="GTIN of the product" name="Product_GTIN" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Description of the product"
+                          name="Product_Description"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Brand of the product"
+                          name="Product_Brand"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Maximum number of matching records that the action should retrieve"
+                          name="NumberOfRecordsReturn"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="List of identified product records"
+                      name="Product_Response"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Description_check" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_records_check" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entity1_map_Fields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entity1_Exclude_Fields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Config_info" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Search_Criteria_NoDesc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Search_Criteria_ShortDesc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Search_Criteria_LongDesc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="terse">
+               <rest>
+                  <allowedUsers>
+                     <user>Service_Account</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="mfezefff" targetId="mfezeffe"/>
+               </start>
+               <assignment id="mfezeffe">
+                  <title>Intiliaze Variables</title>
+                  <operation source="formula" to="input.NumberOfRecordsReturn">
+                     <expression language="XQuery">if(empty($input.NumberOfRecordsReturn) or ($input.NumberOfRecordsReturn = 0)) then '5' else $input.NumberOfRecordsReturn </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Config_info">
+                     <expression language="XQuery">util:getCatalogResource('project:/INFA_MDM_AgentForce_Config/Config/ConfigProductSearch.xml')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Search_Criteria_NoDesc">
+                     <expression language="XQuery">let $brandPart := 
+  if (exists($input.Product_Brand ) and string-length(normalize-space($input.Product_Brand )) &gt; 0)
+  then
+    concat('"p360item.brand": "', 
+           replace($input.Product_Brand , '"', '\\"'), '"')
+  else ()
+
+let $descPart := 
+  if (exists($input.Product_Description ) and string-length(normalize-space($input.Product_Description )) &gt; 0)
+  then
+    concat((:'"p360item.description.longDescription": "', 
+           replace($input.Product_Description , '"', '\\"'), '*", ',:)
+           '"p360item.description.shortDescription": "', 
+           replace($input.Product_Description , '"', '\\"'), '"')
+  else ()
+  
+let $gtinPart := 
+  if (exists($input.Product_GTIN ) and string-length(normalize-space($input.Product_GTIN )) &gt; 0)
+  then
+    concat('"p360item.gtin": "', 
+           replace($input.Product_GTIN , '"', '\\"'), '"')
+  else ()
+  
+let $identifierPart := 
+  if (exists($input.Product_Identifier ) and string-length(normalize-space($input.Product_Identifier )) &gt; 0)
+  then
+    concat('"p360item.identifier": "', 
+           replace($input.Product_Identifier , '"', '\\"'), '"')
+  else ()
+  
+let $fields :=
+if ($brandPart and $descPart and $gtinPart and $identifierPart)
+then concat($brandPart, ', ', $descPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($brandPart and $descPart and $gtinPart)
+then concat($brandPart, ', ', $descPart, ', ', $gtinPart)
+else if ($brandPart and $descPart and $identifierPart)
+then concat($brandPart, ', ', $descPart, ', ', $identifierPart)
+else if ($brandPart and $gtinPart and $identifierPart)
+then concat($brandPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($descPart and $gtinPart and $identifierPart)
+then concat($descPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($brandPart and $descPart)
+then concat($brandPart, ', ', $descPart)
+else if ($brandPart and $gtinPart)
+then concat($brandPart, ', ', $gtinPart)
+else if ($brandPart and $identifierPart)
+then concat($brandPart, ', ', $identifierPart)
+else if ($descPart and $gtinPart)
+then concat($descPart, ', ', $gtinPart)
+else if ($descPart and $identifierPart)
+then concat($descPart, ', ', $identifierPart)
+else if ($gtinPart and $identifierPart)
+then concat($gtinPart, ', ', $identifierPart)
+else if ($brandPart)
+then $brandPart
+else if ($descPart)
+then $descPart
+else if ($gtinPart)
+then $gtinPart
+else if ($identifierPart)
+then $identifierPart
+else ()
+
+
+return 
+  if (empty($fields))
+  then ()
+  else
+    concat(
+      '{',
+      '"entityType": "p360.item",',
+      '"fields": {', 
+      $fields, 
+      '},',
+      '"recordsToReturn": ',$input.NumberOfRecordsReturn ,'',
+      '}'
+    )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Search_Criteria_ShortDesc">
+                     <expression language="XQuery">let $brandPart := 
+  if (exists($input.Product_Brand ) and string-length(normalize-space($input.Product_Brand )) &gt; 0)
+  then
+    concat('"p360item.brand": "', 
+           replace($input.Product_Brand , '"', '\\"'), '"')
+  else ()
+
+let $descPart := 
+  if (exists($input.Product_Description ) and string-length(normalize-space($input.Product_Description )) &gt; 0)
+  then
+    concat((:'"p360item.description.longDescription": "', 
+           replace($input.Product_Description , '"', '\\"'), '*", ',:)
+           '"p360item.description.shortDescription": "', 
+           replace($input.Product_Description , '"', '\\"'), '*"')
+  else ()
+  
+let $gtinPart := 
+  if (exists($input.Product_GTIN ) and string-length(normalize-space($input.Product_GTIN )) &gt; 0)
+  then
+    concat('"p360item.gtin": "', 
+           replace($input.Product_GTIN , '"', '\\"'), '"')
+  else ()
+  
+let $identifierPart := 
+  if (exists($input.Product_Identifier ) and string-length(normalize-space($input.Product_Identifier )) &gt; 0)
+  then
+    concat('"p360item.identifier": "', 
+           replace($input.Product_Identifier , '"', '\\"'), '"')
+  else ()
+  
+let $fields :=
+if ($brandPart and $descPart and $gtinPart and $identifierPart)
+then concat($brandPart, ', ', $descPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($brandPart and $descPart and $gtinPart)
+then concat($brandPart, ', ', $descPart, ', ', $gtinPart)
+else if ($brandPart and $descPart and $identifierPart)
+then concat($brandPart, ', ', $descPart, ', ', $identifierPart)
+else if ($brandPart and $gtinPart and $identifierPart)
+then concat($brandPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($descPart and $gtinPart and $identifierPart)
+then concat($descPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($brandPart and $descPart)
+then concat($brandPart, ', ', $descPart)
+else if ($brandPart and $gtinPart)
+then concat($brandPart, ', ', $gtinPart)
+else if ($brandPart and $identifierPart)
+then concat($brandPart, ', ', $identifierPart)
+else if ($descPart and $gtinPart)
+then concat($descPart, ', ', $gtinPart)
+else if ($descPart and $identifierPart)
+then concat($descPart, ', ', $identifierPart)
+else if ($gtinPart and $identifierPart)
+then concat($gtinPart, ', ', $identifierPart)
+else if ($brandPart)
+then $brandPart
+else if ($descPart)
+then $descPart
+else if ($gtinPart)
+then $gtinPart
+else if ($identifierPart)
+then $identifierPart
+else ()
+
+
+return 
+  if (empty($fields))
+  then ()
+  else
+    concat(
+      '{',
+      '"entityType": "p360.item",',
+      '"fields": {', 
+      $fields, 
+      '},',
+      '"recordsToReturn": ',$input.NumberOfRecordsReturn ,'',
+      '}'
+    )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Search_Criteria_LongDesc">
+                     <expression language="XQuery">let $brandPart := 
+  if (exists($input.Product_Brand ) and string-length(normalize-space($input.Product_Brand )) &gt; 0)
+  then
+    concat('"p360item.brand": "', 
+           replace($input.Product_Brand , '"', '\\"'), '"')
+  else ()
+
+let $descPart := 
+  if (exists($input.Product_Description ) and string-length(normalize-space($input.Product_Description )) &gt; 0)
+  then
+    concat('"p360item.description.longDescription": "', 
+           replace($input.Product_Description , '"', '\\"'), '*" '(:,
+           '"p360item.description.shortDescription": "', 
+           replace($input.Product_Description , '"', '\\"'), '*"':))
+  else ()
+  
+let $gtinPart := 
+  if (exists($input.Product_GTIN ) and string-length(normalize-space($input.Product_GTIN )) &gt; 0)
+  then
+    concat('"p360item.gtin": "', 
+           replace($input.Product_GTIN , '"', '\\"'), '"')
+  else ()
+  
+let $identifierPart := 
+  if (exists($input.Product_Identifier ) and string-length(normalize-space($input.Product_Identifier )) &gt; 0)
+  then
+    concat('"p360item.identifier": "', 
+           replace($input.Product_Identifier , '"', '\\"'), '"')
+  else ()
+  
+let $fields :=
+if ($brandPart and $descPart and $gtinPart and $identifierPart)
+then concat($brandPart, ', ', $descPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($brandPart and $descPart and $gtinPart)
+then concat($brandPart, ', ', $descPart, ', ', $gtinPart)
+else if ($brandPart and $descPart and $identifierPart)
+then concat($brandPart, ', ', $descPart, ', ', $identifierPart)
+else if ($brandPart and $gtinPart and $identifierPart)
+then concat($brandPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($descPart and $gtinPart and $identifierPart)
+then concat($descPart, ', ', $gtinPart, ', ', $identifierPart)
+else if ($brandPart and $descPart)
+then concat($brandPart, ', ', $descPart)
+else if ($brandPart and $gtinPart)
+then concat($brandPart, ', ', $gtinPart)
+else if ($brandPart and $identifierPart)
+then concat($brandPart, ', ', $identifierPart)
+else if ($descPart and $gtinPart)
+then concat($descPart, ', ', $gtinPart)
+else if ($descPart and $identifierPart)
+then concat($descPart, ', ', $identifierPart)
+else if ($gtinPart and $identifierPart)
+then concat($gtinPart, ', ', $identifierPart)
+else if ($brandPart)
+then $brandPart
+else if ($descPart)
+then $descPart
+else if ($gtinPart)
+then $gtinPart
+else if ($identifierPart)
+then $identifierPart
+else ()
+
+
+return 
+  if (empty($fields))
+  then ()
+  else
+    concat(
+      '{',
+      '"entityType": "p360.item",',
+      '"fields": {', 
+      $fields, 
+      '},',
+      '"recordsToReturn": ',$input.NumberOfRecordsReturn ,'',
+      '}'
+    )</expression>
+                  </operation>
+                  <link id="mfezeffg" targetId="mdzpkhz0"/>
+               </assignment>
+               <assignment id="mdzpkhy0">
+                  <title>Configure Product Response</title>
+                  <operation source="formula" to="temp.tmp_Entity1_map_Fields">
+                     <expression language="XQuery">$temp.tmp_Config_info//labelmap/entity1/nameMap</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Entity1_Exclude_Fields">
+                     <expression language="XQuery">$temp.tmp_Config_info//Exclusions/entity1/exclude</expression>
+                  </operation>
+                  <operation source="formula" to="output.Product_Response">
+                     <expression language="XQuery">let $Item_Response:= $output.SearchAPI_Response 
+(: Inline approach checking against constructed paths :)
+let $nameMapXML := $temp.tmp_Entity1_map_Fields 
+(: Helper to check if full local-name path is excluded :)
+let $excludeXML := $temp.tmp_Entity1_Exclude_Fields 
+(: Start processing root element children :)
+return
+if ( $Item_Response//hits/text() = 0) then
+  'No Records Found'
+else
+  &lt;root&gt;{
+    for $record in $Item_Response//records
+    return
+      &lt;records&gt;{
+
+        (: level 1 :)
+        for $child1 in $record/*
+        let $name1 := name($child1)
+        let $path1 := $name1
+        where not(some $ex in $excludeXML/item satisfies $ex = $path1)
+        return element {
+          let $map1 := $nameMapXML/mapEntry[@key = $name1]
+          return if (exists($map1)) then string($map1) else $name1
+        } {
+          if ($child1/*) then (
+
+            (: level 2 :)
+            for $child2 in $child1/*
+            let $name2 := name($child2)
+            let $path2 := concat($path1, '/', $name2)
+            where not(some $ex in $excludeXML/item satisfies $ex = $path2)
+            return element {
+              let $map2 := $nameMapXML/mapEntry[@key = concat($name1, '.', $name2)]
+              return if (exists($map2)) then string($map2) else $name2
+            } {
+              if ($child2/*) then (
+
+                (: level 3 :)
+                for $child3 in $child2/*
+                let $name3 := name($child3)
+                let $path3 := concat($path2, '/', $name3)
+                where not(some $ex in $excludeXML/item satisfies $ex = $path3)
+                return element {
+                  let $map3 := $nameMapXML/mapEntry[@key = concat($name1, '.', $name2, '.', $name3)]
+                  return if (exists($map3)) then string($map3) else $name3
+                } {
+                  if ($child3/*) then (
+
+                    (: level 4 :)
+                    for $child4 in $child3/*
+                    let $name4 := name($child4)
+                    let $path4 := concat($path3, '/', $name4)
+                    where not(some $ex in $excludeXML/item satisfies $ex = $path4)
+                    return element {
+                      let $map4 := $nameMapXML/mapEntry[@key = concat($name1, '.', $name2, '.', $name3, '.', $name4)]
+                      return if (exists($map4)) then string($map4) else $name4
+                    } { $child4/node() }
+
+                  )
+                  else $child3/node()
+                }
+              )
+              else $child2/node()
+            }
+          )
+          else $child1/node()
+        
+      },
+
+      (: Prepare businessId element if not excluded :)
+      let $businessIdPath := '_meta/businessId'
+      where not(some $ex in $excludeXML/item satisfies $ex = $businessIdPath)
+      return element {
+        let $mapB := $nameMapXML/mapEntry[@key='businessId']
+        return if (exists($mapB)) then string($mapB) else 'businessId'
+      } { $record/_meta/businessId/text() },
+
+      (: entityType :)
+      let $entityTypePath := '_meta/entityType'
+      let $entityTypeValue := 'Item'
+      where not(some $ex in $excludeXML/item satisfies $ex = $entityTypePath)
+      return
+        if (exists($entityTypeValue)) then
+          element {
+            let $mapE := $nameMapXML/mapEntry[@key='entityType']
+            return if (exists($mapE)) then string($mapE) else 'entityType'
+          } { $entityTypeValue }
+        else ()
+  }&lt;/records&gt;
+  }&lt;/root&gt;
+</expression>
+                  </operation>
+                  <link id="mewe8hsp" targetId="mdzpkhyh"/>
+               </assignment>
+               <eventContainer id="mdzpkhz0">
+                  <service id="mdsf4rtl">
+                     <title>Login</title>
+                     <serviceName>MDMConnection:Login</serviceName>
+                     <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                     <serviceInput/>
+                  </service>
+                  <flow id="mdzpkhz2">
+                     <assignment id="mewe8hbt">
+                        <title>Validate Description</title>
+                        <operation source="formula" to="temp.tmp_Description_check">
+                           <expression language="XQuery">if(string-length(normalize-space($input.Product_Description))=0 ) then 'SKIP' else 'PROCEED'</expression>
+                        </operation>
+                        <link id="mewe8hbu" targetId="mewe8hba"/>
+                     </assignment>
+                     <container id="mewe8hba" type="exclusive">
+                        <title>Is Product Description available</title>
+                        <flow id="mewe8hbc">
+                           <eventContainer id="mewe8hfs">
+                              <service id="mewe8hfw">
+                                 <title>Search API  Entity With No Desc</title>
+                                 <serviceName>MDMConnection:Search_API</serviceName>
+                                 <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="Session_ID" source="field" updatable="true">output.Session_ID</parameter>
+                                    <parameter name="SearchCriteria" source="field" updatable="true">temp.tmp_Search_Criteria_NoDesc</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="mewe8hft">
+                                 <link id="mewe8hfz" targetId="mewe8hfs" type="containerLink"/>
+                              </flow>
+                              <flow id="mewe8hfu">
+                                 <throw id="mewe8hfv">
+                                    <title>Search Entity Details Error</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="mewe8hfx" targetId="mewe8hft" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="mdzpkhzc" interrupting="true">
+                                    <link id="mewe8hfy" targetId="mewe8hfu" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="mewe8hbd" targetId="mewe8hba" type="containerLink"/>
+                        </flow>
+                        <flow id="mewe8hdm">
+                           <eventContainer id="mewe8hek">
+                              <service id="mewe8heo">
+                                 <title>Search API Entity With Short Desc</title>
+                                 <serviceName>MDMConnection:Search_API</serviceName>
+                                 <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="Session_ID" source="field" updatable="true">output.Session_ID</parameter>
+                                    <parameter name="SearchCriteria" source="field" updatable="true">temp.tmp_Search_Criteria_ShortDesc</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="mewe8hel">
+                                 <assignment id="mewe8hgt">
+                                    <title>Check Records with Short Desc</title>
+                                    <operation source="formula" to="temp.tmp_records_check">
+                                       <expression language="XQuery">if($output.SearchAPI_Response//hits/text() = 0 ) then 'PROCEED' else 'SKIP'</expression>
+                                    </operation>
+                                    <link id="mewe8hiu" targetId="mewe8hit"/>
+                                 </assignment>
+                                 <container id="mewe8hit" type="exclusive">
+                                    <title>Check Records</title>
+                                    <flow id="mewe8hiw">
+                                       <eventContainer id="mewe8hll">
+                                          <service id="mewe8hlp">
+                                             <title>Search API Entity With Long Desc</title>
+                                             <serviceName>MDMConnection:Search_API</serviceName>
+                                             <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                                             <serviceInput>
+                                                <parameter name="Session_ID" source="field" updatable="true">output.Session_ID</parameter>
+                                                <parameter name="SearchCriteria" source="field" updatable="true">temp.tmp_Search_Criteria_LongDesc</parameter>
+                                             </serviceInput>
+                                          </service>
+                                          <flow id="mewe8hlm">
+                                             <link id="mewe8hls" targetId="mewe8hll" type="containerLink"/>
+                                          </flow>
+                                          <flow id="mewe8hln">
+                                             <throw id="mewe8hlo">
+                                                <title>Search Entity Details Error</title>
+                                                <throwInput>
+                                                   <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                                   <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                                   <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                                </throwInput>
+                                             </throw>
+                                          </flow>
+                                          <link id="mewe8hlq" targetId="mewe8hlm" type="containerLink"/>
+                                          <events>
+                                             <catch faultField="faultInfo" id="mdzpkhzc" interrupting="true">
+                                                <link id="mewe8hlr" targetId="mewe8hln" type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <link id="mewe8hix" targetId="mewe8hit" type="containerLink"/>
+                                    </flow>
+                                    <flow id="mewe8hiz">
+                                       <link id="mewe8hj0" targetId="mewe8hit" type="containerLink"/>
+                                    </flow>
+                                    <link id="mewe8hiv" targetId="mewe8hiw" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="contains">
+                                             <arg name="left">{$temp.tmp_records_check}</arg>
+                                             <arg name="right">PROCEED</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="mewe8hiy" targetId="mewe8hiz" type="containerLink"/>
+                                 </container>
+                                 <link id="mewe8her" targetId="mewe8hek" type="containerLink"/>
+                              </flow>
+                              <flow id="mewe8hem">
+                                 <throw id="mewe8hen">
+                                    <title>Search Entity Details Error</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="mewe8hep" targetId="mewe8hel" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="mdzpkhzc" interrupting="true">
+                                    <link id="mewe8heq" targetId="mewe8hem" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="mewe8hdn" targetId="mewe8hba" type="containerLink"/>
+                        </flow>
+                        <flow id="mewe8hbf">
+                           <link id="mewe8hbg" targetId="mewe8hba" type="containerLink"/>
+                        </flow>
+                        <link id="mewe8hbb" targetId="mewe8hbc" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$temp.tmp_Description_check}</arg>
+                                 <arg name="right">SKIP</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="mewe8hdl" targetId="mewe8hdm" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$temp.tmp_Description_check}</arg>
+                                 <arg name="right">PROCEED</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="mewe8hbe" targetId="mewe8hbf" type="containerLink"/>
+                     </container>
+                     <link id="mdzpkhz3" targetId="mdzpkhz0" type="containerLink"/>
+                  </flow>
+                  <flow id="mdzpkhz5">
+                     <container id="mfexgnt0" type="exclusive">
+                        <title>Code</title>
+                        <flow id="mfexgnt1">
+                           <throw id="mfexgnt2">
+                              <title>Login Credentials Issue</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <flow id="mfexgnt3">
+                           <assignment id="mfexgnt4">
+                              <title>Retry Counter</title>
+                              <operation source="formula" to="temp.tmp_counter">
+                                 <expression language="XQuery">$temp.tmp_counter * 2</expression>
+                              </operation>
+                              <link id="mfexgntc" targetId="mfexgnt5"/>
+                           </assignment>
+                           <container id="mfexgnt5" type="exclusive">
+                              <title>tmp_counter</title>
+                              <flow id="mfexgnt6">
+                                 <jumpTo id="mfexgnt7">
+                                    <link id="mfexgntf" targetId="mdzpkhz0"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="mfexgnt8">
+                                 <throw id="mfexgnt9">
+                                    <title>Login Error</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="mfexgntd" targetId="mfexgnt6" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="less-or-equals">
+                                       <arg name="left">{$temp.tmp_counter}</arg>
+                                       <arg name="right">{8}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="mfexgnte" targetId="mfexgnt8" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <link id="mfexgnta" targetId="mfexgnt1" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                 <arg name="right">401</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="mfexgntb" targetId="mfexgnt3" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="mdzpkhz1" targetId="mdzpkhz2" type="containerLink"/>
+                  <link id="mewe8hdt" targetId="mdzpkhy0"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mdzpkhyz" interrupting="true">
+                        <link id="mdzpkhz4" targetId="mdzpkhz5" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="mdzpkhyh"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>1Zfq8eJ85keg34WW1NjH0K</types1:GUID>
+      <types1:DisplayName>Search Products</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.124Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

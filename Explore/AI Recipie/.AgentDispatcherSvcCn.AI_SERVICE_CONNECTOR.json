@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "e7qh624xjcCeiKTJycBkwB",
+    "name" : "AgentDispatcherSvcCn",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "GtXFEpciZBpDUQb-gt-120530-2026-06-23T16:13:28.532Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Agent dispatcher service connector",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T16:18:56.441Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,145 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>nUqThtpyqaa-gt-120668-2026-06-23T16:13:30.218Z::pd.xml</types1:EntryId>
+      <types1:Name>AWSBedrockAgentDispatcher</types1:Name>
+      <types1:ParentFlowIds>93PYhJmojDXJqEh-gt-120830-2026-06-23T16:13:31.974Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that calls the sub-agents based on the query prompt and dispatches the workflow to the right agent at run time</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:30Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="6Ln91ECCf8gbEDsd1oJswz"
+                  displayName="AWSBedrockAgentDispatcher"
+                  name="AWSBedrockAgentDispatcher"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that calls the sub-agents based on the query prompt and dispatches the workflow to the right agent at run time</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Planner" required="false" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PlannerPO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6JcWLJFeiurh8iHMfyPHAJ</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="PlannerOut" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:PlannerPO</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6JcWLJFeiurh8iHMfyPHAJ</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="ChatCompletionRequest" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="SelectorResponse" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tempApp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Title" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload outputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="w163e36df-aa14-4de5-9e55-0d2563d9968d">
+               <start id="x08075138-6206-420c-97a7-ca243c6ef2f7">
+                  <link id="s8eebcd5f-724b-468b-9d16-964d8d588400"
+                        targetId="a158hFJWYs807ke0zf2KGbaS-m2kqkofq"/>
+               </start>
+               <assignment id="a158hFJWYs807ke0zf2KGbaS-m2kqkofq">
+                  <title>Assignment to tempApp, Title</title>
+                  <operation source="formula" to="temp.tempApp">
+                     <expression language="XQuery">let $upperCaseApp :=upper-case($input.Planner[1]/app/text() )
+return 'AWSBedrock'||$upperCaseApp||'Agent'
+    </expression>
+                  </operation>
+                  <operation source="formula" to="temp.Title">
+                     <expression language="XQuery">let $title := 'Dispatching to  '|| $temp.tempApp 
+return ipd:setProcessTitle($title)</expression>
+                  </operation>
+                  <link id="i170828c7-e029-4ae7-b640-d76cafc7f1f3"
+                        targetId="a158hFJWYs807ke0zf2KGbaS-m7tm9td5"/>
+               </assignment>
+               <assignment id="a158hFJWYs807ke0zf2KGbaS-Assignmentb5f179dd-9a71-4a74-a9aa-daa5a59e9a9f">
+                  <title>Assignment to PlannerOut</title>
+                  <operation source="formula" to="output.PlannerOut">
+                     <expression language="XQuery">$output.Planner_Out</expression>
+                  </operation>
+                  <link id="i39de5b18-e3bc-405a-8dbd-4940c92ba53e"
+                        targetId="a158hFJWYs807ke0zf2KGbaS-end-p80865fd2-a9b3-4037-9cb2-a0df81a4079e"/>
+               </assignment>
+               <service id="a158hFJWYs807ke0zf2KGbaS-m7tm9td5">
+                  <title>Dispatcher</title>
+                  <serviceName>AgentDispatcherCn:Dispatcher</serviceName>
+                  <serviceGUID>6PVJ5jUowPBec4GzHzlfq4</serviceGUID>
+                  <serviceInput>
+                     <parameter name="Planner" source="formula">
+                        <expression language="XQuery">$input.Planner</expression>
+                     </parameter>
+                     <parameter name="AgentName" source="formula">
+                        <expression language="XQuery">$temp.tempApp</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="jf66021d1-5fb3-43f6-a422-64d84762b165"
+                        targetId="a158hFJWYs807ke0zf2KGbaS-Assignmentb5f179dd-9a71-4a74-a9aa-daa5a59e9a9f"/>
+               </service>
+               <end id="a158hFJWYs807ke0zf2KGbaS-end-p80865fd2-a9b3-4037-9cb2-a0df81a4079e">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>6Ln91ECCf8gbEDsd1oJswz</types1:GUID>
+      <types1:DisplayName>AWSBedrockAgentDispatcher</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.015Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

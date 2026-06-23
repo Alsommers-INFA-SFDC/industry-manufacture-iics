@@ -1,0 +1,92 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>H8n55ErhNzUzeA8-gt-120532-2026-06-23T16:13:28.538Z::po.xml</types1:EntryId>
+      <types1:Name>AttributePO</types1:Name>
+      <types1:ParentFlowIds>93PYhJmojDXJqEh-gt-120830-2026-06-23T16:13:31.974Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that contains custom attributes for the planner</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:29Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="AttributePO"
+                        isByCopy="true"
+                        name="AttributePO">
+            <description>Process object that contains custom attributes for the planner</description>
+            <tags/>
+            <detail>
+               <field label="Product_Id"
+                      name="Product_Id"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Component_Id"
+                      name="Component_Id"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Order_Id"
+                      name="Order_Id"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Supplier_Name"
+                      name="Supplier_Name"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="SQL"
+                      name="SQL"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="AirportCodes"
+                      name="AirportCodes"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Metadata"
+                      name="Metadata"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:$any</option>
+                  </options>
+               </field>
+               <field label="Google_Token"
+                      name="Google_Token"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>ageFRpDXrs7jYjq5eM9uSV</types1:GUID>
+      <types1:DisplayName>AttributePO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.684Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

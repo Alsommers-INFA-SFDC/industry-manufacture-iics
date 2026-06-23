@@ -1,0 +1,703 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>BYZcjKsJlv58pIO-gt-120712-2026-06-23T16:13:30.445Z::pd.xml</types1:EntryId>
+      <types1:Name>Identify_Customers</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Process that uses all required inputs to match &amp; identify customer records within Informatica Customer 360</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:30Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="3VpyCy2IAmShaL5MkS88q0"
+                  displayName="Identify Customers"
+                  name="Identify_Customers"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Process that uses all required inputs to match &amp; identify customer records within Informatica Customer 360</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="Name of the customer" name="Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Phone number of the customer"
+                          name="PhoneNumber"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Email address of the customer"
+                          name="Email"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Identifier of the customer"
+                          name="Identifier"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Street information of the customer"
+                          name="AddressLine1"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Country of the customer" name="Country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="State of the customer" name="State" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="City of the customer" name="City" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Maximum number of matching records that the action should retrieve"
+                          name="NumberOfRecordsReturn"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Postal code of the customer"
+                          name="PostalCode"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="List of identified customer records"
+                      name="Search_Response"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Entity1_Response" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entity2_Response" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entity1_map_fields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entity1_exclude_fields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entity2_map_fields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entity2_exclude_fields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Config_Info" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Search_Criteria_Entity1" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Search_Criteria_Entity2" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="terse">
+               <rest>
+                  <allowedUsers>
+                     <user>Service_Account</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="mfdml1cv" targetId="mfdml1cu"/>
+               </start>
+               <assignment id="mfdml1cu">
+                  <title>Initialize Variables</title>
+                  <operation source="formula" to="input.NumberOfRecordsReturn">
+                     <expression language="XQuery">if(empty($input.NumberOfRecordsReturn) or ($input.NumberOfRecordsReturn = 0)) then '5' else $input.NumberOfRecordsReturn </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Config_Info">
+                     <expression language="XQuery">util:getCatalogResource('project:/INFA_MDM_AgentForce_Config/Config/ConfigCustomerSearch.xml')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Search_Criteria_Entity1">
+                     <expression language="XQuery">'{
+    "searchControls": {
+        "maxRecordsToReturn": '||$input.NumberOfRecordsReturn||',
+        "searchLevel": "Typical",
+        "fileRecordLimit": 1000
+    },
+    "data": {
+        "searchRecord": {
+            "name": "'||$input.Name||'",
+            "PostalAddress": [
+                {
+                    "addressLine1": "'||$input.AddressLine1 ||'",
+                    "country": {
+                        "Code": "''",
+                        "Name": "'||$input.Country||'"
+                    },
+                    "addressType": {
+                        "Code": "",
+                        "Name": ""
+                    },
+                    "usageType": {
+                        "Code": "",
+                        "Name": ""
+                    },
+                    "state": {
+                        "Code": "''",
+                        "Name": "'||$input.State||'"
+                    },
+                    "city": "'||$input.City ||'",
+                    "postalCode": "'||$input.PostalCode ||'",
+                    "county": ""
+                }
+            ],
+            "PhoneCommunication": [
+                {
+                    "phoneNumber": "'||$input.PhoneNumber||'",
+                    "phoneType": {
+                        "Code": "Home",
+                        "Name": "Home"
+                    },
+                    "phoneUsageType": {
+                        "Code": "Home",
+                        "Name": "Home"
+                    }
+                }
+            ],
+            "AlternateIdentifier": [
+                {
+                    "idType": {
+                        "Code": "",
+                        "Name": ""
+                    },
+                    "altIdValue": "'||$input.Identifier||'"
+                }
+            ],
+            "ElectronicAddress": [
+                {
+                    "electronicAddress": "'||$input.Email||'",
+                    "usageType": {
+                        "Code": "",
+                        "Name": ""
+                    }
+                }
+            ]
+        }
+    }
+}'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Search_Criteria_Entity2">
+                     <expression language="XQuery">'{
+    "searchControls": {
+        "maxRecordsToReturn": '||$input.NumberOfRecordsReturn ||',
+        "searchLevel": "Typical",
+        "fileRecordLimit": 1000
+    },
+    "data": {
+        "searchRecord": {
+            "fullName": "'||$input.Name||'",
+           "PostalAddress": [
+            {
+                "addressLine1": "'||$input.AddressLine1 ||'",
+                "country" : {
+                    "Code" : "''",
+                    "Name" : "'||$input.Country ||'"
+                },
+                "state" : {
+                    "Code" : "''",
+                    "Name" : "'||$input.State ||'"
+                },
+                "city":"'||$input.City ||'",
+                "postalCode":"'||$input.PostalCode ||'"
+            }
+        ],
+            "Phone": [
+                {
+                    "phoneNumber": ""
+                }
+            ],
+            "AlternateIdentifier": [
+                {
+                    "alternateIdentifierType": {
+                        "Code": "",
+                        "Name": ""
+                    },
+               
+                    "alternateIdentifierValue": ""
+                }
+            ],
+            "ElectronicAddress": [
+                {                    
+                   
+                     "electronicAddress": ""              
+                     }
+            ]
+        }
+    }
+}'</expression>
+                  </operation>
+                  <link id="mfdml1cw" targetId="mdyewsk4"/>
+               </assignment>
+               <assignment id="mdpugbp1">
+                  <title>Search Match Response</title>
+                  <operation source="formula" to="output.Search_Response">
+                     <expression language="XQuery">let $allRecords := 
+  (
+    $temp.tmp_Entity1_Response//records,
+    $temp.tmp_Entity2_Response//records
+  )
+(:Logic to get top 5 records based on match score:)
+let $topFive := 
+  for $r in $allRecords
+  let $scoreText := normalize-space(string($r/score))
+  let $score := 
+    if (matches($scoreText, '^\d+$')) 
+    then xs:integer($scoreText) 
+    else 0
+  order by $score descending
+  return $r
+
+return 
+if (empty($topFive)) then
+    'No Records Found'
+  else
+    &lt;root&gt;{
+      for $rec in $topFive[position() &lt;= $input.NumberOfRecordsReturn ]
+      return
+        element records {
+          for $child in $rec/*
+          where local-name($child) != 'score'
+          return $child
+        }}&lt;/root&gt;</expression>
+                  </operation>
+                  <link id="mdpugbp3" targetId="c"/>
+               </assignment>
+               <eventContainer id="mdyewsk4">
+                  <service id="mdo5mdgg">
+                     <title>Login</title>
+                     <serviceName>MDMConnection:Login</serviceName>
+                     <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                     <serviceInput/>
+                  </service>
+                  <flow id="mdyewsk6">
+                     <link id="mdyewsk7" targetId="mdyewsk4" type="containerLink"/>
+                  </flow>
+                  <flow id="mdyewsk9">
+                     <container id="mes71ii6" type="exclusive">
+                        <title>Code</title>
+                        <flow id="mes71ii9">
+                           <throw id="mes71ij3">
+                              <title>Login Credentials Issue</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <flow id="mes71iic">
+                           <assignment id="mes71iku">
+                              <title>Retry Counter</title>
+                              <operation source="formula" to="temp.tmp_counter">
+                                 <expression language="XQuery">$temp.tmp_counter *2</expression>
+                              </operation>
+                              <link id="mes71imj" targetId="mes71imi"/>
+                           </assignment>
+                           <container id="mes71imi" type="exclusive">
+                              <title>tmp_counter</title>
+                              <flow id="mes71iml">
+                                 <jumpTo id="mes71io8">
+                                    <link id="mes71io9" targetId="mdyewsk4"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="mes71imo">
+                                 <throw id="mes71inp">
+                                    <title>Login Error</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="mes71imk" targetId="mes71iml" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="less-or-equals">
+                                       <arg name="left">{$temp.tmp_counter}</arg>
+                                       <arg name="right">{8}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="mes71imn" targetId="mes71imo" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <link id="mes71ii8" targetId="mes71ii9" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                 <arg name="right">401</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="mes71iib" targetId="mes71iic" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="mdyewsk5" targetId="mdyewsk6" type="containerLink"/>
+                  <link id="mdpugbn1" targetId="mdptptin"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mdyewsk3" interrupting="true">
+                        <link id="mdyewsk8" targetId="mdyewsk9" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="mdptptin" type="parallel">
+                  <title>Parallel Execution of Search API</title>
+                  <flow id="mdptptir">
+                     <eventContainer id="mdyewslg">
+                        <service id="mdptptja">
+                           <title>Search Entity1 Details</title>
+                           <serviceName>MDMConnection:Search_Match_API</serviceName>
+                           <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                           <serviceInput>
+                              <parameter name="Session_ID" source="field" updatable="true">output.Session_ID</parameter>
+                              <parameter name="Search_Criteria" source="field" updatable="true">temp.tmp_Search_Criteria_Entity1</parameter>
+                              <parameter name="EntityType" source="formula">
+                                 <expression language="XQuery">$temp.tmp_Config_Info//labelmap/entity1/@guid/string()</expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="mdyewsli">
+                           <link id="mdyewslj" targetId="mdyewslg" type="containerLink"/>
+                        </flow>
+                        <flow id="mdyewsll">
+                           <throw id="mdyewsmc">
+                              <title>Search Entity1 Details Error</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="mdyewslh" targetId="mdyewsli" type="containerLink"/>
+                        <link id="mdpugboa" targetId="mdpugbo9"/>
+                        <events>
+                           <catch faultField="faultInfo" id="mdyewslf" interrupting="true">
+                              <link id="mdyewslk" targetId="mdyewsll" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="mdpugbo9">
+                        <title>Entity1 Search Response</title>
+                        <operation source="formula" to="temp.tmp_Entity1_map_fields">
+                           <expression language="XQuery">$temp.tmp_Config_Info//labelmap/entity1/nameMap</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Entity1_exclude_fields">
+                           <expression language="XQuery">$temp.tmp_Config_Info//Exclusions/entity1/exclude</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Entity1_Response">
+                           <expression language="XQuery">let $source:=  $output.Search_Match_API_Response 
+(: Helper to check if full local-name path is excluded :)
+let $nameMapXML := $temp.tmp_Entity1_map_fields 
+  
+let $excludeXML := $temp.tmp_Entity1_exclude_fields 
+(: Helper to check if full local-name path is excluded :)
+let $isExcluded := function($path) {
+  some $ex in $excludeXML/item satisfies $ex = $path
+}
+(: Helper to get mapped name or fallback to local-name :)
+let $getName := function($path) {
+  let $entry := $nameMapXML/mapEntry[@key = $path]
+  return if (exists($entry)) then string($entry) else fn:tokenize($path, '/')[last()]
+}
+(: Start processing root element children :)
+return
+if ( $source//totalRecords/text() = 0) then 'No Records'
+else
+&lt;root&gt;{
+  for $records in $source//records
+  return
+    element { "records" } {
+      for $child1 in $records/*
+      let $name1 := local-name($child1)
+      let $path1 := concat('/root/searchResult/records/', $name1)
+      where not($isExcluded($path1))
+      return
+        element { $getName($path1) } {
+          if ($name1 = "data") then
+            (
+              for $child2 in $child1/*
+              let $name2 := local-name($child2)
+              let $path2 := concat($path1, '/', $name2)
+              where not($isExcluded($path2))
+              return
+                element { $getName($path2) } {
+                  if ($child2/*) then
+                    (
+                      for $child3 in $child2/*
+                      let $name3 := local-name($child3)
+                      let $path3 := concat($path2, '/', $name3)
+                      where not($isExcluded($path3))
+                      return
+                        if ($child3/*) then
+                          element { $getName($path3) } {
+                            for $child4 in $child3/*
+                            let $name4 := local-name($child4)
+                            let $path4 := concat($path3, '/', $name4)
+                            where not($isExcluded($path4))
+                            return 
+                              if (not($isExcluded($path4))) then
+                                element { $getName($path4) } { $child4/node() }
+                              else ()
+                          }
+                        else
+                          element { $getName($path3) } { data($child3) }
+                    )
+                  else
+                    data($child2)
+                }
+            )
+          else
+            $child1/node()
+        },
+      (: Prepare businessId element if not excluded :)
+      let $businessIdName := $getName("businessId")
+      where not($isExcluded("/root/searchResult/records/_meta/businessId"))
+      return element { $businessIdName } { $records/_meta/businessId/text() },
+
+      (: entityType inside records :)
+      let $entityTypeName := $getName("entityType")
+      let $entityTypeValue := 'organization'
+      where not($isExcluded("/root/searchResult/records/_meta/entityType"))
+      return 
+        if (exists($entityTypeValue)) then
+          element { $entityTypeName } { $entityTypeValue }
+        else ()
+    }
+}&lt;/root&gt;
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="mdptptis" targetId="mdptptin" type="containerLink"/>
+                  </flow>
+                  <flow id="mdptptiu">
+                     <eventContainer id="mdyewslw">
+                        <service id="mdptptk8">
+                           <title>Search Entity2 Details</title>
+                           <serviceName>MDMConnection:Search_Match_API</serviceName>
+                           <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                           <serviceInput>
+                              <parameter name="Session_ID" source="field" updatable="true">output.Session_ID</parameter>
+                              <parameter name="Search_Criteria" source="field" updatable="true">temp.tmp_Search_Criteria_Entity2</parameter>
+                              <parameter name="EntityType" source="formula">
+                                 <expression language="XQuery">$temp.tmp_Config_Info//labelmap/entity2/@guid/string()</expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="mdyewsly">
+                           <link id="mdyewslz" targetId="mdyewslw" type="containerLink"/>
+                        </flow>
+                        <flow id="mdyewsm1">
+                           <throw id="mdyewsml">
+                              <title>Search Entity2 Details Error</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="mdyewslx" targetId="mdyewsly" type="containerLink"/>
+                        <link id="mdpugbo0" targetId="mdpugbnz"/>
+                        <events>
+                           <catch faultField="faultInfo" id="mdyewslv" interrupting="true">
+                              <link id="mdyewsm0" targetId="mdyewsm1" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="mdpugbnz">
+                        <title>Entity2 Search Response</title>
+                        <operation source="formula" to="temp.tmp_Entity2_map_fields">
+                           <expression language="XQuery">$temp.tmp_Config_Info//labelmap/entity2/nameMap</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Entity2_exclude_fields">
+                           <expression language="XQuery">$temp.tmp_Config_Info//Exclusions/entity2/exclude</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Entity2_Response">
+                           <expression language="XQuery">let $source:=   $output.Search_Match_API_Response 
+(: Inline approach checking against constructed paths :)
+let $nameMapXML := $temp.tmp_Entity2_map_fields  
+  
+let $excludeXML := $temp.tmp_Entity2_exclude_fields  
+ (: Helper to check if full local-name path is excluded :)
+let $isExcluded := function($path) {
+  some $ex in $excludeXML/item satisfies $ex = $path
+}
+(: Helper to get mapped name or fallback to local-name :)
+let $getName := function($path) {
+  let $entry := $nameMapXML/mapEntry[@key = $path]
+  return if (exists($entry)) then string($entry) else fn:tokenize($path, '/')[last()]
+}
+(: Start processing root element children :)
+return
+if ( $source//totalRecords/text() = 0) then 'No Records'
+else
+&lt;root&gt;{
+  for $records in $source//records
+  return
+    element { "records" } {
+      for $child1 in $records/*
+      let $name1 := local-name($child1)
+      let $path1 := concat('/root/searchResult/records/', $name1)
+      where not($isExcluded($path1))
+      return
+        element { $getName($path1) } {
+          if ($name1 = "data") then
+            (
+              for $child2 in $child1/*
+              let $name2 := local-name($child2)
+              let $path2 := concat($path1, '/', $name2)
+              where not($isExcluded($path2))
+              return
+                element { $getName($path2) } {
+                  if ($child2/*) then
+                    (
+                      for $child3 in $child2/*
+                      let $name3 := local-name($child3)
+                      let $path3 := concat($path2, '/', $name3)
+                      where not($isExcluded($path3))
+                      return
+                        if ($child3/*) then
+                          element { $getName($path3) } {
+                            for $child4 in $child3/*
+                            let $name4 := local-name($child4)
+                            let $path4 := concat($path3, '/', $name4)
+                            where not($isExcluded($path4))
+                            return 
+                              if (not($isExcluded($path4))) then
+                                element { $getName($path4) } { $child4/node() }
+                              else ()
+                          }
+                        else
+                          element { $getName($path3) } { data($child3) }
+                    )
+                  else
+                    data($child2)
+                }
+            )
+          else
+            $child1/node()
+        },
+      (: Prepare businessId element if not excluded :)
+      let $businessIdName := $getName("businessId")
+      where not($isExcluded("/root/searchResult/records/_meta/businessId"))
+      return element { $businessIdName } { $records/_meta/businessId/text() },
+
+      (: entityType inside records :)
+      let $entityTypeName := $getName("entityType")
+      let $entityTypeValue := 'person'
+      where not($isExcluded("/root/searchResult/records/_meta/entityType"))
+      return 
+        if (exists($entityTypeValue)) then
+          element { $entityTypeName } { $entityTypeValue }
+        else ()
+    }
+}&lt;/root&gt;
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="mdptptiv" targetId="mdptptin" type="containerLink"/>
+                  </flow>
+                  <link id="mdptptiq" targetId="mdptptir" type="containerLink"/>
+                  <link id="mdptptit" targetId="mdptptiu" type="containerLink"/>
+                  <link id="mdpugbp2" targetId="mdpugbp1"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>3VpyCy2IAmShaL5MkS88q0</types1:GUID>
+      <types1:DisplayName>Identify Customers</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.063Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,42 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Ijr1FyuRZXDyvs7-gt-120596-2026-06-23T16:13:29.549Z::conn.xml</types1:EntryId>
+      <types1:Name>AgentDispatcherCn</types1:Name>
+      <types1:ParentFlowIds>nUqThtpyqaa-gt-120668-2026-06-23T16:13:30.218Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Agent Dispatcher connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:30Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     GUID="6PVJ5jUowPBec4GzHzlfq4"
+                     displayName="AgentDispatcherCn"
+                     label="AgentDispatcherCn"
+                     name="AgentDispatcherCn">
+            <description>Agent Dispatcher connection</description>
+            <tags/>
+            <agent/>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/AgentDispatcherSvcCn_4/AgentDispatcherSvcCn_4_svcDef.xml"
+                               guid="e7qh624xjcCeiKTJycBkwB"
+                               name="AgentDispatcherSvcCn"
+                               supportsConnectionTest="false"
+                               uuid="9f1a0292-8066-4140-baeb-806bb24e9a7d">
+               <description>Service Connector for Agent Dispatcher Service</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>6PVJ5jUowPBec4GzHzlfq4</types1:GUID>
+      <types1:DisplayName>AgentDispatcherCn</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.909Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

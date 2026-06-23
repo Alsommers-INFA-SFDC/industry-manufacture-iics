@@ -1,0 +1,221 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>sK4PvbcjIw8jIw8-gt-119534-2026-06-23T16:13:32.293Z::pd.xml</types1:EntryId>
+      <types1:Name>NutritionValidation_-_enrichment</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:32Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="dz40s783cGIfAzIefVHXmh"
+                  displayName="NutritionValidation - enrichment"
+                  name="NutritionValidation_-_enrichment"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="request"
+                          required="false"
+                          type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:InputPerRecord</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">62C9ayWN9CsicSmJ3hVoom</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="response" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:OutputPerRecord-1</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">adFdPLPxDkVfOuO0bLDoGt</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="temp_recordId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_UPC" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_brand" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_itemName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload inputWholePayload="true" outputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="u73ec55f7-dedb-4c42-a9b7-a802c5d791b8">
+               <start id="u0f571f57-2029-47fd-aaf2-17e29a5ed3b1">
+                  <link id="jd86dd482-288e-4bb6-9998-c28ecd330385"
+                        targetId="a13xiz7icghctcGT0iaq2qyD-Assignmentae949cc7-2685-4329-97d1-686859de59b8"/>
+               </start>
+               <assignment id="a13xiz7icghctcGT0iaq2qyD-Assignmentae949cc7-2685-4329-97d1-686859de59b8">
+                  <title>Assignment to temp_recordId, temp_businessID</title>
+                  <operation source="formula" to="temp.temp_recordId">
+                     <expression language="XQuery">$input.request[1]/docId</expression>
+                  </operation>
+                  <operation source="formula" to="temp.temp_UPC">
+                     <expression language="XQuery">$input.request[1]/payload[1]/upc</expression>
+                  </operation>
+                  <link id="b1d2fd0b0-1905-4c57-b756-eadfe07b7d00"
+                        targetId="a13xiz7icghctcGT0iaq2qyD-Serviceed5a62a9-2d56-43b3-b59f-bc18dd824062"/>
+               </assignment>
+               <assignment id="Assignmente08b847b-2ca0-47fe-8b3c-e09f64bda7c7">
+                  <title>Assignment to temp_brand, temp_itemName</title>
+                  <operation source="field" to="temp.temp_brand">output.brands</operation>
+                  <operation source="field" to="temp.temp_itemName">output.product_name</operation>
+                  <link id="i0e9b5bbf-a380-46ca-a51c-8171296a3384"
+                        targetId="a13xiz7icghctcGT0iaq2qyD-Assignmentd47b627f-bb23-4d6f-8397-83c9a92b2df1"/>
+               </assignment>
+               <assignment id="a13xiz7icghctcGT0iaq2qyD-Assignmentd47b627f-bb23-4d6f-8397-83c9a92b2df1">
+                  <title>Assignment to response</title>
+                  <operation source="field" to="output.response[1]/docId">input.request[1]/docId</operation>
+                  <operation source="formula" to="output.response[1]/payload[1]/brand">
+                     <expression language="XQuery">$temp.temp_brand</expression>
+                  </operation>
+                  <operation source="formula" to="output.response[1]/payload[1]/productName">
+                     <expression language="XQuery">$temp.temp_itemName</expression>
+                  </operation>
+                  <link id="m746b3132-f6b2-4ec2-9574-e7f24246b110"
+                        targetId="a13xiz7icghctcGT0iaq2qyD-end-d89ef0517-06d2-404c-99a1-3fcb7f8eb7c9"/>
+               </assignment>
+               <eventContainer id="a13xiz7icghctcGT0iaq2qyD-Serviceed5a62a9-2d56-43b3-b59f-bc18dd824062">
+                  <service id="bc97a9668-e234-4d67-9f77-16c5f7c5570d">
+                     <title>GetProductData</title>
+                     <serviceName>FoodFacts:GetProductData</serviceName>
+                     <serviceGUID>0EJS7LIqVbUgFQPY9gSh4a</serviceGUID>
+                     <serviceInput>
+                        <parameter name="upc" source="field">temp.temp_UPC</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="v16b418e1-6ecb-4c6f-b079-319221375b3c">
+                     <link id="udfdcb0b8-f262-408b-9a0d-176466b462a1"
+                           targetId="a13xiz7icghctcGT0iaq2qyD-Serviceed5a62a9-2d56-43b3-b59f-bc18dd824062"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="oe251095b-a21a-46cc-b76a-fbf442a3d7e4">
+                     <link id="b49953585-15e3-4b69-bacc-bcb8ace23174"
+                           targetId="a13xiz7icghctcGT0iaq2qyD-Serviceed5a62a9-2d56-43b3-b59f-bc18dd824062"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="sa242b386-c383-42e2-919c-e13fe5133510"
+                        targetId="v16b418e1-6ecb-4c6f-b079-319221375b3c"
+                        type="containerLink"/>
+                  <link id="gb0a55ca1-b045-4de1-a3da-ded80c4445fc"
+                        targetId="Assignmente08b847b-2ca0-47fe-8b3c-e09f64bda7c7"/>
+                  <events>
+                     <catch faultField="faultInfo"
+                            id="r8943b047-3066-4f8d-9f2e-512752f3fe3d"
+                            interrupting="true">
+                        <link id="o56f5fbdd-a440-4597-8f2b-23f319fe656f"
+                              targetId="oe251095b-a21a-46cc-b76a-fbf442a3d7e4"
+                              type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="a13xiz7icghctcGT0iaq2qyD-end-d89ef0517-06d2-404c-99a1-3fcb7f8eb7c9">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>9f74150a-98d8-46a8-8800-258fac7136a8</ns1:Id>
+               <ns1:Name>Clone Mailgun Send</ns1:Name>
+               <ns1:CreatedBy>Alex.Manufacture</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-23T16:13:32Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Alex.Manufacture</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-23T16:13:32Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "beName": "product_solution",
+    "businessIdToClone": "P00000000007Q4",
+    "removeelements": "configuration",
+    "newIdentifier": "abc-123",
+    "newName": "Test Mailgun Product"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>c0c82df6-015d-42f0-966d-7e036c6ab1b4</ns1:Id>
+               <ns1:Name>Goya</ns1:Name>
+               <ns1:CreatedBy>Alex.Manufacture</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-23T16:13:32Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Alex.Manufacture</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-23T16:13:32Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "beName": "p360.item",
+    "businessIdToSync" : "MDM00000001AAO"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3a80ae5d-0fac-4194-8227-5737bc8ea179</ns1:Id>
+               <ns1:Name>NutritionValidation</ns1:Name>
+               <ns1:CreatedBy>Alex.Manufacture</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-23T16:13:32Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Alex.Manufacture</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-23T16:13:32Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "request": [
+	 	 {
+	 	 	 "docId": "",
+	 	 	 "payload": {
+	 	 	 	 "upc": "034500461887",
+	 	 	 	 "sys": {
+	 	 	 	 	 "groupId": ""
+	 	 	 	 }
+	 	 	 }
+	 	 }
+	 ]
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>dz40s783cGIfAzIefVHXmh</types1:GUID>
+      <types1:DisplayName>NutritionValidation - enrichment</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.279Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

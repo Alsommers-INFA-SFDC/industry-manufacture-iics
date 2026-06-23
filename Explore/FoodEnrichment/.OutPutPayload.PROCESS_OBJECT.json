@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "hD40AlKJqCcb8uny7neSaS",
+    "name" : "OutPutPayload",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "fOQeK8ZAZf5kck8-gt-120638-2026-06-23T16:13:30.08Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T16:18:56.439Z",
+  "objectRefs" : [ {
+    "id" : "8hApKalE8IEjz28tAkJseC",
+    "name" : "outputNutrition",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "EYOxfSmbduaa-gt-120586-2026-06-23T16:13:29.498Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/FoodEnrichment"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

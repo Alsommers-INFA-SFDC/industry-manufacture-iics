@@ -1,0 +1,303 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>tT1cnFKi9zhFtyb-gt-120684-2026-06-23T16:13:30.312Z::pd.xml</types1:EntryId>
+      <types1:Name>Get_Product_Record_Details</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Process that uses all required inputs to retrieve additional product record details from Informatica Product 360</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:30Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="5jAhOXrjQedgRMl4MzkMYc"
+                  displayName="Get Product Record Details"
+                  name="Get_Product_Record_Details"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Process that uses all required inputs to retrieve additional product record details from Informatica Product 360</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="Business ID of the product"
+                          name="MDM_ID"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="Detailed information of the product"
+                      name="Product_details_Response"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_MapFields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ExcludeFields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Config_Info" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="terse">
+               <rest>
+                  <allowedUsers>
+                     <user>Service_Account</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="mff4v18n" targetId="mff4v18m"/>
+               </start>
+               <assignment id="mff4v18m">
+                  <title>Initialize Variables</title>
+                  <operation source="formula" to="temp.tmp_Config_Info">
+                     <expression language="XQuery">util:getCatalogResource("project:/INFA_MDM_AgentForce_Config/Config/ConfigProductDetails.xml")</expression>
+                  </operation>
+                  <link id="mff4v18o" targetId="mfcctcgm"/>
+               </assignment>
+               <assignment id="mdyejra5">
+                  <title>Configure Product Details Response</title>
+                  <operation source="formula" to="temp.tmp_MapFields">
+                     <expression language="XQuery">$temp.tmp_Config_Info//labelmap/entity1/nameMap</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ExcludeFields">
+                     <expression language="XQuery">$temp.tmp_Config_Info//Exclusions/entity1/exclude</expression>
+                  </operation>
+                  <operation source="formula" to="output.Product_details_Response">
+                     <expression language="XQuery">let $ItemDetails_response := $output.MDM_API_Response   
+
+let $nameMapXML := $temp.tmp_MapFields 
+
+let $excludeXML := $temp.tmp_ExcludeFields 
+
+(: Helper to check if full local-name path is excluded :)
+(: Inline approach checking against constructed paths :)
+let $isExcluded := function($path) {
+  some $ex in $excludeXML/item satisfies $ex = $path
+}
+
+(: Helper to get mapped name or fallback to local-name :)
+let $getName := function($path) {
+  let $entry := $nameMapXML/mapEntry[@key = $path]
+  return if (exists($entry)) then string($entry) else fn:tokenize($path, '/')[last()]
+}
+
+(: Prepare businessId element if not excluded :)
+let $bizIdPath := "/root/_meta/businessId"
+let $businessIdElem :=
+  if (not($isExcluded($bizIdPath))) then
+    element { $getName("businessId") } { $ItemDetails_response//_meta/businessId/text() }
+  else ()
+
+(: Start processing root element children :)
+return
+&lt;root&gt;{(
+  for $child1 in $ItemDetails_response/*
+  let $name1 := local-name($child1)
+  let $path1 := concat('/root/', $name1)
+  where not($isExcluded($path1))
+  return
+    element { $getName($path1) } {
+      if ($child1/node()[self::element()]) then
+        (
+          for $child2 in $child1/*
+          let $name2 := local-name($child2)
+          let $path2 := concat($path1, '/', $name2)
+          where not($isExcluded($path2))
+          return
+            element { $getName($path2) } {
+              if ($child2/node()[self::element()]) then
+                (
+                  for $child3 in $child2/*
+                  let $name3 := local-name($child3)
+                  let $path3 := concat($path2, '/', $name3)
+                  where not($isExcluded($path3))
+                  return
+                    if ($child3/node()[self::element()]) then
+                      (
+                        for $child4 in $child3/*
+                        let $name4 := local-name($child4)
+                        let $path4 := concat($path3, '/', $name4)
+                        where not($isExcluded($path4))
+                        return element { $getName($path4) } { $child4/node() }
+                      )
+                    else
+                      element { $getName($path3) } { data($child3) }
+                )
+              else
+                data($child2)
+            }
+        )
+      else
+        data($child1)
+    }),
+    $businessIdElem
+}&lt;/root&gt;
+
+</expression>
+                  </operation>
+                  <link id="mdyejra7" targetId="c"/>
+               </assignment>
+               <eventContainer id="mfcctcgm">
+                  <service id="mdyejr9e">
+                     <title>Login</title>
+                     <serviceName>MDMConnection:Login</serviceName>
+                     <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                     <serviceInput/>
+                  </service>
+                  <flow id="mfcctcgo">
+                     <link id="mfcctcgp" targetId="mfcctcgm" type="containerLink"/>
+                  </flow>
+                  <flow id="mfcctcgr">
+                     <container id="mfexd0pw" type="exclusive">
+                        <title>Code</title>
+                        <flow id="mfexd0px">
+                           <throw id="mfexd0py">
+                              <title>Login Credentials Issue</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <flow id="mfexd0pz">
+                           <assignment id="mfexd0q0">
+                              <title>Retry Counter</title>
+                              <operation source="formula" to="temp.tmp_counter">
+                                 <expression language="XQuery">$temp.tmp_counter * 2</expression>
+                              </operation>
+                              <link id="mfexd0q8" targetId="mfexd0q1"/>
+                           </assignment>
+                           <container id="mfexd0q1" type="exclusive">
+                              <title>Check Counter</title>
+                              <flow id="mfexd0q2">
+                                 <jumpTo id="mfexd0q3">
+                                    <link id="mfexd0qb" targetId="mfcctcgm"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="mfexd0q4">
+                                 <throw id="mfexd0q5">
+                                    <title>Login Error</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="mfexd0q9" targetId="mfexd0q2" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="less-or-equals">
+                                       <arg name="left">{$temp.tmp_counter}</arg>
+                                       <arg name="right">{8}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="mfexd0qa" targetId="mfexd0q4" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <link id="mfexd0q6" targetId="mfexd0px" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                 <arg name="right">401</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="mfexd0q7" targetId="mfexd0pz" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="mfcctcgn" targetId="mfcctcgo" type="containerLink"/>
+                  <link id="mdyejr9m" targetId="mfcctch0"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mfcctcgl" interrupting="true">
+                        <link id="mfcctcgq" targetId="mfcctcgr" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <eventContainer id="mfcctch0">
+                  <service id="mdyejr9l">
+                     <title>Get MDM Record Details</title>
+                     <serviceName>MDMConnection:Get_MDM_Record_Details</serviceName>
+                     <serviceGUID>4drsl65Bm5AkuewzHRbiCq</serviceGUID>
+                     <serviceInput>
+                        <parameter name="ID" source="field" updatable="true">input.MDM_ID</parameter>
+                        <parameter name="Session_ID" source="field" updatable="true">output.Session_ID</parameter>
+                        <parameter name="EntityType" source="formula">
+                           <expression language="XQuery">$temp.tmp_Config_Info//labelmap/entity1/@guid/string()</expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mfcctch2">
+                     <link id="mfcctch3" targetId="mfcctch0" type="containerLink"/>
+                  </flow>
+                  <flow id="mfcctch5">
+                     <throw id="mfcctchd">
+                        <title>MDM API ERROR</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="mfcctch1" targetId="mfcctch2" type="containerLink"/>
+                  <link id="mdyejra6" targetId="mdyejra5"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mfcctcgz" interrupting="true">
+                        <link id="mfcctch4" targetId="mfcctch5" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>5jAhOXrjQedgRMl4MzkMYc</types1:GUID>
+      <types1:DisplayName>Get Product Record Details</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.14Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

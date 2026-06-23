@@ -1,0 +1,147 @@
+{
+  "objectInfo" : {
+    "id" : "l9NRwVlpGc6kAEJ3SxyT4K",
+    "name" : "AWSBedrockUberPlanner",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "93PYhJmojDXJqEh-gt-120830-2026-06-23T16:13:31.974Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess with an agent that analyzes the prompt and orchestrates the workflow by dispatching the query to the corresponding agent",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T16:18:56.447Z",
+  "objectRefs" : [ {
+    "id" : "ageFRpDXrs7jYjq5eM9uSV",
+    "name" : "AttributePO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "H8n55ErhNzUzeA8-gt-120532-2026-06-23T16:13:28.538Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that contains custom attributes for the planner",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  }, {
+    "id" : "8n8XJ3EDouTguZfooQ0igO",
+    "name" : "ContextForAWSBedrock",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "LEwporzYLnzYLnz-gt-120546-2026-06-23T16:13:28.604Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that retrieves the context for Amazon Bedrock based on the context type of the query",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  }, {
+    "id" : "6JcWLJFeiurh8iHMfyPHAJ",
+    "name" : "PlannerPO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "K7vNljLYqBGZkL0-gt-119504-2026-06-23T16:13:29.591Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that is generated from [plannerType complex type] located in the [PlannerStepsPO.xsd] source XML schema.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  }, {
+    "id" : "1fugVvd73v7f1frIrXmTO4",
+    "name" : "BedrockCn",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "VMZlNaaabdvhxiQ-gt-120568-2026-06-23T16:13:28.759Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Amazon Bedrock connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  }, {
+    "id" : "4TRcpGdLMqmfIvDCAPwk03",
+    "name" : "UberPlannerPO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "IYmWR7hsAVR3aaa-gt-120730-2026-06-23T16:13:30.555Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that contains custom attributes for the Uber Planner",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  }, {
+    "id" : "6Ln91ECCf8gbEDsd1oJswz",
+    "name" : "AWSBedrockAgentDispatcher",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "nUqThtpyqaa-gt-120668-2026-06-23T16:13:30.218Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that calls the sub-agents based on the query prompt and dispatches the workflow to the right agent at run time",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

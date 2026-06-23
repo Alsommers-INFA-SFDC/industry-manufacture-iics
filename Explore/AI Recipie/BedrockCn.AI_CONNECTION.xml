@@ -1,0 +1,46 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>VMZlNaaabdvhxiQ-gt-120568-2026-06-23T16:13:28.759Z::conn.xml</types1:EntryId>
+      <types1:Name>BedrockCn</types1:Name>
+      <types1:ParentFlowIds>93PYhJmojDXJqEh-gt-120830-2026-06-23T16:13:31.974Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Amazon Bedrock connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:29Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     GUID="1fugVvd73v7f1frIrXmTO4"
+                     displayName="BedrockCn"
+                     label="BedrockCn"
+                     name="BedrockCn">
+            <description>Amazon Bedrock connection</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="true" name="AccessKey" value=""/>
+               <attribute encrypted="true" name="SecretKey" value=""/>
+               <attribute encrypted="false" name="Region" value="&lt;region&gt;"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/INFA_AWSBedrock/INFA_AWSBedrock_svcDef.xml"
+                               name="INFA_AWSBedrock"
+                               supportsConnectionTest="false"
+                               uuid="3e7add5a-13d9-4cec-ab67-ee63bb7a7dad">
+               <description>The Amazon Bedrock connector allows you to integrate, customize, and use advanced foundation models to build powerful, secure, and responsible generative AI applications through a single API.</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>1fugVvd73v7f1frIrXmTO4</types1:GUID>
+      <types1:DisplayName>BedrockCn</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.827Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

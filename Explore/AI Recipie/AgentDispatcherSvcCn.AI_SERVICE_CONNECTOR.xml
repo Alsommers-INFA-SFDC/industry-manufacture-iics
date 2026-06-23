@@ -1,0 +1,89 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>GtXFEpciZBpDUQb-gt-120530-2026-06-23T16:13:28.532Z::svc.xml</types1:EntryId>
+      <types1:Name>AgentDispatcherSvcCn</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Agent dispatcher service connector</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:29Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="AgentDispatcherSvcCn"
+                            label=""
+                            name="AgentDispatcherSvcCn"
+                            uuid="9f1a0292-8066-4140-baeb-806bb24e9a7d">
+            <description>Agent dispatcher service connector</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Dispatcher"
+                       maxRedirects="100"
+                       name="Dispatcher"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Dispatch to the specific agent during run time</description>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="Planner"
+                                required="false"
+                                testWith=""
+                                type="reference">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                        </options>
+                     </parameter>
+                     <parameter description=""
+                                label=""
+                                name="AgentName"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{util:resolveURN('urn:agent:dispatcher:'||$AgentName)}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="Planner_Out"
+                            type="reference"
+                            xmlElement="PlannerOut">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>e7qh624xjcCeiKTJycBkwB</types1:GUID>
+      <types1:DisplayName>AgentDispatcherSvcCn</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.726Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

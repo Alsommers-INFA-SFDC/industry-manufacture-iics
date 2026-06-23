@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "3VpyCy2IAmShaL5MkS88q0",
+    "name" : "Identify Customers",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "BYZcjKsJlv58pIO-gt-120712-2026-06-23T16:13:30.445Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process that uses all required inputs to match & identify customer records within Informatica Customer 360",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-06-23T16:18:56.444Z",
+  "objectRefs" : [ {
+    "id" : "4drsl65Bm5AkuewzHRbiCq",
+    "name" : "MDMConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "SKwCNOHVOJ2oTVM-gt-120626-2026-06-23T16:13:29.71Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "App connection that retrieves data from MDM APIs",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/AI Recipie"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

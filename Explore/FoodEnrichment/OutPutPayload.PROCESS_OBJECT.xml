@@ -1,0 +1,93 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fOQeK8ZAZf5kck8-gt-120638-2026-06-23T16:13:30.08Z::po.xml</types1:EntryId>
+      <types1:Name>OutPutPayload</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:30Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="OutPutPayload"
+                        isByCopy="true"
+                        name="OutPutPayload">
+            <description/>
+            <tags/>
+            <detail>
+               <field label="confidenceScoreInPercent"
+                      name="confidenceScoreInPercent"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Payload"
+                      name="Payload"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:outputNutrition</option>
+                     <option name="guid">8hApKalE8IEjz28tAkJseC</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="brand"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="productName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="allergen"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="ingredients"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="heroImage"
+                      nullable="true"
+                      required="false"
+                      type="url">
+                  <options/>
+               </field>
+               <field label=""
+                      name="category"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>hD40AlKJqCcb8uny7neSaS</types1:GUID>
+      <types1:DisplayName>OutPutPayload</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:56.037Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,114 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>K7vNljLYqBGZkL0-gt-119504-2026-06-23T16:13:29.591Z::po.xml</types1:EntryId>
+      <types1:Name>PlannerPO</types1:Name>
+      <types1:ParentFlowIds>nUqThtpyqaa-gt-120668-2026-06-23T16:13:30.218Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that is generated from [plannerType complex type] located in the [PlannerStepsPO.xsd] source XML schema.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Alex.Manufacture</types1:CreatedBy>
+      <types1:CreationDate>2026-06-23T16:13:30Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="PlannerPO"
+                        isByCopy="true"
+                        name="PlannerPO">
+            <description>Process object that is generated from [plannerType complex type] located in the [PlannerStepsPO.xsd] source XML schema.</description>
+            <tags/>
+            <detail>
+               <field label="app"
+                      name="app"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="filter"
+                      name="filter"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="action"
+                      name="action"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="output"
+                      name="output"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="object"
+                      name="object"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="prompt_selector"
+                      name="prompt_selector"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="selector"
+                      name="selector"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="selector_response"
+                      name="selector_response"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="executor_response"
+                      name="executor_response"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="prompt_in"
+                      name="prompt_in"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="attribute"
+                      name="attribute"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:AttributePO</option>
+                     <option name="guid">ageFRpDXrs7jYjq5eM9uSV</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>6JcWLJFeiurh8iHMfyPHAJ</types1:GUID>
+      <types1:DisplayName>PlannerPO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-06-23T16:18:55.937Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
